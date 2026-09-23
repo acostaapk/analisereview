@@ -1,0 +1,31 @@
+---
+interface Props {
+  score: number;
+  subscores: { conteudo: number; suporte: number; garantia: number; custoBeneficio: number };
+}
+const { score, subscores } = Astro.props;
+const items = [
+  ['Conteúdo', subscores.conteudo],
+  ['Suporte', subscores.suporte],
+  ['Garantia', subscores.garantia],
+  ['Custo-benefício', subscores.custoBeneficio],
+] as const;
+---
+
+<div class="scorecard">
+  <p class="score" aria-label={`Nota ${score} de 10`}>{score}<span>/10</span></p>
+  <ul>
+    {items.map(([label, value]) => (
+      <li><span>{label}</span><strong>{value}</strong></li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .scorecard { border: 1px solid var(--color-ink); padding: var(--space-4); background: var(--color-surface); }
+  .score { font-family: var(--font-display); font-size: 3rem; margin: 0 0 var(--space-3); }
+  .score span { font-size: 1rem; color: var(--color-muted); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; justify-content: space-between; border-top: 1px solid var(--color-rule); padding: var(--space-2) 0; }
+  li:first-child { border-top: 0; }
+</style>
