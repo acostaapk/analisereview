@@ -30,6 +30,8 @@ category: "maquininha"
 updatedAt: "2026-09-23"
 ---
 
+![Maquininha Ton](/maquininha-ton.png)
+
 ## Para quem é
 
 A Ton é a maquininha digital voltada a autônomos, MEIs e
