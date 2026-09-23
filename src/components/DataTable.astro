@@ -4,7 +4,7 @@ const { rows } = Astro.props;
 ---
 
 <table>
-  <caption class="sr-only">Ficha do curso</caption>
+  <caption class="sr-only">Ficha do produto</caption>
   <tbody>
     {rows.map((r) => (
       <tr><th scope="row">{r.label}</th><td>{r.value}</td></tr>

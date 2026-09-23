@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { review } = Astro.props;
 const { Content } = await review.render();
-const { title, product, company, price, priceCurrency, reviewCount, score, subscores, pros, cons, verdict, recommended, affiliateUrl, updatedAt, description } = review.data;
+const { title, product, company, price, priceCurrency, reviewCount, score, subscores, pros, cons, verdict, recommended, affiliateUrl, updatedAt, category, description, image } = review.data;
 
 const adesao = price > 0
   ? price.toLocaleString('pt-BR', { style: 'currency', currency: priceCurrency })
@@ -29,12 +29,21 @@ const rows = [
 
 <Base title={title} description={description}>
   <article>
-    <h1>{title}</h1>
-    <p class="dek">Análise independente baseada em dados públicos. Atualizado em {updatedAt}.</p>
+    <header class="review-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Análise · {category}</span>
+        <h1>{title}</h1>
+        <p class="dek">{description}</p>
+        <p class="hero-meta"><span class={`badge ${recommended ? 'ok' : 'no'}`}>{recommended ? 'Recomendado' : 'Não recomendado'}</span> Atualizado em {updatedAt}</p>
+      </div>
+      {image && <img class="hero-img" src={image} alt={`Imagem ilustrativa da ${product}`} />}
+    </header>
 
     <Scorecard score={score} subscores={subscores} />
-    <h2>Ficha do produto</h2>
+
+    <h2 class="section-title">Ficha do produto</h2>
     <DataTable rows={rows} />
+
     <ProsCons pros={pros} cons={cons} />
 
     <div class="body">
@@ -48,7 +57,20 @@ const rows = [
 
 <style>
   article { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
-  .dek { color: var(--color-muted); }
+  .review-hero { display: grid; grid-template-columns: 1fr 13rem; gap: var(--space-6); align-items: start; padding-bottom: var(--space-5); margin-bottom: var(--space-3); border-bottom: 2px solid var(--color-ink); }
+  .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); font-weight: 600; }
+  h1 { font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1.05; margin: var(--space-2) 0 var(--space-3); }
+  .dek { font-size: 1.25rem; font-style: italic; color: var(--color-muted); margin: 0 0 var(--space-3); }
+  .hero-meta { color: var(--color-muted); display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+  .badge { display: inline-block; font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8125rem; padding: var(--space-1) var(--space-2); border: 2px solid; }
+  .badge.ok { color: var(--color-good); border-color: var(--color-good); }
+  .badge.no { color: var(--color-accent); border-color: var(--color-accent); }
+  .hero-img { width: 100%; height: auto; border: 1px solid var(--color-rule); background: var(--color-surface); }
+  .section-title { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--color-rule); }
   .body { margin-top: var(--space-5); }
-  .body img { max-width: 100%; height: auto; max-height: 22rem; width: auto; display: block; margin: var(--space-4) auto; border: 1px solid var(--color-rule); }
+  .body h2 { font-size: 1.5rem; margin-top: var(--space-6); }
+  @media (max-width: 640px) {
+    .review-hero { grid-template-columns: 1fr; }
+    .hero-img { max-width: 12rem; }
+  }
 </style>

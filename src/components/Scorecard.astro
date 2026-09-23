@@ -13,19 +13,47 @@ const items = [
 ---
 
 <div class="scorecard">
-  <p class="score"><span class="sr-only">Nota </span>{score}<span>/10</span></p>
-  <ul>
+  <div class="score-main">
+    <span class="score-label">Nota geral</span>
+    <p class="score"><span class="sr-only">Nota </span>{score}<span class="score-out">/10</span></p>
+  </div>
+  <ul class="subscores">
     {items.map(([label, value]) => (
-      <li><span>{label}</span><strong>{value}</strong></li>
+      <li>
+        <div class="sub-row">
+          <span class="sub-label">{label}</span>
+          <strong class="sub-value">{value}</strong>
+        </div>
+        <div class="bar" aria-hidden="true"><div class="bar-fill" style={`width: ${value * 10}%`}></div></div>
+      </li>
     ))}
   </ul>
 </div>
 
 <style>
-  .scorecard { border: 1px solid var(--color-ink); padding: var(--space-4); background: var(--color-surface); }
-  .score { font-family: var(--font-display); font-size: 3rem; margin: 0 0 var(--space-3); }
-  .score span { font-size: 1rem; color: var(--color-muted); }
-  ul { list-style: none; margin: 0; padding: 0; }
-  li { display: flex; justify-content: space-between; border-top: 1px solid var(--color-rule); padding: var(--space-2) 0; }
-  li:first-child { border-top: 0; }
+  .scorecard {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-5);
+    border: 2px solid var(--color-ink);
+    border-top: 6px solid var(--color-accent);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    margin: var(--space-5) 0;
+  }
+  .score-main { border-right: 1px solid var(--color-rule); padding-right: var(--space-5); align-self: center; }
+  .score-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); }
+  .score { font-family: var(--font-display); font-size: 5rem; font-weight: 700; line-height: 1; margin: 0; }
+  .score-out { font-size: 1.5rem; color: var(--color-muted); font-weight: 400; }
+  .subscores { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .sub-row { display: flex; justify-content: space-between; margin-bottom: var(--space-1); }
+  .sub-label { color: var(--color-muted); }
+  .sub-value { font-family: var(--font-display); font-size: 1.125rem; }
+  .bar { height: 6px; background: var(--color-rule); }
+  .bar-fill { height: 100%; background: var(--color-accent); }
+  @media (max-width: 640px) {
+    .scorecard { grid-template-columns: 1fr; }
+    .score-main { border-right: 0; border-bottom: 1px solid var(--color-rule); padding-right: 0; padding-bottom: var(--space-4); }
+    .score { font-size: 4rem; }
+  }
 </style>

@@ -24,6 +24,7 @@ const reviews = defineCollection({
     category: z.string(),
     updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     description: z.string(),
+    image: z.string().optional(),
   }),
 });
 

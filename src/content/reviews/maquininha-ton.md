@@ -28,9 +28,8 @@ recommended: true
 affiliateUrl: "https://ton.com.br/catalogo/?referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&userAnticipation=0&utm_medium=invite_share&utm_source=revendedor"
 category: "maquininha"
 updatedAt: "2026-09-23"
+image: "/maquininha-ton.png"
 ---
-
-![Maquininha Ton](/maquininha-ton.png)
 
 ## Para quem é
 
