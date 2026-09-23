@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Metodologia" description="Como o AnaliseReview analisa cursos de renda extra.">
+  <article>
+    <h1>Como analisamos</h1>
+
+    <h2>Nossa base: dados públicos</h2>
+    <p>Não compramos nem testamos os cursos. Cada análise usa dados públicos
+    coletados na data indicada: preço, currículo, número de avaliações,
+    reputação do autor e política de garantia.</p>
+
+    <h2>Critérios de pontuação</h2>
+    <ul>
+      <li><strong>Conteúdo</strong> — escopo e estrutura do curso (0–10).</li>
+      <li><strong>Suporte</strong> — canais de suporte ao aluno (0–10).</li>
+      <li><strong>Garantia</strong> — política de reembolso (0–10).</li>
+      <li><strong>Custo-benefício</strong> — preço frente ao conteúdo (0–10).</li>
+    </ul>
+    <p>A nota global é a média das quatro dimensões, arredondada a uma casa.</p>
+
+    <h2>Independência e afiliados</h2>
+    <p>Somos afiliados de alguns cursos analisados. Recebemos comissão apenas
+    se você comprar pelo nosso link, sem custo adicional para você. Isso não
+    altera a nota: prós e contras são publicados sempre.</p>
+  </article>
+</Base>
+
+<style>
+  article { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
+</style>
