@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -38,6 +39,7 @@ const { title, description } = Astro.props;
       <p class="site-link"><a href="https://www.ton.com.br" rel="noopener">Site oficial do Ton</a></p>
       <p class="copyright">© {new Date().getFullYear()} AnaliseReview</p>
     </footer>
+    <CookieBanner />
   </body>
 </html>
 

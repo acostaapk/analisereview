@@ -1,0 +1,81 @@
+---
+---
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-card" role="dialog" aria-labelledby="cookie-title" aria-modal="false">
+    <h2 id="cookie-title">Cookies e privacidade</h2>
+    <p>Usamos cookies necessários para o funcionamento do site. Com o seu consentimento, também usamos cookies analíticos e de marketing. Você pode gerenciar suas preferências abaixo.</p>
+
+    <form id="cookie-form">
+      <label class="cookie-row">
+        <input type="checkbox" checked disabled />
+        <span><strong>Necessários</strong> — essenciais para o funcionamento do site. Sempre ativos.</span>
+      </label>
+      <label class="cookie-row">
+        <input type="checkbox" name="analytics" />
+        <span><strong>Analíticos</strong> — ajudam a entender como o site é usado.</span>
+      </label>
+      <label class="cookie-row">
+        <input type="checkbox" name="marketing" />
+        <span><strong>Marketing</strong> — personalização de conteúdo e anúncios.</span>
+      </label>
+
+      <div class="cookie-actions">
+        <button type="button" id="cookie-reject">Rejeitar</button>
+        <button type="button" id="cookie-save">Salvar preferências</button>
+        <button type="button" id="cookie-accept">Aceitar todos</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const KEY = 'cookieConsent';
+
+  function readConsent() {
+    try {
+      return JSON.parse(localStorage.getItem(KEY));
+    } catch {
+      return null;
+    }
+  }
+
+  function writeConsent(value) {
+    localStorage.setItem(KEY, JSON.stringify(value));
+    document.getElementById('cookie-banner').hidden = true;
+  }
+
+  const banner = document.getElementById('cookie-banner');
+  if (!readConsent()) {
+    banner.hidden = false;
+  }
+
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    writeConsent({ necessary: true, analytics: true, marketing: true });
+  });
+
+  document.getElementById('cookie-reject').addEventListener('click', () => {
+    writeConsent({ necessary: true, analytics: false, marketing: false });
+  });
+
+  document.getElementById('cookie-save').addEventListener('click', () => {
+    const form = document.getElementById('cookie-form');
+    const data = new FormData(form);
+    writeConsent({
+      necessary: true,
+      analytics: data.has('analytics'),
+      marketing: data.has('marketing'),
+    });
+  });
+</script>
+
+<style>
+  .cookie-banner { position: fixed; inset: 0; background: rgba(26, 26, 26, 0.55); display: flex; align-items: center; justify-content: center; padding: var(--space-4); z-index: 100; }
+  .cookie-card { background: var(--color-paper); color: var(--color-ink); border: 1px solid var(--color-ink); padding: var(--space-4); max-width: 32rem; font-family: var(--font-body); }
+  .cookie-card h2 { font-family: var(--font-display); margin: 0 0 var(--space-3); }
+  .cookie-row { display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) 0; border-top: 1px solid var(--color-rule); }
+  .cookie-row:first-of-type { border-top: 0; }
+  .cookie-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+  button { font-family: var(--font-body); padding: var(--space-2) var(--space-3); cursor: pointer; border: 1px solid var(--color-ink); background: var(--color-surface); color: var(--color-ink); }
+  #cookie-accept { background: var(--color-ink); color: var(--color-paper); }
+  #cookie-reject { background: transparent; }
+</style>
