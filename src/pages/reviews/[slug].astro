@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Scorecard from '../../components/Scorecard.astro';
+import DataTable from '../../components/DataTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import VerdictBox from '../../components/VerdictBox.astro';
+import AffiliateCTA from '../../components/AffiliateCTA.astro';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('reviews');
+  return reviews.map((r) => ({ params: { slug: r.slug }, props: { review: r } }));
+}
+
+const { review } = Astro.props;
+const { Content } = await review.render();
+const { title, product, author, price, priceCurrency, reviewCount, score, subscores, pros, cons, verdict, recommended, affiliateUrl, updatedAt, description } = review.data;
+
+const rows = [
+  { label: 'Preço', value: `${price.toLocaleString('pt-BR', { style: 'currency', currency: priceCurrency })}` },
+  { label: 'Avaliações', value: reviewCount.toLocaleString('pt-BR') },
+  { label: 'Autor', value: author },
+  { label: 'Atualizado em', value: updatedAt },
+];
+
+const priceValue = price.toLocaleString('pt-BR', { style: 'currency', currency: priceCurrency });
+---
+
+<Base title={title} description={description}>
+  <article>
+    <h1>{title}</h1>
+    <p class="dek">Análise independente baseada em dados públicos. Atualizado em {updatedAt}.</p>
+
+    <Scorecard score={score} subscores={subscores} />
+    <h2>Ficha do curso</h2>
+    <DataTable rows={rows} />
+    <ProsCons pros={pros} cons={cons} />
+
+    <div class="body">
+      <Content />
+    </div>
+
+    <VerdictBox verdict={verdict} recommended={recommended} score={score} />
+    <AffiliateCTA href={affiliateUrl} product={product} />
+  </article>
+</Base>
+
+<style>
+  article { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
+  .dek { color: var(--color-muted); }
+  .body { margin-top: var(--space-5); }
+</style>
