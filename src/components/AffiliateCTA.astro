@@ -3,13 +3,13 @@ interface Props { href: string; product: string }
 const { href, product } = Astro.props;
 ---
 
-<div class="cta">
-  <a href={href} rel="nofollow sponsored">Conhecer a {product}</a>
+<div class="affiliate-cta">
+  <a class="btn btn-primary btn-lg" href={href} rel="nofollow sponsored" target="_blank">Pedir a {product} no site da Ton</a>
   <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
 </div>
 
 <style>
-  .cta { margin-top: var(--space-5); }
-  a { display: inline-block; background: var(--color-ink); color: var(--color-paper); padding: var(--space-3) var(--space-4); text-decoration: none; font-weight: 600; }
-  .disclosure { font-size: 0.875rem; color: var(--color-muted); }
+  .affiliate-cta { display: grid; gap: var(--space-2); justify-items: start; }
+  .btn-lg { font-size: 1.125rem; padding: 1rem 2rem; }
+  .disclosure { font-size: 0.875rem; color: var(--color-muted); max-width: 56ch; }
 </style>

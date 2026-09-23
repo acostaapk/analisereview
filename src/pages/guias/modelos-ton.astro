@@ -1,0 +1,108 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { updatedAt } from '../../data/site';
+
+const title = 'Modelos de maquininha Ton: T1, T2, T3 e T3 Smart';
+const description = 'Compare os modelos de maquininha Ton: conexão, comprovante, parcelamento e preço. Veja qual combina com o seu negócio e como escolher.';
+const faqs = [
+  {
+    q: 'Qual maquininha Ton imprime comprovante?',
+    a: 'Os modelos T3 e T3 Smart imprimem comprovantes. O T3 Smart também envia por SMS. Os modelos T1 e T2 emitem comprovante por SMS.',
+  },
+  {
+    q: 'Qual é a maquininha Ton mais barata?',
+    a: 'A T1, com valor à vista de R$ 16,80 no catálogo em 23/09/2026. Ela funciona conectada ao celular, com comprovante por SMS e parcelamento até 12x.',
+  },
+  {
+    q: 'Qual maquininha Ton tem chip próprio?',
+    a: 'A T2 (chip e Wi-Fi), a T3 (chip e Wi-Fi) e a T3 Smart (chip 4G e Wi-Fi). A T1 depende do celular para operar.',
+  },
+  {
+    q: 'O que é o TapTon?',
+    a: 'É a opção da Ton de usar o próprio celular como maquininha por aproximação, para celulares Android e iPhone com NFC. Não substitui os modelos físicos, mas amplia as formas de cobrar.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/guias/modelos-ton/"
+  eyebrow="Guia · modelos de maquininha Ton"
+  faqs={faqs}
+  breadcrumbName="Modelos de maquininha Ton"
+  ctaLabel="Ver modelos no catálogo"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> a Ton tem quatro maquininhas. A
+    <strong>T1</strong> (R$ 16,80) opera com o celular; a <strong>T2</strong>
+    (R$ 49,88) tem chip e Wi-Fi próprios; a <strong>T3</strong> (R$ 108,00)
+    imprime comprovante; a <strong>T3 Smart</strong> (R$ 191,88) tem tela
+    Android touchscreen e chip 4G. T3 e T3 Smart parcelam em até 21x para
+    novos clientes; T1 e T2, até 12x. Valores à vista do catálogo em
+    {updatedAt}.
+  </div>
+
+  <h2>Comparativo dos modelos</h2>
+  <div class="table-scroll">
+  <table class="rates-table">
+    <thead>
+      <tr><th scope="col">Modelo</th><th scope="col">Conexão</th><th scope="col">Comprovante</th><th scope="col">Parcelamento</th><th scope="col">À vista</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">T1</th><td>Celular com internet</td><td>SMS</td><td>Até 12x</td><td>R$ 16,80<br>12x de R$ 1,40</td></tr>
+      <tr><th scope="row">T2</th><td>Chip e Wi-Fi</td><td>SMS</td><td>Até 12x</td><td>R$ 49,88<br>12x de R$ 4,16</td></tr>
+      <tr><th scope="row">T3</th><td>Chip e Wi-Fi</td><td>Impresso ou SMS</td><td>Até 21x</td><td>R$ 108,00<br>12x de R$ 9,00</td></tr>
+      <tr><th scope="row">T3 Smart</th><td>Chip 4G e Wi-Fi</td><td>Impresso ou SMS</td><td>Até 21x</td><td>R$ 191,88<br>12x de R$ 15,99</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="rates-note">Preços à vista exibidos no catálogo da Ton em {updatedAt} e podem mudar. Confira o valor vigente ao pedir.</p>
+
+  <h2>Maquininha T1: venda com o seu celular</h2>
+  <p>A T1 é a porta de entrada do catálogo. Ela se conecta ao seu celular
+  por conexão própria do aplicativo e precisa de um telefone com internet
+  para operar. Recebe por aproximação (NFC) e envia o comprovante por SMS.
+  Indicada para quem está começando e já tem um celular confiável.</p>
+
+  <h2>Maquininha T2: independente do celular</h2>
+  <p>A T2 tem chip e Wi-Fi próprios, então funciona mesmo sem o telefone por
+  perto. Recebe por aproximação e envia comprovante por SMS. É o modelo
+  compacto para quem atende em diferentes lugares e não quer depender do
+  celular para cobrar.</p>
+
+  <h2>Maquininha T3: comprovante impresso</h2>
+  <p>A T3 mantém chip e Wi-Fi e acrescenta a impressora de comprovantes,
+  além do envio por SMS. Para estabelecimentos que entregam o comprovante
+  impresso ao cliente, é a opção direta. Para novos clientes, parcela em
+  até 21x.</p>
+
+  <h2>Maquininha T3 Smart: tela Android e chip 4G</h2>
+  <p>A T3 Smart é o modelo mais completo: visor touchscreen com sistema
+  Android, chip 4G e Wi-Fi, bateria de longa duração e comprovante impresso
+  ou por SMS. Recebe por aproximação e aceita Pix na maquininha. Também
+  parcela em até 21x para novos clientes.</p>
+
+  <h2>Como escolher</h2>
+  <ul>
+    <li><strong>Vende com o celular sempre por perto?</strong> A T1 atende pelo menor valor de entrada.</li>
+    <li><strong>Precisa cobrar sem depender do telefone?</strong> A T2 tem chip próprio e cabe no bolso.</li>
+    <li><strong>Cliente pede comprovante impresso?</strong> Escolha a T3 ou a T3 Smart.</li>
+    <li><strong>Quer tela completa e conexão 4G?</strong> A T3 Smart entrega o pacote completo.</li>
+  </ul>
+  <p>Todos os modelos têm garantia vitalícia enquanto durar a parceria, Pix
+  na maquininha e adesão sem mensalidade nem aluguel. Confira as taxas no
+  <a href="/guias/taxas-ton/">guia de taxas</a> e as condições completas na
+  <a href="/reviews/maquininha-ton/">página da maquininha Ton</a>.</p>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>

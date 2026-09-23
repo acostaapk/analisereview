@@ -1,73 +1,121 @@
 ---
-title: "Maquininha Ton: análise completa"
-description: "Análise independente da maquininha Ton: taxas, aluguel, garantia e para quem vale a pena. Dados públicos coletados na data da análise."
+title: "Maquininha Ton: veja modelos, taxas e condições"
+description: "Conheça as maquininhas Ton: sem aluguel, sem mensalidade e com garantia vitalícia. Compare os modelos, entenda as taxas e peça a sua com o Parceiro Renda Ton."
 product: "Maquininha Ton"
-company: "Ton (Pagar.me)"
-price: 0
-priceCurrency: "BRL"
-reviewCount: 4680875
-score: 8
-subscores:
-  taxas: 7
-  suporte: 8
-  garantia: 9
-  custoBeneficio: 8
-pros:
-  - "Sem mensalidade e sem aluguel (taxa única de adesão em comodato)"
+company: "Ton (StoneCo)"
+benefits:
+  - "Sem mensalidade e sem aluguel"
   - "Garantia vitalícia do equipamento"
-  - "Não precisa de CNPJ (PF, MEI ou PJ)"
+  - "Não precisa de CNPJ: aceita CPF, MEI e PJ"
   - "Recebimento em 1 dia útil ou na hora"
-  - "Pix na maquininha grátis por 30 dias"
-  - "Nota alta no Reclame Aqui (9,2/10, segundo a própria Ton)"
-cons:
-  - "Taxa de crédito no período promocional é alta (7,97%)"
-  - "A taxa de 0,57% vale só no período promocional (30 dias ou até R$ 5 mil em vendas)"
-  - "As taxas variam conforme o volume de vendas mensal"
-verdict: "Recomendado para autônomos, MEIs e pequenos negócios que querem uma maquininha sem mensalidade e sem aluguel, com garantia vitalícia. Avalie o custo da taxa de crédito se vender parcelado com frequência."
-recommended: true
-affiliateUrl: "https://ton.com.br/catalogo/?referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&userAnticipation=0&utm_medium=invite_share&utm_source=revendedor"
+  - "Pix na maquininha grátis com chave cadastrada"
+  - "Aceita mais de 50 bandeiras, débito, crédito e vouchers"
 category: "maquininha"
 updatedAt: "2026-09-23"
-image: "/maquininha-ton.png"
+affiliateUrl: "https://ton.com.br/catalogo/?referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&userAnticipation=0&utm_medium=invite_share&utm_source=revendedor"
+image: "/660x500_t3-smart.webp"
+faqs:
+  - q: "A maquininha Ton tem mensalidade ou aluguel?"
+    a: "Não. Há uma taxa única de adesão, parcelável em até 12x, e depois disso não existe cobrança fixa mensal pelo uso da maquininha."
+  - q: "Preciso ter CNPJ para pedir uma maquininha Ton?"
+    a: "Não. O cadastro pode ser feito com CPF, MEI ou PJ, direto pelo aplicativo da Ton."
+  - q: "Em quanto tempo recebo o dinheiro das vendas na maquininha Ton?"
+    a: "Você escolhe o prazo no aplicativo, venda a venda: recebimento em 1 dia útil ou na hora."
+  - q: "O Pix na maquininha Ton tem taxa?"
+    a: "Não nos primeiros 30 dias. Depois, o Pix continua sem taxa desde que haja uma chave cadastrada na Conta Ton."
+  - q: "O que está incluso na garantia vitalícia da maquininha Ton?"
+    a: "Troca e manutenção gratuitas da maquininha durante toda a parceria com a Ton, sem precisar sair de casa."
+  - q: "Quais bandeiras a maquininha Ton aceita?"
+    a: "Mais de 50 bandeiras, incluindo débito, crédito e vouchers de alimentação e refeição."
 ---
 
-## Para quem é
+## Em resumo
 
-A Ton é a maquininha digital voltada a autônomos, MEIs e
-microempreendedores. A proposta central é simples: você paga uma **taxa única
-de adesão** (em comodato) e **não tem mensalidade nem aluguel**.
+A maquininha Ton funciona com **taxa única de adesão em comodato, sem
+mensalidade e sem aluguel**, tem **garantia vitalícia** enquanto durar a
+parceria e aceita **CPF, MEI e PJ**. No período promocional para novos
+clientes (30 dias ou até R$ 5 mil em vendas), as taxas das maquininhas são
+0,57% no débito, 0,57% no crédito à vista e 7,97% no crédito em 12x, para
+Mastercard e Visa com recebimento em 1 dia útil. Há quatro modelos — T1,
+T2, T3 e T3 Smart — e o Pix na maquininha fica grátis com uma chave
+cadastrada na Conta Ton. Valores do simulador oficial da Ton consultados
+em 23/09/2026.
 
-## Taxas e planos (dados públicos, coletados em 23/09/2026)
+## Por que escolher a maquininha Ton
 
-- **Período promocional** (30 dias ou até R$ 5 mil em vendas): Pix grátis,
-  débito 0,57% e crédito 7,97%.
-- **Após o período promocional**: taxas a partir de 0,74%, variando conforme o
-  seu volume de vendas mensal.
-- **Pix na maquininha**: grátis por 30 dias; depois, 0,49% por venda (ou grátis
-  se você cadastrar uma chave Pix na sua conta).
+A Ton é feita para quem vende todos os dias: autônomos, MEIs e pequenos
+negócios. Você paga uma **taxa única de adesão em comodato** e não tem
+cobrança fixa depois disso.
 
-Atenção ao detalhe honesto: o "0,57%" é a taxa **promocional**. A taxa de
-referência anunciada no site é "a partir de 0,74%". E a taxa de crédito
-(7,97% no período promocional) é alta — considere isso se você vende muito
-no parcelado.
+- **Sem mensalidade e sem aluguel.** A adesão pode ser facilitada em até
+  12 vezes no cartão e, depois de paga, não existe cobrança fixa pelo uso
+  da máquina.
+- **Garantia vitalícia.** Troca e manutenção gratuitas enquanto durar a
+  parceria, sem sair de casa.
+- **Não precisa de CNPJ.** A Ton aceita CPF, MEI e PJ. Cadastro direto pelo
+  aplicativo.
+- **Receba em 1 dia útil ou na hora.** Você escolhe o prazo de recebimento
+  das suas vendas no aplicativo.
+- **Pix na maquininha sem taxa.** Receba por QR Code ou aproximação e tenha
+  taxa zero mantendo uma chave cadastrada na Conta Ton.
+- **Mais de 50 bandeiras.** Venda no débito, no crédito e aceite vouchers
+  como alimentação e refeição (vouchers exigem cadastro CNPJ).
+- **Suporte 24h.** Atendimento pelo aplicativo e pelo WhatsApp, com a
+  entrega e o suporte sob responsabilidade da Ton.
 
-## O que a Ton entrega
+## Taxas e condições
 
-- **Garantia vitalícia**: trocas e manutenção grátis enquanto durar a parceria.
-- **Sem CNPJ**: aceita PF, MEI e PJ.
-- **Recebimento** em 1 dia útil ou na hora (opção no app).
-- **Modelos**: T1, T2, T3 e T3 Smart, além do TapTon (celular como maquininha).
+As taxas variam conforme a modalidade, o número de parcelas, as bandeiras,
+o prazo de recebimento e a sua faixa de vendas mensais. No período
+promocional para novos clientes, as condições são as seguintes:
 
-## O que considerar antes de pedir
+| Modalidade | Taxa promocional |
+|---|---:|
+| Débito | 0,57% |
+| Crédito à vista | 0,57% |
+| Crédito em 12x | 7,97% |
+| Crédito em 21x | 14,87% |
 
-- A **taxa de crédito** é o ponto fraco; confira se o seu ticket e o seu
-  parcelamento compensam.
-- As taxas são **dinâmicas**: sobem ou descem conforme o seu faturamento.
-- Reputação (dados da própria Ton, não verificados de forma independente):
-  Reclame Aqui 9,2/10, Google Play 4,8/5, App Store 4,9/5.
+<details class="conditions">
+<summary>Condições completas da promoção</summary>
 
-## Veredito
+Os valores acima são válidos para maquininhas, bandeiras Mastercard e Visa,
+recebimento em 1 dia útil e vendas mensais no **Período Promocional**,
+conforme o simulador oficial em 23/09/2026.
 
-Recomendado para quem quer fugir de mensalidade e aluguel e valoriza garantia
-vitalícia. Só tenha clareza sobre a taxa de crédito e sobre o fato de que as
-melhores taxas dependem do seu volume de vendas.
+- A promoção vale por 30 dias ou até R$ 5 mil em vendas, o que ocorrer
+  primeiro.
+- Depois do período promocional, as taxas acompanham a sua faixa de vendas
+  mensais, calculada pelo volume do mês anterior.
+- Bandeiras Elo e Amex, recebimento na hora, TapTon e Link de Pagamento
+  têm tabelas próprias.
+- O parcelamento em até 21x está disponível para novos clientes nos modelos
+  T3 e T3 Smart; T1 e T2 parcelam em até 12x.
+- Confira sempre o valor vigente no simulador e no seu aplicativo antes de
+  fechar o pedido.
+
+</details>
+
+Para decidir, use o simulador oficial: ele mostra quanto você recebe em
+cada venda conforme modelo, bandeira, parcelas e prazo de recebimento.
+
+## Pix na maquininha
+
+Venda no Pix e receba na hora:
+
+- **30 dias com taxa zero** ao ativar a maquininha.
+- Depois, para continuar sem taxa, cadastre uma chave Pix (CPF, CNPJ ou
+  telefone) na sua Conta Ton.
+- Sem a chave cadastrada, a taxa é de 0,49% por venda.
+
+## Como pedir
+
+1. Escolha o modelo certo para o seu negócio na seção de modelos acima.
+2. Use o botão de pedido: você será direcionado ao site oficial da Ton com
+   o nosso link de indicação.
+3. Conclua o cadastro e o pedido no site da Ton. A entrega e o suporte
+   ficam com a Ton.
+
+Ao pedir pelo nosso link, você pode ter desconto na adesão. O pedido, a
+análise de cadastro, a entrega e o suporte são feitos pela Ton.
+

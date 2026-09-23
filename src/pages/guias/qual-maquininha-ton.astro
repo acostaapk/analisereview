@@ -1,0 +1,92 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { updatedAt } from '../../data/site';
+
+const title = 'Qual maquininha Ton para o seu negócio';
+const description = 'Escolha a maquininha Ton certa para o seu perfil: autônomo, delivery, salão, loja ou MEI. Veja a recomendação para cada tipo de venda.';
+const faqs = [
+  {
+    q: 'Qual maquininha Ton para autônomo que vende na rua?',
+    a: 'Para quem atende em movimento, a T2 é prática por ter chip e Wi-Fi próprios e comprovante por SMS, sem depender do celular. Se o orçamento é o primeiro critério, a T1 funciona conectada ao celular.',
+  },
+  {
+    q: 'Qual maquininha Ton imprime comprovante?',
+    a: 'A T3 e a T3 Smart imprimem comprovantes. Para novos clientes, as duas parcelam em até 21x.',
+  },
+  {
+    q: 'Qual é a maquininha Ton mais barata?',
+    a: 'A T1, com valor à vista de R$ 16,80 no catálogo em 23/09/2026. Ela opera com o celular e emite comprovante por SMS.',
+  },
+  {
+    q: 'Qual maquininha Ton para delivery?',
+    a: 'A T2 entrega chip e Wi-Fi próprios em um aparelho compacto, ideal para entregas. Se o entregador preferir usar o próprio celular, a T1 é a opção de menor custo.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/guias/qual-maquininha-ton/"
+  eyebrow="Guia · escolha por perfil"
+  faqs={faqs}
+  breadcrumbName="Qual maquininha Ton para o seu negócio"
+  ctaLabel="Pedir uma maquininha Ton"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> a escolha depende de uma pergunta: você
+    precisa de comprovante impresso e de conexão própria? Quem vende em
+    movimento se dá bem com a <strong>T2</strong> (chip e Wi-Fi); quem
+    atende no balcão e imprime comprovante escolhe a <strong>T3</strong> ou
+    a <strong>T3 Smart</strong>; quem está começando e quer o menor custo
+    de entrada começa pela <strong>T1</strong> (R$ 16,80 à vista no catálogo
+    em {updatedAt}). Todos os modelos têm garantia vitalícia e Pix na
+    maquininha.
+  </div>
+
+  <h2>Recomendação por perfil</h2>
+  <table class="rates-table">
+    <thead>
+      <tr><th scope="col">Perfil de venda</th><th scope="col">Modelo recomendado</th><th scope="col">Motivo</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Autônomo que vende na rua</th><td>T2</td><td>Chip e Wi-Fi próprios, sem depender do celular</td></tr>
+      <tr><th scope="row">Delivery e venda em movimento</th><td>T2 ou T1</td><td>T2 independente do telefone; T1 para menor custo</td></tr>
+      <tr><th scope="row">Balcão que imprime comprovante</th><td>T3</td><td>Comprovante impresso e chip próprio</td></tr>
+      <tr><th scope="row">Loja com maior volume e tela completa</th><td>T3 Smart</td><td>Visor Android, chip 4G e bateria de longa duração</td></tr>
+      <tr><th scope="row">Primeira maquininha, orçamento enxuto</th><td>T1</td><td>Menor valor de entrada, opera com o celular</td></tr>
+    </tbody>
+  </table>
+  <p class="rates-note">Recomendações baseadas nas características informadas no catálogo da Ton em {updatedAt}. A melhor escolha depende do seu dia a dia de vendas.</p>
+
+  <h2>Três perguntas que definem a escolha</h2>
+  <ol>
+    <li><strong>Você pode depender do celular para cobrar?</strong> Sim → a T1 atende pelo menor custo. Não → T2, T3 ou T3 Smart, que têm conexão própria.</li>
+    <li><strong>O cliente espera comprovante impresso?</strong> Sim → T3 ou T3 Smart. Não → comprovante por SMS resolve (T1, T2 ou T3 Smart).</li>
+    <li><strong>Vende muito no parcelado?</strong> T3 e T3 Smart parcelam em até 21x para novos clientes; T1 e T2, até 12x.</li>
+  </ol>
+
+  <h2>O que todos os modelos têm em comum</h2>
+  <ul>
+    <li>Taxa única de adesão em comodato, sem mensalidade e sem aluguel.</li>
+    <li>Garantia vitalícia enquanto durar a parceria.</li>
+    <li>Recebimento em 1 dia útil ou na hora, à sua escolha no aplicativo.</li>
+    <li>Pix na maquininha: 30 dias grátis e, depois, sem taxa com chave na Conta Ton.</li>
+    <li>Aceitação de mais de 50 bandeiras entre débito, crédito e vouchers.</li>
+  </ul>
+
+  <p>Veja o <a href="/guias/modelos-ton/">comparativo completo dos modelos</a>,
+  as <a href="/guias/taxas-ton/">condições de taxas</a> e a
+  <a href="/reviews/maquininha-ton/">página da maquininha Ton</a>.</p>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>

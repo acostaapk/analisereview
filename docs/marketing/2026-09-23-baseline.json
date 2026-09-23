@@ -1,0 +1,185 @@
+{
+  "audit_date": "2026-09-23",
+  "source_revision": "9b854a9",
+  "report_status": "ready_for_review",
+  "media_plan_status": "draft",
+  "target_url": "https://analisereview.pages.dev/",
+  "intended_domain": "analisereview.com.br",
+  "business": {
+    "name": "AnaliseReview",
+    "model": "Parceiro Renda Ton; comissões por indicações válidas",
+    "primary_goal": "affiliate_sales",
+    "market_from_project_docs": "Brasil, pt-BR",
+    "paid_ads_started": false,
+    "paid_ads_status_source": "O usuário respondeu: Ainda não anuncio",
+    "actual_commission_brl": null,
+    "approved_budget_brl": null,
+    "partner_level": null
+  },
+  "measurement_access": {
+    "notfair_google_ads_connected": true,
+    "notfair_search_console_connected": false,
+    "notfair_google_analytics_connected": false,
+    "notfair_meta_ads_connected": false,
+    "site_analytics_found_in_source_or_browser": false,
+    "search_clicks": null,
+    "search_impressions": null,
+    "search_ctr": null,
+    "search_position": null,
+    "conversion_rate": null,
+    "note": "Dados não disponíveis; valores ausentes não significam zero."
+  },
+  "dns_observation": {
+    "resolver": "https://dns.google/resolve",
+    "rcode": 0,
+    "nameservers": ["a.auto.dns.br.", "b.auto.dns.br."],
+    "a_records_returned": [],
+    "aaaa_records_returned": [],
+    "local_https_attempt": "Could not resolve host",
+    "readme_discrepancy": "README afirma que nameservers já apontam para Cloudflare"
+  },
+  "browser": {
+    "engine": "Chromium via Playwright",
+    "viewport": {"width": 390, "height": 844},
+    "mobile_emulation": true,
+    "cookie_card_height_px": 398,
+    "cookie_card_viewport_height_share": 0.47156,
+    "tested_reflow_widths_px": [320, 390],
+    "horizontal_overflow_found": false,
+    "pages": [
+      {
+        "path": "/",
+        "http_status": 200,
+        "h1_count": 1,
+        "canonical": null,
+        "og_image": null,
+        "og_url": null,
+        "json_ld_count": 0,
+        "affiliate_cta_count": 0,
+        "document_height_px": 2201
+      },
+      {
+        "path": "/reviews/maquininha-ton/",
+        "http_status": 200,
+        "h1_count": 1,
+        "canonical": null,
+        "og_image": null,
+        "og_url": null,
+        "json_ld_count": 0,
+        "affiliate_cta_count": 1,
+        "affiliate_cta_text": "Conhecer a Maquininha Ton",
+        "first_affiliate_cta_top_px": 5349.078125,
+        "document_height_px": 5975
+      },
+      {
+        "path": "/metodologia/",
+        "http_status": 200,
+        "h1_count": 1,
+        "canonical": null,
+        "og_image": null,
+        "og_url": null,
+        "json_ld_count": 0,
+        "affiliate_cta_count": 0,
+        "document_height_px": 1657
+      }
+    ]
+  },
+  "route_probes": [
+    {"path": "/sitemap.xml", "status": 200, "content_type": "text/html; charset=utf-8", "content": "homepage"},
+    {"path": "/sitemap-index.xml", "status": 200, "content_type": "text/html; charset=utf-8", "content": "homepage"},
+    {"path": "/pagina-inexistente-auditoria-20260923", "status": 200, "content_type": "text/html; charset=utf-8", "content": "homepage"}
+  ],
+  "pagespeed": {
+    "requested_url": "https://analisereview.pages.dev/reviews/maquininha-ton",
+    "strategy": "mobile",
+    "http_status": 429,
+    "performance_score": null,
+    "lcp_ms": null,
+    "inp_ms": null,
+    "cls": null
+  },
+  "official_rates_snapshot": {
+    "source": "https://www.ton.com.br/planos-e-taxas",
+    "product": "Maquininhas",
+    "plan_selector_name": "tier-select-tonmega_tier",
+    "cards": "Mastercard e Visa",
+    "settlement": "1 dia útil",
+    "audience_note": "Página informa condições para novos clientes",
+    "promotion": "30 dias ou até R$ 5 mil em vendas",
+    "rates_unit": "percent",
+    "rows": [
+      {"monthly_sales": "Período Promocional", "debit": 0.57, "credit_single": 0.57, "credit_12x": 7.97, "credit_21x": 14.87},
+      {"monthly_sales": "Até R$ 3 mil", "debit": 1.69, "credit_single": 3.86, "credit_12x": 20.39, "credit_21x": 26.15},
+      {"monthly_sales": "Acima de R$ 30 mil", "debit": 1.19, "credit_single": 2.85, "credit_12x": 11.51, "credit_21x": 17.27}
+    ]
+  },
+  "affiliate_destination_check": {
+    "http_status": 200,
+    "destination_host": "www.ton.com.br",
+    "destination_path": "/catalogo",
+    "referrer_parameter_preserved": true,
+    "sale_attribution_verified": false,
+    "additional_partner_discount_verified": false,
+    "checkout_submitted": false,
+    "displayed_upfront_prices_brl": {"T1": 16.8, "T2": 49.88, "T3": 108.0, "T3 Smart": 191.88}
+  },
+  "search_research": {
+    "source": "Google Suggest",
+    "language": "pt-BR",
+    "geography_parameter": "br",
+    "seeds": ["maquininha ton", "taxas ton", "ton vale a pena", "maquininha sem aluguel"],
+    "selected_observed_suggestions": [
+      "maquininha ton taxas",
+      "maquininha ton t2",
+      "maquininha ton t3",
+      "maquininha ton t3 smart",
+      "maquininha ton aceita vale alimentação",
+      "maquininha ton vale a pena",
+      "taxas ton cpf",
+      "taxas ton cnpj",
+      "maquininha sem aluguel para cpf"
+    ],
+    "search_volume": null,
+    "keyword_difficulty": null,
+    "cpc_brl": null
+  },
+  "partner_program_sources": {
+    "guidelines": "https://documentos.ton.com.br/rendaextra-todas-diretrizes.pdf",
+    "paid_keyword_restriction_section": "Anúncios online e rede social, item 8",
+    "paid_keyword_restriction": "Proíbe lances/aquisição de termos com Ton e outras marcas listadas, concorrentes e variações",
+    "regulation": "https://documentos.ton.com.br/regulamento-renda-ton.pdf",
+    "regulation_effective_date": "2026-09-01",
+    "facebook_pixel_benefit_section": "5.10",
+    "facebook_pixel_benefit_level": "Referência I",
+    "current_partner_eligibility_verified": false
+  },
+  "local_material_findings": [
+    {
+      "path": "images/Bombe-o-Mega-plus/Bombe o Mega+/Ton Mega+ Visa e Master.png",
+      "finding": "Cenários promocional, até R$ 3 mil e acima de R$ 30 mil conferem com as amostras do simulador para um dia útil"
+    },
+    {
+      "path": "images/Black-na-regua-pack/Black na régua/Ton Black Visa e Master.png",
+      "finding": "0,74% é débito Black acima de R$ 80 mil, um dia útil; disponibilidade atual para o link não confirmada"
+    },
+    {
+      "path": "images/Bombe-o-Mega-plus/Bombe o Mega+/Feed_1.jpg",
+      "finding": "Peça menciona até 18x, enquanto catálogo atual informa até 21x em modelos elegíveis"
+    },
+    {
+      "path": "images/Crie-suas-artes/Kit de Criação/FEED_01.png",
+      "finding": "Peça usa desconto exclusivo; aplicação ao parceiro e oferta não confirmada"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-09-23-analisereview-design.md",
+      "finding": "Documento ainda descreve Hotmart/Fórmula Negócio Online e exclui tráfego pago do MVP"
+    }
+  ],
+  "top_issues": [
+    {"rank": 1, "title": "Separar crédito à vista, parcelamento e planos", "status": "open"},
+    {"rank": 2, "title": "Resolver domínio e respostas de rastreamento", "status": "open"},
+    {"rank": 3, "title": "Antecipar CTA e orientar escolha no mobile", "status": "open"},
+    {"rank": 4, "title": "Verificar mensuração de cliques, indicações e comissões", "status": "open"},
+    {"rank": 5, "title": "Preparar conteúdo e aquisição conforme restrições de marca", "status": "open"}
+  ]
+}

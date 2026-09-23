@@ -1,11 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Scorecard from '../../components/Scorecard.astro';
-import DataTable from '../../components/DataTable.astro';
-import ProsCons from '../../components/ProsCons.astro';
-import VerdictBox from '../../components/VerdictBox.astro';
 import AffiliateCTA from '../../components/AffiliateCTA.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { models } from '../../data/models';
 
 export async function getStaticPaths() {
   const reviews = await getCollection('reviews');
@@ -14,62 +12,269 @@ export async function getStaticPaths() {
 
 const { review } = Astro.props;
 const { Content } = await review.render();
-const { title, product, company, price, priceCurrency, reviewCount, score, subscores, pros, cons, verdict, recommended, affiliateUrl, updatedAt, category, description, image } = review.data;
+const { title, product, company, benefits, affiliateUrl, updatedAt, description, image, faqs } = review.data;
+const updatedLabel = updatedAt.split('-').reverse().join('/');
+const siteBase = 'https://analisereview.com.br';
+const canonicalUrl = `${siteBase}/reviews/${review.slug}/`;
 
-const adesao = price > 0
-  ? price.toLocaleString('pt-BR', { style: 'currency', currency: priceCurrency })
-  : 'Taxa única de adesão (sem mensalidade)';
-const rows = [
-  { label: 'Adesão', value: adesao },
-  { label: 'Usuários', value: reviewCount.toLocaleString('pt-BR') },
-  { label: 'Empresa', value: company },
-  { label: 'Atualizado em', value: updatedAt },
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product,
+    description,
+    image: `${siteBase}${image ?? '/660x500_t3-smart.webp'}`,
+    url: canonicalUrl,
+    brand: { '@type': 'Brand', name: 'Ton' },
+    manufacturer: { '@type': 'Organization', name: company },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'BRL',
+      offerCount: models.length,
+      offers: models.map((model) => ({
+        '@type': 'Offer',
+        name: model.name,
+        url: affiliateUrl,
+        price: model.price.replace(/\D/g, ''),
+        priceCurrency: 'BRL',
+        availability: 'https://schema.org/InStock',
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: product, item: canonicalUrl },
+    ],
+  },
+];
+const testimonials = [
+  {
+    quote: 'Em uma venda que precisei fazer de emergência, onde minha maquininha estava sem bateria, fiz a instalação do TapTon e na hora já consegui efetuar a venda, que maravilha.',
+    who: 'Diego Belleboni',
+    role: 'Vendeu com o TapTon',
+  },
+  {
+    quote: 'No início não aceitava cartões e cheguei até a perder alguns clientes mas com a aceitação de cartão consegui resgatá-los e também conquistar novos clientes. Tudo transparente e suporte ao cliente resolve tudo com facilidade.',
+    who: 'Everton',
+    role: 'Vendeu com a Maquininha Ton',
+  },
+  {
+    quote: 'Desde o início o serviço me surpreendeu pela rapidez no atendimento e por notar que as pessoas que me atendiam sabiam o que estavam fazendo! E o principal! Nada mudou com o decorrer dos meses, continuo muito satisfeita.',
+    who: 'Maria Lígia',
+    role: 'Utilizou o suporte do Ton',
+  },
+];
+
+const ratings = [
+  { label: 'Reclame Aqui', value: '9,4/10' },
+  { label: 'Google Play', value: '4,8/5' },
+  { label: 'App Store', value: '4,9/5' },
 ];
 ---
 
-<Base title={title} description={description}>
-  <article>
-    <header class="review-hero">
+<Base title={title} description={description} canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Análise · {category}</span>
+        <span class="hero-eyebrow">Guia de escolha · Parceiro Renda Ton</span>
         <h1>{title}</h1>
-        <p class="dek">{description}</p>
-        <p class="hero-meta"><span class={`badge ${recommended ? 'ok' : 'no'}`}>{recommended ? 'Recomendado' : 'Não recomendado'}</span> Atualizado em {updatedAt}</p>
+        <p class="hero-dek">{description}</p>
+        <ul class="hero-benefits">
+          {benefits.map((benefit) => <li><span aria-hidden="true">✓</span>{benefit}</li>)}
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir a {product}</a>
+          <a class="btn btn-outline-dark" href="#modelos">Comparar modelos</a>
+        </div>
+        <p class="hero-note">Você pode ter <strong>desconto na adesão</strong> pelo nosso link de indicação. Condições consultadas em {updatedAt}.</p>
       </div>
-      {image && <img class="hero-img" src={image} alt={`Imagem ilustrativa da ${product}`} />}
-    </header>
-
-    <Scorecard score={score} subscores={subscores} />
-
-    <h2 class="section-title">Ficha do produto</h2>
-    <DataTable rows={rows} />
-
-    <ProsCons pros={pros} cons={cons} />
-
-    <div class="body">
-      <Content />
+      <div class="hero-media">
+        {image && <img src={image} alt={product} width="858" height="650" fetchpriority="high" />}
+      </div>
     </div>
+  </section>
 
-    <VerdictBox verdict={verdict} recommended={recommended} score={score} />
+  <section class="section">
+    <div class="wrap">
+      <article class="body">
+        <Content />
+      </article>
+    </div>
+  </section>
+
+  <div class="wrap mid-cta">
     <AffiliateCTA href={affiliateUrl} product={product} />
-  </article>
+  </div>
+
+  <section class="section section-alt" id="modelos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Escolha o modelo</span>
+        <h2 class="section-title">Qual maquininha Ton é a sua?</h2>
+        <p class="section-dek">Do primeiro dia de venda ao caixa completo: todos com garantia vitalícia e Pix na maquininha.</p>
+      </div>
+      <p class="promo-strip">Promoção para novos clientes: taxas promocionais por 30 dias ou até R$ 5 mil em vendas — o que ocorrer primeiro.</p>
+      <div class="model-grid">
+        {models.map((model) => (
+          <article class="model-card">
+            <div class="model-media">
+              <img src={model.image} alt={model.name} width="342" height="255" loading="lazy" />
+            </div>
+            <div class="model-body">
+              <h3>{model.name}</h3>
+              <div class="model-tags">
+                {model.tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+              <p>{model.desc}</p>
+              <p class="model-price">
+                <span class="price-value">{model.price}</span>
+                <span class="price-installment">{model.installment}</span>
+                <small>{model.maxInstallments} · à vista no catálogo em {updatedLabel}</small>
+              </p>
+              <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir a {model.name}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="section-note">Valores à vista exibidos no catálogo da Ton em {updatedAt} e podem mudar. Confira as condições atuais ao pedir.</p>
+    </div>
+  </section>
+
+  <section class="section" id="perguntas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Dúvidas comuns</span>
+        <h2 class="section-title">Perguntas frequentes sobre a maquininha Ton</h2>
+      </div>
+      <div class="faq">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="quem-usa">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Prova social</span>
+        <h2 class="section-title">Quem usa a maquininha Ton</h2>
+        <p class="section-dek">Depoimentos e notas publicados no site oficial da Ton, consultados em {updatedAt}.</p>
+      </div>
+      <div class="quote-grid">
+        {testimonials.map((t) => (
+          <figure class="quote-card">
+            <p>“{t.quote}”</p>
+            <figcaption>
+              <span class="who">{t.who}</span> · <span class="role">{t.role}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="ratings-row">
+        {ratings.map((r) => (
+          <span class="rating-chip">{r.label} {r.value}</span>
+        ))}
+      </div>
+      <p class="attribution">Fonte: site oficial da Ton (ton.com.br), consultado em {updatedAt}. Depoimentos apresentados pela própria Ton; não são avaliações de clientes do AnaliseReview.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-panel">
+        <span class="eyebrow">Pronto para vender?</span>
+        <h2>Peça sua maquininha Ton</h2>
+        <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
+        <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
-  article { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
-  .review-hero { display: grid; grid-template-columns: 1fr 13rem; gap: var(--space-6); align-items: start; padding-bottom: var(--space-5); margin-bottom: var(--space-3); border-bottom: 2px solid var(--color-ink); }
-  .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); font-weight: 600; }
-  h1 { font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1.05; margin: var(--space-2) 0 var(--space-3); }
-  .dek { font-size: 1.25rem; font-style: italic; color: var(--color-muted); margin: 0 0 var(--space-3); }
-  .hero-meta { color: var(--color-muted); display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
-  .badge { display: inline-block; font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8125rem; padding: var(--space-1) var(--space-2); border: 2px solid; }
-  .badge.ok { color: var(--color-good); border-color: var(--color-good); }
-  .badge.no { color: var(--color-accent); border-color: var(--color-accent); }
-  .hero-img { width: 100%; height: auto; border: 1px solid var(--color-rule); background: var(--color-surface); }
-  .section-title { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--color-rule); }
-  .body { margin-top: var(--space-6); }
+  .hero {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    padding-block: var(--space-6) var(--space-5);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: block;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-ton-dark);
+    margin-bottom: var(--space-3);
+  }
+  .hero h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); color: var(--color-heading); text-transform: uppercase; text-align: center; }
+  .hero-dek { color: var(--color-muted); font-size: 1.125rem; max-width: 52ch; margin-top: var(--space-3); margin-inline: auto; text-align: center; }
+  .hero-benefits {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 0;
+    display: grid;
+    gap: var(--space-2);
+    justify-items: center;
+  }
+  .hero-benefits li {
+    display: flex;
+    gap: var(--space-2);
+    align-items: flex-start;
+    color: var(--color-ink);
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero-benefits span { color: var(--color-ton-dark); font-weight: 700; flex: 0 0 auto; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); justify-content: center; }
+  .hero-note { color: var(--color-muted); font-size: 0.875rem; margin-top: var(--space-3); text-align: center; }
+  .hero-media img {
+    border-radius: var(--radius-lg);
+    background: var(--color-paper);
+    max-height: 460px;
+    width: auto;
+    margin-inline: auto;
+  }
+
+  .mid-cta { padding-block: var(--space-5); }
+  .section-alt { background: var(--color-surface); }
+  .section-note { font-size: 0.9375rem; color: var(--color-muted); margin-top: var(--space-4); max-width: 70ch; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-media img { max-height: 220px; }
+  }
   @media (max-width: 640px) {
-    .review-hero { grid-template-columns: 1fr; }
-    .hero-img { max-width: 12rem; }
+    .hero { padding-block: var(--space-5) var(--space-4); }
+    .hero-benefits {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2) var(--space-3);
+    }
+    .hero-benefits li { font-size: 0.9375rem; }
+    .hero h1 { font-size: clamp(1.875rem, 8vw, 2.375rem); }
   }
 </style>

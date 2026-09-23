@@ -1,0 +1,109 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { updatedAt } from '../../data/site';
+
+const title = 'Bandeiras e vouchers na maquininha Ton';
+const description = 'A maquininha Ton aceita mais de 50 bandeiras no débito, crédito e vouchers. Veja quais, em quais modelos e quando é preciso CNPJ.';
+const faqs = [
+  {
+    q: 'A maquininha Ton aceita vale-alimentação?',
+    a: 'Sim. Os modelos T2, T3 e T3 Smart aceitam vouchers de alimentação e refeição, como Alelo, Pluxee, Ticket, Up Brasil e VR. O cadastro precisa ser CNPJ.',
+  },
+  {
+    q: 'Preciso de CNPJ para aceitar vouchers na Ton?',
+    a: 'Sim. As bandeiras de voucher (Alelo, Pluxee, Ticket, Up Brasil e VR) são aceitas somente em cadastros com CNPJ.',
+  },
+  {
+    q: 'Quais bandeiras de cartão a Ton aceita?',
+    a: 'Mais de 50 bandeiras no débito, crédito e vouchers, incluindo Mastercard e Visa, com tabela própria para Elo e Amex. A lista completa está no site oficial da Ton.',
+  },
+  {
+    q: 'Como habilitar vouchers na maquininha Ton?',
+    a: 'A habilitação é feita pelo aplicativo da Ton, seguindo o passo a passo de vouchers. Verifique a disponibilidade para o seu cadastro e o seu modelo.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/guias/bandeiras-e-vouchers-ton/"
+  eyebrow="Guia · bandeiras e vouchers"
+  faqs={faqs}
+  breadcrumbName="Bandeiras e vouchers"
+  ctaLabel="Pedir uma maquininha Ton"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> a maquininha Ton aceita
+    <strong>mais de 50 bandeiras</strong> no débito, crédito e vouchers. A
+    aceitação de vouchers de alimentação e refeição — como
+    <strong>Alelo, Pluxee, Ticket, Up Brasil e VR</strong> — é uma novidade
+    dos modelos <strong>T2, T3 e T3 Smart</strong> e exige cadastro
+    <strong>CNPJ</strong>. Dados do site oficial da Ton, consultados em
+    {updatedAt}.
+  </div>
+
+  <h2>Débito e crédito</h2>
+  <p>As maquininhas Ton aceitam as principais bandeiras de débito e crédito
+  do mercado, incluindo <strong>Mastercard</strong> e <strong>Visa</strong>.
+  As bandeiras <strong>Elo</strong> e <strong>Amex</strong> têm tabela de
+  taxas própria, que você confere no simulador oficial.</p>
+  <p>No total, o site da Ton informa aceitação de mais de 50 bandeiras entre
+  débito, crédito e vouchers. Isso amplia as formas de cobrar sem perder
+  venda por bandeira não aceita.</p>
+
+  <h2>Vouchers de alimentação e refeição</h2>
+  <p>Os vouchers permitem receber de clientes que usam benefícios de
+  alimentação e refeição. A Ton cita as bandeiras:</p>
+  <ul>
+    <li><strong>Alelo</strong></li>
+    <li><strong>Pluxee</strong></li>
+    <li><strong>Ticket</strong></li>
+    <li><strong>Up Brasil</strong></li>
+    <li><strong>VR</strong></li>
+  </ul>
+  <p>A aceitação vale para as maquininhas <strong>T2, T3 e T3 Smart</strong>
+  e somente em cadastros com <strong>CNPJ</strong>.</p>
+
+  <h2>Modelos compatíveis com vouchers</h2>
+  <table class="rates-table">
+    <thead>
+      <tr><th scope="col">Modelo</th><th scope="col">Vouchers</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">T1</th><td>Não informado para vouchers</td></tr>
+      <tr><th scope="row">T2</th><td>Sim, com CNPJ</td></tr>
+      <tr><th scope="row">T3</th><td>Sim, com CNPJ</td></tr>
+      <tr><th scope="row">T3 Smart</th><td>Sim, com CNPJ</td></tr>
+    </tbody>
+  </table>
+  <p class="rates-note">Informações do site oficial da Ton, consultadas em {updatedAt}. Confirme a disponibilidade para o seu cadastro antes de pedir.</p>
+
+  <h2>Como habilitar</h2>
+  <ol>
+    <li>Tenha um cadastro <strong>CNPJ</strong> ativo na Conta Ton.</li>
+    <li>Escolha um modelo compatível: <strong>T2, T3 ou T3 Smart</strong>.</li>
+    <li>Siga o passo a passo de vouchers no aplicativo da Ton.</li>
+    <li>Confirme com o emissor do benefício as regras de aceitação da sua região.</li>
+  </ol>
+
+  <h2>O que considerar</h2>
+  <ul>
+    <li>Vouchers exigem CNPJ; cadastro CPF não habilita a aceitação.</li>
+    <li>As taxas de vouchers seguem as tabelas de bandeira do simulador oficial.</li>
+    <li>A lista de bandeiras pode mudar; o site oficial da Ton mantém a relação vigente.</li>
+  </ul>
+  <p>Veja o <a href="/guias/modelos-ton/">comparativo de modelos</a> e a
+  <a href="/reviews/maquininha-ton/">página completa da maquininha Ton</a>.</p>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>

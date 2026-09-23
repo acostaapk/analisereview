@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { siteBase, contactEmail, affiliateUrl } from '../data/site';
+
+const canonicalUrl = `${siteBase}/contato/`;
+const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}`;
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contato',
+    url: canonicalUrl,
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: 'Contato', item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Base title="Contato" description="Fale com o AnaliseReview: e-mail para dúvidas sobre o conteúdo e canais oficiais da Ton para pedidos e suporte." canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+  <section class="section">
+    <div class="wrap">
+      <article class="page">
+        <span class="eyebrow">Fale conosco</span>
+        <h1>Contato</h1>
+        <p class="dek">Escolha o canal certo para o seu assunto.</p>
+
+        <div class="cards">
+          <div class="contact-card">
+            <h2>Dúvidas sobre este site</h2>
+            <p>Conteúdo, erros de informação, privacidade e parceria: escreva para <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.</p>
+            <a class="btn btn-dark mail-mobile" href={`mailto:${contactEmail}`}>Enviar e-mail</a>
+            <a class="btn btn-dark mail-desktop" href={gmailUrl} target="_blank" rel="noopener">Enviar e-mail pelo Gmail</a>
+          </div>
+          <div class="contact-card">
+            <h2>Pedidos, entrega e suporte</h2>
+            <p>O pedido da maquininha é feito no site oficial da Ton. Para acompanhar o pedido ou falar com o suporte, use os canais oficiais da Ton.</p>
+            <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored">Ir para ton.com.br</a>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>Somos Parceiro Renda Ton. Este canal é de titularidade de um Parceiro Renda Ton/Renda Extra e não se confunde com os canais oficiais do Ton.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { max-width: var(--measure); margin-inline: auto; }
+  .page h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: var(--space-2) 0 var(--space-3); text-transform: uppercase; }
+  .dek { font-size: 1.0625rem; color: var(--color-muted); max-width: 62ch; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); margin-top: var(--space-5); }
+  .contact-card {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    display: grid;
+    gap: var(--space-3);
+    justify-items: start;
+    align-content: start;
+  }
+  .contact-card h2 { font-size: 1.25rem; }
+  .contact-card p { color: var(--color-muted); }
+  .note { margin-top: var(--space-5); font-size: 0.9375rem; color: var(--color-muted); }
+  .mail-mobile { display: inline-flex; }
+  .mail-desktop { display: none; }
+  @media (min-width: 641px) {
+    .mail-mobile { display: none; }
+    .mail-desktop { display: inline-flex; }
+  }
+</style>

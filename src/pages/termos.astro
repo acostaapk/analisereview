@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { siteBase, contactEmail, updatedAt, affiliateUrl } from '../data/site';
+
+const canonicalUrl = `${siteBase}/termos/`;
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Termos de Uso',
+    url: canonicalUrl,
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: 'Termos de Uso', item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Base title="Termos de Uso" description="Termos de uso do AnaliseReview: natureza informativa do conteúdo, parceria Renda Ton e responsabilidades." canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+  <section class="section">
+    <div class="wrap">
+      <article class="page">
+        <span class="eyebrow">Transparência</span>
+        <h1>Termos de Uso</h1>
+        <p class="dek">Última atualização: {updatedAt}. Ao usar o AnaliseReview, você concorda com estes termos.</p>
+
+        <h2>Natureza do site</h2>
+        <p>O AnaliseReview é um guia informativo sobre a maquininha Ton. Reunimos informações públicas da Ton — modelos, taxas, condições e benefícios — com a data da consulta indicada em cada página. Não vendemos produtos: o pedido é feito no site oficial da Ton.</p>
+        <p>Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton. Este ambiente não se confunde com os canais oficiais do Ton.</p>
+
+        <h2>Informações exibidas</h2>
+        <ul>
+          <li>Taxas, preços e promoções mudam com frequência. Os valores exibidos valem para a data indicada em cada página.</li>
+          <li>Antes de fechar qualquer pedido, confirme as condições vigentes no <a href={affiliateUrl} rel="nofollow sponsored">simulador oficial da Ton</a>.</li>
+          <li>O conteúdo deste site é informativo e não constitui consultoria financeira, jurídica ou fiscal.</li>
+        </ul>
+
+        <h2>Parceria e comissão</h2>
+        <p>Somos Parceiro Renda Ton. Ao pedir pelos links de indicação deste site, você pode ter desconto na adesão e nós podemos receber comissão, sem custo adicional para você. A relação comercial é entre você e a Ton.</p>
+
+        <h2>Propriedade intelectual</h2>
+        <p>As marcas, imagens de produto e materiais relacionados à Ton pertencem à Ton e são usados neste site conforme as diretrizes do programa Renda Ton, para identificação como parceiro. O conteúdo editorial próprio deste site não pode ser reproduzido sem autorização.</p>
+
+        <h2>Links externos</h2>
+        <p>Links para sites de terceiros (como o site oficial da Ton) não implicam responsabilidade deste site pelo conteúdo ou pelas práticas desses sites. Cada site tem sua própria política de privacidade e termos.</p>
+
+        <h2>Alterações</h2>
+        <p>Estes termos podem ser atualizados a qualquer momento para refletir mudanças no site, nas condições do programa ou na legislação. A versão vigente é a publicada nesta página.</p>
+
+        <h2>Contato</h2>
+        <p>Dúvidas sobre estes termos: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Dúvidas sobre pedidos, entregas e suporte: canais oficiais da Ton, em <a href={affiliateUrl} rel="nofollow sponsored">ton.com.br</a>.</p>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { max-width: var(--measure); margin-inline: auto; }
+  .page h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: var(--space-2) 0 var(--space-3); text-transform: uppercase; }
+  .dek { font-size: 1.0625rem; color: var(--color-muted); max-width: 62ch; }
+  .page h2 { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-2); }
+  .page p + p { margin-top: var(--space-3); }
+  .page ul { padding-left: 1.5rem; }
+  .page li { margin-bottom: var(--space-2); }
+  .page li::marker { color: var(--color-ton-dark); font-weight: 700; }
+</style>

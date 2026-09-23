@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { affiliateUrl } from '../data/site';
+---
+
+<Base title="Página não encontrada" description="A página que você procura não existe.">
+  <section class="section">
+    <div class="wrap notfound">
+      <span class="eyebrow">Erro 404</span>
+      <h1>Página não encontrada</h1>
+      <p>O endereço não existe ou mudou. Você pode voltar à página inicial e conhecer as maquininhas Ton.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Ver maquininhas Ton</a>
+        <a class="btn btn-dark" href="/guias/taxas-ton/">Entender as taxas</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound { max-width: 56ch; display: grid; gap: var(--space-3); justify-items: start; }
+  .notfound h1 { font-size: clamp(2rem, 5vw, 3rem); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3); }
+</style>

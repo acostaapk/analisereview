@@ -1,0 +1,138 @@
+---
+import Base from './Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { affiliateUrl, siteBase, updatedAt, publisher } from '../data/site';
+
+interface Faq {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  eyebrow?: string;
+  faqs: Faq[];
+  breadcrumbName: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { title, description, canonicalUrl, eyebrow = 'Guia · maquininha Ton', faqs, breadcrumbName, ctaLabel = 'Pedir a maquininha Ton', ctaHref = affiliateUrl } = Astro.props;
+const ctaIsAffiliate = ctaHref === affiliateUrl;
+const ctaRel = ctaIsAffiliate ? 'nofollow sponsored' : 'noopener';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: `${siteBase}/og-image.png`,
+    author: { '@type': 'Organization', name: 'AnaliseReview', url: siteBase },
+    publisher,
+    datePublished: updatedAt,
+    dateModified: updatedAt,
+    mainEntityOfPage: canonicalUrl,
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: breadcrumbName, item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Base title={title} description={description} canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero-eyebrow">{eyebrow}</span>
+      <h1>{title}</h1>
+      <p class="hero-dek">{description}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={ctaHref} rel={ctaRel} target="_blank">{ctaLabel}</a>
+        <a class="btn btn-outline-dark" href="/reviews/maquininha-ton/">Ver a página completa</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <article class="body guide-body">
+        <slot />
+      </article>
+    </div>
+  </section>
+
+  {
+    faqs.length > 0 && (
+      <section class="section section-alt">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">Dúvidas comuns</span>
+            <h2 class="section-title">Perguntas frequentes</h2>
+          </div>
+          <div class="faq">
+            {faqs.map((faq) => (
+              <details>
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-panel">
+        <span class="eyebrow">Pronto para vender?</span>
+        <h2>Peça sua maquininha Ton</h2>
+        <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
+        <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    padding-block: var(--space-6) var(--space-5);
+  }
+  .hero-eyebrow {
+    display: block;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-ton-dark);
+    margin-bottom: var(--space-3);
+  }
+  .hero h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); color: var(--color-heading); text-transform: uppercase; max-width: 26ch; margin-inline: auto; text-align: center; }
+  .hero-dek { color: var(--color-muted); font-size: 1.125rem; max-width: 62ch; margin-top: var(--space-3); margin-inline: auto; text-align: center; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); justify-content: center; }
+  .guide-body { max-width: var(--measure); margin-inline: auto; }
+  .section-alt { background: var(--color-surface); }
+</style>

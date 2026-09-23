@@ -1,62 +1,348 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { models } from '../data/models';
+import { siteBase, affiliateUrl } from '../data/site';
 
 const reviews = await getCollection('reviews');
-const featured = reviews[0];
+const review = reviews[0];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AnaliseReview',
+    url: siteBase,
+    description: 'Guia de escolha da maquininha Ton, operado por um Parceiro Renda Ton.',
+    logo: { '@type': 'ImageObject', url: `${siteBase}/og-image.png`, width: 1200, height: 630 },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'AnaliseReview',
+    url: siteBase,
+    inLanguage: 'pt-BR',
+  },
+];
+
+const trustItems = [
+  'Garantia vitalícia',
+  'Sem CNPJ: aceita CPF, MEI e PJ',
+  'Receba em 1 dia útil ou na hora',
+  'Aceita mais de 50 bandeiras',
+];
 ---
 
-<Base title="Maquininha Ton: análise de parceiro" description="Análise honesta da maquininha Ton: taxas, garantia e para quem vale a pena. Parceiro Renda Ton.">
+<Base title="Maquininha Ton: sem aluguel e sem mensalidade" description="Conheça as maquininhas Ton: sem aluguel, sem mensalidade e com garantia vitalícia. Compare modelos, entenda as taxas e peça a sua com o Parceiro Renda Ton.">
+  <JsonLd data={structuredData} />
   <section class="hero">
-    <span class="eyebrow">Análises de maquininhas</span>
-    <h1>A maquininha Ton, analisada sem hype.</h1>
-    <p class="dek">Somos Parceiro Renda Ton. Analisamos com base em dados públicos — taxas, aluguel, garantia e reputação — para você decidir com evidência, não com promessa.</p>
-  </section>
-
-  <section class="featured">
-    <h2 class="section-label">Análise em destaque</h2>
-    <a class="feature-card" href={`/reviews/${featured.slug}`}>
-      {featured.data.image && <img src={featured.data.image} alt="" />}
-      <div class="feature-body">
-        <span class="badge">Nota {featured.data.score}/10</span>
-        <h3>{featured.data.title}</h3>
-        <p>{featured.data.description}</p>
-        <span class="more">Ler a análise →</span>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">Guia de escolha · Parceiro Renda Ton</span>
+        <h1>Sua maquininha <em>sem aluguel</em> e sem mensalidade</h1>
+        <p class="hero-dek">Taxa única de adesão, garantia vitalícia e recebimento em 1 dia útil ou na hora. Compare os modelos, entenda as taxas e peça a sua.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir minha maquininha</a>
+          <a class="btn btn-outline-dark" href="#modelos">Ver modelos</a>
+        </div>
+        <p class="hero-note"><strong>Desconto na adesão</strong> ao pedir pelo nosso link de indicação. Você segue para o site oficial da Ton.</p>
       </div>
-    </a>
+      <div class="hero-media">
+        <img src="/660x500_t3-smart.webp" alt="Maquininha Ton T3 Smart" width="858" height="650" fetchpriority="high" />
+      </div>
+    </div>
+    <div class="wrap">
+      <ul class="trust-strip">
+        {trustItems.map((item) => <li><span aria-hidden="true">✓</span>{item}</li>)}
+      </ul>
+    </div>
   </section>
 
-  <section class="method">
-    <h2 class="section-label">Como analisamos</h2>
-    <ol class="steps">
-      <li><strong>Coletamos dados públicos</strong> na data da análise: taxas, garantia, modelos e reputação.</li>
-      <li><strong>Pontuamos com critérios documentados</strong> — taxas, suporte, garantia e custo-benefício.</li>
-      <li><strong>Publicamos prós, contras e veredito</strong>, sem prometer resultado.</li>
-    </ol>
-    <a class="method-link" href="/metodologia">Ver metodologia completa</a>
+  <section class="section" id="beneficios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Por que a Ton</span>
+        <h2 class="section-title">Feita para quem vende todos os dias</h2>
+        <p class="section-dek">Uma máquina só, sem cobrança fixa depois da adesão, com entrega e suporte por conta da Ton.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">A</span>
+          <div>
+            <h3>Sem mensalidade e sem aluguel</h3>
+            <p>Taxa única de adesão, facilitada em até 12x no cartão. Depois de paga, nenhuma cobrança fixa pelo uso.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">B</span>
+          <div>
+            <h3>Garantia vitalícia</h3>
+            <p>Troca e manutenção gratuitas enquanto durar a parceria, sem sair de casa.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">C</span>
+          <div>
+            <h3>Para CPF, MEI e PJ</h3>
+            <p>Não precisa de CNPJ para pedir. Cadastro rápido direto pelo aplicativo.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">D</span>
+          <div>
+            <h3>Receba em 1 dia útil ou na hora</h3>
+            <p>Você escolhe o prazo de recebimento das vendas no aplicativo, venda a venda.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">E</span>
+          <div>
+            <h3>Pix na maquininha grátis</h3>
+            <p>30 dias com taxa zero e, depois, sem taxa com uma chave cadastrada na Conta Ton.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">F</span>
+          <div>
+            <h3>Aceita mais de 50 bandeiras</h3>
+            <p>Débito, crédito e vouchers de alimentação e refeição, para não perder venda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="modelos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Escolha o modelo</span>
+        <h2 class="section-title">Qual maquininha Ton é a sua?</h2>
+        <p class="section-dek">Do primeiro dia de venda ao caixa completo: todos com garantia vitalícia e Pix na maquininha.</p>
+      </div>
+      <p class="promo-strip">Promoção para novos clientes: taxas promocionais por 30 dias ou até R$ 5 mil em vendas — o que ocorrer primeiro.</p>
+      <div class="model-grid">
+        {models.map((model) => (
+          <article class="model-card">
+            <div class="model-media">
+              <img src={model.image} alt={model.name} width="342" height="255" loading="lazy" />
+            </div>
+            <div class="model-body">
+              <h3>{model.name}</h3>
+              <div class="model-tags">
+                {model.tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+              <p>{model.desc}</p>
+              <p class="model-price">
+                <span class="price-value">{model.price}</span>
+                <span class="price-installment">{model.installment}</span>
+                <small>{model.maxInstallments} · à vista no catálogo em 23/09/2026</small>
+              </p>
+              <a class="btn btn-primary" href={review.data.affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir a {model.name}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="section-note">Valores à vista exibidos no catálogo da Ton em 23/09/2026 e podem mudar. Confira as condições atuais ao pedir.</p>
+    </div>
+  </section>
+
+  <section class="section" id="taxas">
+    <div class="wrap taxas-center">
+      <div class="section-head">
+        <span class="eyebrow">Sem surpresa</span>
+        <h2 class="section-title">Taxas claras desde o início</h2>
+        <p class="section-dek">No período promocional para novos clientes, estas são as taxas das maquininhas.</p>
+      </div>
+      <div class="rates-wrap">
+        <table class="rates-table">
+          <thead>
+            <tr>
+              <th scope="col">Modalidade</th>
+              <th scope="col">Taxa promocional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Débito</th><td class="rate-promo">0,57%</td></tr>
+            <tr><th scope="row">Crédito à vista</th><td class="rate-promo">0,57%</td></tr>
+            <tr><th scope="row">Crédito em 12x</th><td class="rate-promo">7,97%</td></tr>
+            <tr><th scope="row">Crédito em 21x</th><td class="rate-promo">14,87%</td></tr>
+          </tbody>
+        </table>
+        <p class="rates-note">Maquininhas · Mastercard e Visa · recebimento em 1 dia útil · Período Promocional · simulador oficial em 23/09/2026.</p>
+      </div>
+      <p class="section-note">A promoção vale por 30 dias ou até R$ 5 mil em vendas. Depois, as taxas seguem a sua faixa de vendas mensais. Use o simulador da Ton para calcular a sua venda.</p>
+      <a class="btn btn-dark" href="/guias/taxas-ton/">Entender todas as condições</a>
+    </div>
+  </section>
+
+  <section class="section" id="guias">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Guia completo</span>
+        <h2 class="section-title">Escolha com calma</h2>
+        <p class="section-dek">Guias detalhados para você decidir com informação e sem pressa.</p>
+      </div>
+      <ul class="guide-links">
+        <li><a href="/guias/qual-maquininha-ton/">Qual maquininha Ton para o seu negócio</a></li>
+        <li><a href="/guias/taxas-ton/">Taxas da Ton: promoção e condições por plano</a></li>
+        <li><a href="/guias/modelos-ton/">Modelos: T1, T2, T3 e T3 Smart comparados</a></li>
+        <li><a href="/guias/bandeiras-e-vouchers-ton/">Bandeiras e vouchers na maquininha Ton</a></li>
+        <li><a href="/reviews/maquininha-ton/">Página completa da maquininha Ton</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="perguntas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Dúvidas rápidas</span>
+        <h2 class="section-title">Perguntas frequentes</h2>
+      </div>
+      <div class="faq">
+        {review.data.faqs.slice(0, 3).map((faq) => (
+          <details>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="section-note"><a href="/reviews/maquininha-ton#perguntas">Ver todas as perguntas →</a></p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="como-pedir">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Simples assim</span>
+        <h2 class="section-title">Como pedir a sua maquininha</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>Escolha o modelo</strong> que combina com o seu dia a dia.</li>
+        <li><strong>Clique em pedir</strong> e siga para o site oficial da Ton com o nosso link.</li>
+        <li><strong>Conclua o pedido na Ton.</strong> A entrega e o suporte ficam com a Ton.</li>
+      </ol>
+      <div class="cta-panel">
+        <span class="eyebrow">Pronto para vender?</span>
+        <h2>Peça sua maquininha Ton</h2>
+        <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
+        <a class="btn btn-primary" href={review.data.affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
+      </div>
+    </div>
   </section>
 </Base>
 
 <style>
-  .hero, .featured, .method { max-width: var(--measure); margin: 0 auto; padding: var(--space-5) var(--space-4); }
-  .hero { padding-top: var(--space-6); }
-  .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); font-weight: 600; }
-  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: var(--space-3) 0; }
-  .dek { font-size: 1.375rem; font-style: italic; color: var(--color-muted); max-width: 45ch; margin: 0; }
-  .section-label { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-muted); border-bottom: 2px solid var(--color-ink); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
-  .feature-card { display: grid; grid-template-columns: 9rem 1fr; gap: var(--space-5); align-items: center; text-decoration: none; color: inherit; border: 2px solid var(--color-ink); padding: var(--space-4); background: var(--color-surface); transition: transform 0.15s ease; }
-  .feature-card:hover { transform: translateY(-2px); }
-  .feature-card img { width: 100%; height: auto; }
-  .badge { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px var(--space-2); border: 2px solid var(--color-good); color: var(--color-good); }
-  .feature-body h3 { font-size: 1.5rem; margin: var(--space-2) 0; }
-  .feature-body p { margin: 0 0 var(--space-2); color: var(--color-muted); }
-  .more { color: var(--color-accent); font-weight: 600; }
-  .steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 var(--space-4); }
-  .steps li { counter-increment: step; padding: var(--space-3) 0 var(--space-3) var(--space-6); border-top: 1px solid var(--color-rule); position: relative; }
-  .steps li::before { content: counter(step); position: absolute; left: 0; top: var(--space-3); font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--color-accent); }
-  .method-link { font-weight: 600; }
-  @media (max-width: 640px) {
-    .feature-card { grid-template-columns: 1fr; }
-    .feature-card img { max-width: 8rem; }
+  .hero {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    padding-block: var(--space-6) var(--space-5);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-ton-dark);
+    margin-bottom: var(--space-3);
+  }
+  .hero h1 { font-size: clamp(2.75rem, 6.5vw, 4.75rem); color: var(--color-heading); text-transform: uppercase; text-align: center; }
+  .hero h1 em { font-style: normal; color: var(--color-ton-dark); }
+  .hero-dek { color: var(--color-muted); font-size: 1.1875rem; max-width: 46ch; margin-top: var(--space-3); margin-inline: auto; text-align: center; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); justify-content: center; }
+  .hero-note { color: var(--color-muted); font-size: 0.875rem; margin-top: var(--space-3); text-align: center; }
+  .hero-eyebrow { text-align: center; display: block; }
+  .hero-media img {
+    border-radius: var(--radius-lg);
+    background: var(--color-paper);
+    max-height: 480px;
+    width: auto;
+    margin-inline: auto;
+  }
+  .trust-strip {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    justify-content: center;
+  }
+  .trust-strip li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-heading);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .trust-strip span { color: var(--color-ton-dark); font-weight: 700; }
+
+  .section-alt { background: var(--color-surface); }
+  .section-note { font-size: 0.9375rem; color: var(--color-muted); margin-top: var(--space-4); max-width: 70ch; margin-inline: auto; text-align: center; }
+
+  .rates-wrap { max-width: 560px; margin-inline: auto; margin-bottom: var(--space-3); }
+  .taxas-center { text-align: center; }
+
+  .guide-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .guide-links a {
+    display: inline-flex;
+    gap: var(--space-2);
+    font-weight: 600;
+    font-size: 1.0625rem;
+  }
+  .guide-links a::before { content: '→'; color: var(--color-ton-dark); font-weight: 700; }
+
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 2.5rem);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius);
+    font-size: 1rem;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: var(--space-3);
+    top: var(--space-4);
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: var(--color-ton-night);
+    color: var(--color-ton);
+    font-family: var(--font-display);
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-media img { max-height: 220px; }
   }
 </style>

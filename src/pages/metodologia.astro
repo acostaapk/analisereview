@@ -1,33 +1,60 @@
 ---
 import Base from '../layouts/Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { siteBase, affiliateUrl } from '../data/site';
+
+const canonicalUrl = `${siteBase}/metodologia/`;
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Como analisamos a maquininha Ton',
+    url: canonicalUrl,
+    inLanguage: 'pt-BR',
+    about: { '@type': 'Thing', name: 'Maquininha Ton' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: 'Como analisamos', item: canonicalUrl },
+    ],
+  },
+];
 ---
 
-<Base title="Metodologia" description="Como o AnaliseReview analisa a maquininha Ton.">
-  <article>
-    <h1>Como analisamos</h1>
+<Base title="Como analisamos" description="Como o AnaliseReview organiza as informações oficiais da Ton: modelos, taxas e condições, com data e transparência." canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+  <section class="section">
+    <div class="wrap">
+      <article class="page">
+        <span class="eyebrow">Transparência</span>
+        <h1>Como escolhemos e explicamos cada maquininha</h1>
+        <p class="dek">Nosso trabalho aqui é ajudar você a entender as condições reais da Ton antes de pedir a sua maquininha — sem letra miúda e sem pressa.</p>
 
-    <h2>Nossa base: dados públicos</h2>
-    <p>Não compramos nem testamos os produtos. Cada análise usa dados públicos
-    coletados na data indicada: taxas, aluguel, garantia, modelos e reputação,
-    sempre citando a fonte.</p>
+        <h2>Para isso, nós:</h2>
+        <ul>
+          <li><strong>Acompanhamos o catálogo oficial da Ton</strong> e atualizamos os preços e condições exibidos nesta página com a data em que foram consultados.</li>
+          <li><strong>Explicamos cada modelo</strong> (T1, T2, T3 e T3 Smart) pelas suas diferenças reais de uso — conexão, forma de comprovante, parcelamento — para você escolher o que combina com o seu dia a dia de vendas.</li>
+          <li><strong>Detalhamos as taxas e condições promocionais</strong> exatamente como estão no simulador oficial da Ton, incluindo o que muda depois do período promocional.</li>
+          <li><strong>Somos Parceiro Renda Ton</strong> e informamos isso com transparência em toda a página — nosso ganho vem da comissão da Ton, sem custo adicional para você.</li>
+        </ul>
 
-    <h2>Critérios de pontuação</h2>
-    <ul>
-      <li><strong>Taxas e planos</strong> — taxas praticadas e estrutura de cobrança (0–10).</li>
-      <li><strong>Suporte</strong> — canais de suporte ao cliente (0–10).</li>
-      <li><strong>Garantia</strong> — cobertura e condições (0–10).</li>
-      <li><strong>Custo-benefício</strong> — custo de adesão e ausência de mensalidade (0–10).</li>
-    </ul>
-    <p>A nota global é a média das quatro dimensões, arredondada a uma casa.</p>
-
-    <h2>Independência e parceria</h2>
-    <p>Somos Parceiro Renda Ton: oferecemos desconto na adesão e podemos receber
-    comissão se você usar nosso link de indicação, sem custo adicional para você.
-    Isso não altera a nota — publicamos prós e contras sempre. Não comparamos a
-    Ton com outras empresas, em conformidade com as diretrizes do programa.</p>
-  </article>
+        <h2>Atualização</h2>
+        <p>Esta página não substitui os canais oficiais da Ton. Para condições atualizadas ou dúvidas específicas do seu caso, consulte sempre o <a href={affiliateUrl} rel="nofollow sponsored">site oficial da Ton</a>, que também reúne o simulador de taxas.</p>
+      </article>
+    </div>
+  </section>
 </Base>
 
 <style>
-  article { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
+  .page { max-width: var(--measure); margin-inline: auto; }
+  .page h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: var(--space-2) 0 var(--space-3); text-transform: uppercase; }
+  .dek { font-size: 1.0625rem; color: var(--color-muted); max-width: 62ch; }
+  .page h2 { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-2); }
+  .page p + p { margin-top: var(--space-3); }
+  .page ul { padding-left: 1.5rem; }
+  .page li { margin-bottom: var(--space-2); }
+  .page li::marker { color: var(--color-ton-dark); font-weight: 700; }
 </style>

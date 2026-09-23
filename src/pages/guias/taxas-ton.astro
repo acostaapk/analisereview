@@ -1,0 +1,130 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { affiliateUrl, updatedAt } from '../../data/site';
+
+const title = 'Taxas da Ton em 2026: promoção e condições por plano';
+const description = 'Entenda as taxas da maquininha Ton: débito e crédito à vista a 0,57% na promoção, crédito 12x a 7,97%, como mudam por faixa de vendas, Pix e parcelamento até 21x.';
+const faqs = [
+  {
+    q: 'A taxa de 0,57% da Ton vale para sempre?',
+    a: 'Não. A taxa de 0,57% vale no Período Promocional para novos clientes: 30 dias ou até R$ 5 mil em vendas, o que ocorrer primeiro. Depois, as taxas seguem a sua faixa de vendas mensais.',
+  },
+  {
+    q: 'Quanto custa parcelar na maquininha Ton?',
+    a: 'No Período Promocional, o crédito em 12x custa 7,97% e em 21x custa 14,87%, para Mastercard e Visa com recebimento em 1 dia útil. O parcelamento até 21x vale para novos clientes nos modelos T3 e T3 Smart; T1 e T2 parcelam até 12x.',
+  },
+  {
+    q: 'O Pix na maquininha Ton é grátis?',
+    a: 'Sim, com condição: 30 dias com taxa zero ao ativar e, depois, sem taxa mantendo uma chave Pix (CPF, CNPJ ou telefone) cadastrada na Conta Ton. Sem a chave cadastrada, a taxa é de 0,49% por venda.',
+  },
+  {
+    q: 'As taxas da Ton mudam conforme o meu cadastro?',
+    a: 'As taxas variam conforme a faixa de vendas mensais, as bandeiras, o prazo de recebimento e a modalidade. Use o simulador oficial da Ton para ver a taxa do seu cenário antes de vender.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/guias/taxas-ton/"
+  eyebrow="Guia · taxas da maquininha Ton"
+  faqs={faqs}
+  breadcrumbName="Taxas da Ton"
+  ctaLabel="Simular minhas taxas"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> no Período Promocional para novos clientes
+    (30 dias ou até R$ 5 mil em vendas), as maquininhas Ton cobram
+    <strong>0,57% no débito</strong>, <strong>0,57% no crédito à vista</strong>
+    e <strong>7,97% no crédito em 12x</strong>, para Mastercard e Visa com
+    recebimento em 1 dia útil. Depois da promoção, a taxa acompanha a sua
+    faixa de vendas mensais. Pix na maquininha: 30 dias grátis e, depois,
+    taxa zero com chave cadastrada na Conta Ton. Dados do
+    <a href={affiliateUrl} rel="nofollow sponsored">simulador oficial</a>, consultados
+    em {updatedAt}.
+  </div>
+
+  <h2>Como funcionam as taxas da maquininha Ton</h2>
+  <p>A Ton não cobra mensalidade nem aluguel: você paga uma taxa única de
+  adesão e, depois, uma tarifa por venda. O percentual cobrado depende de
+  cinco fatores:</p>
+  <ol>
+    <li><strong>Modalidade</strong> — débito, crédito à vista ou parcelado.</li>
+    <li><strong>Número de parcelas</strong> — no crédito parcelado, quanto mais parcelas, maior a tarifa.</li>
+    <li><strong>Bandeira</strong> — Mastercard e Visa têm uma tabela; Elo e Amex, outra.</li>
+    <li><strong>Prazo de recebimento</strong> — receber em 1 dia útil ou na hora muda a taxa.</li>
+    <li><strong>Faixa de vendas mensais</strong> — depois da promoção, o volume do mês anterior define a sua tabela.</li>
+  </ol>
+
+  <h2>Taxas do Período Promocional</h2>
+  <p>Para novos clientes, durante 30 dias ou até R$ 5 mil em vendas:</p>
+  <table class="rates-table">
+    <thead>
+      <tr><th scope="col">Modalidade</th><th scope="col">Taxa</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Débito</th><td class="rate-promo">0,57%</td></tr>
+      <tr><th scope="row">Crédito à vista</th><td class="rate-promo">0,57%</td></tr>
+      <tr><th scope="row">Crédito em 12x</th><td class="rate-promo">7,97%</td></tr>
+      <tr><th scope="row">Crédito em 21x</th><td class="rate-promo">14,87%</td></tr>
+    </tbody>
+  </table>
+  <p class="rates-note">Maquininhas · Mastercard e Visa · recebimento em 1 dia útil · Período Promocional · simulador oficial em {updatedAt}.</p>
+
+  <h2>Depois da promoção: taxas por faixa de vendas</h2>
+  <p>Encerrado o período promocional, a tabela segue o volume de vendas do
+  mês anterior. Dois exemplos do simulador, nas mesmas condições de
+  bandeira e prazo:</p>
+  <div class="table-scroll">
+  <table class="rates-table">
+    <thead>
+      <tr><th scope="col">Vendas mensais</th><th scope="col">Débito</th><th scope="col">Crédito à vista</th><th scope="col">Crédito 12x</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Até R$ 3 mil</th><td>1,69%</td><td>3,86%</td><td>20,39%</td></tr>
+      <tr><th scope="row">Acima de R$ 30 mil</th><td>1,19%</td><td>2,85%</td><td>11,51%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="rates-note">Cenários do simulador oficial da Ton em {updatedAt}, para novos clientes. O valor muda para bandeiras Elo/Amex e recebimento na hora.</p>
+
+  <h2>Quanto você recebe em uma venda de R$ 100</h2>
+  <p>Na promoção, com recebimento em 1 dia útil:</p>
+  <ul>
+    <li>No <strong>débito</strong> (0,57%): tarifa de R$ 0,57; você recebe <strong>R$ 99,43</strong>.</li>
+    <li>No <strong>crédito à vista</strong> (0,57%): tarifa de R$ 0,57; você recebe <strong>R$ 99,43</strong>.</li>
+    <li>No <strong>crédito em 12x</strong> (7,97%): tarifa de R$ 7,97; você recebe <strong>R$ 92,03</strong>.</li>
+  </ul>
+
+  <h2>Pix na maquininha</h2>
+  <p>O Pix na maquininha tem regra própria: <strong>30 dias com taxa zero</strong>
+  após a ativação. Depois, para continuar sem taxa, cadastre uma chave Pix
+  (CPF, CNPJ ou telefone) na Conta Ton. Sem a chave, a taxa é de
+  <strong>0,49% por venda</strong>. O dinheiro cai na hora.</p>
+
+  <h2>Parcelamento: até quanto dividir</h2>
+  <p>O parcelamento em até <strong>21x</strong> está disponível para novos
+  clientes nos modelos <strong>T3 e T3 Smart</strong>. Nos modelos
+  <strong>T1 e T2</strong>, o limite é de <strong>12x</strong>. Confira o
+  limite vigente no catálogo antes de fechar a venda.</p>
+
+  <h2>Como consultar a taxa do seu cenário</h2>
+  <ol>
+    <li>Acesse o <a href={affiliateUrl} rel="nofollow sponsored">simulador de taxas da Ton</a> no catálogo oficial.</li>
+    <li>Escolha produto, faixa de vendas, prazo de recebimento, bandeira e parcelas.</li>
+    <li>O simulador mostra o percentual e o valor líquido da venda.</li>
+  </ol>
+  <p>Guia relacionado: <a href="/guias/modelos-ton/">modelos de maquininha Ton</a> e <a href="/reviews/maquininha-ton/">página completa com condições</a>.</p>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>
