@@ -9,7 +9,7 @@ reviewCount: 11296
 score: 7.5
 subscores:
   conteudo: 8
-  suporte: 6
+  suporte: 7
   garantia: 8
   custoBeneficio: 7
 pros:
@@ -45,6 +45,4 @@ avaliações e reputação do autor.
 - Resultados dependem de execução; desconfie de qualquer promessa de ganho
   garantido.
 
-## Veredito
 
-Recomendado para iniciantes com orçamento e disposição para aplicar o método.

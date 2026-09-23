@@ -18,7 +18,7 @@ const featured = reviews[0];
       <article>
         <h3>{featured.data.title}</h3>
         <p>{featured.data.description}</p>
-        <p class="meta">Nota {featured.data.score} · {featured.data.reviewCount.toLocaleString('pt-BR')} avaliações</p>
+        <p class="meta">Nota {featured.data.score} · {featured.data.reviewCount.toLocaleString('pt-BR')} avaliações · atualizado em {featured.data.updatedAt}</p>
       </article>
     </a>
   </section>
@@ -38,6 +38,7 @@ const featured = reviews[0];
   .hero, .featured, .method { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
   .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
   .dek, .meta { color: var(--color-muted); }
-  a { color: inherit; text-decoration: none; }
+  .featured a { color: inherit; text-decoration: none; }
+  .method a { text-decoration: underline; }
   .featured a article { border: 1px solid var(--color-ink); padding: var(--space-4); background: var(--color-surface); }
 </style>

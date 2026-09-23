@@ -4,7 +4,7 @@ const { verdict, recommended, score } = Astro.props;
 const label = recommended ? 'Recomendado' : 'Não recomendado';
 ---
 
-<div class="verdict" role="note">
+<div class="verdict">
   <p class="label">{label} — nota {score}</p>
   <p>{verdict}</p>
 </div>
