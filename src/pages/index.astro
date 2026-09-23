@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const reviews = await getCollection('reviews');
+const featured = reviews[0];
+---
+
+<Base title="Análises independentes de cursos de renda extra" description="Análises sérias e sem hype de cursos de renda extra no Brasil.">
+  <section class="hero">
+    <h1>Análises de cursos de renda extra, sem hype.</h1>
+    <p class="dek">Nós analisamos dados públicos — preço, conteúdo, avaliações e reputação — para você decidir com base em evidência, não em promessa.</p>
+  </section>
+
+  <section class="featured">
+    <h2>Análise em destaque</h2>
+    <a href={`/reviews/${featured.slug}`}>
+      <article>
+        <h3>{featured.data.title}</h3>
+        <p>{featured.data.description}</p>
+        <p class="meta">Nota {featured.data.score} · {featured.data.reviewCount.toLocaleString('pt-BR')} avaliações</p>
+      </article>
+    </a>
+  </section>
+
+  <section class="method">
+    <h2>Como analisamos</h2>
+    <ol>
+      <li>Coletamos dados públicos na data da análise.</li>
+      <li>Pontuamos com critérios documentados.</li>
+      <li>Publicamos prós, contras e veredito.</li>
+    </ol>
+    <a href="/metodologia">Ver metodologia completa</a>
+  </section>
+</Base>
+
+<style>
+  .hero, .featured, .method { max-width: var(--measure); margin: 0 auto; padding: var(--space-4); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+  .dek, .meta { color: var(--color-muted); }
+  a { color: inherit; text-decoration: none; }
+  .featured a article { border: 1px solid var(--color-ink); padding: var(--space-4); background: var(--color-surface); }
+</style>
