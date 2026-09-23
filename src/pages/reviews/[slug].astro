@@ -14,12 +14,15 @@ export async function getStaticPaths() {
 
 const { review } = Astro.props;
 const { Content } = await review.render();
-const { title, product, author, price, priceCurrency, reviewCount, score, subscores, pros, cons, verdict, recommended, affiliateUrl, updatedAt, description } = review.data;
+const { title, product, company, price, priceCurrency, reviewCount, score, subscores, pros, cons, verdict, recommended, affiliateUrl, updatedAt, description } = review.data;
 
+const adesao = price > 0
+  ? price.toLocaleString('pt-BR', { style: 'currency', currency: priceCurrency })
+  : 'Taxa única de adesão (sem mensalidade)';
 const rows = [
-  { label: 'Preço', value: `${price.toLocaleString('pt-BR', { style: 'currency', currency: priceCurrency })}` },
-  { label: 'Avaliações', value: reviewCount.toLocaleString('pt-BR') },
-  { label: 'Autor', value: author },
+  { label: 'Adesão', value: adesao },
+  { label: 'Usuários', value: reviewCount.toLocaleString('pt-BR') },
+  { label: 'Empresa', value: company },
   { label: 'Atualizado em', value: updatedAt },
 ];
 ---
@@ -30,7 +33,7 @@ const rows = [
     <p class="dek">Análise independente baseada em dados públicos. Atualizado em {updatedAt}.</p>
 
     <Scorecard score={score} subscores={subscores} />
-    <h2>Ficha do curso</h2>
+    <h2>Ficha do produto</h2>
     <DataTable rows={rows} />
     <ProsCons pros={pros} cons={cons} />
 

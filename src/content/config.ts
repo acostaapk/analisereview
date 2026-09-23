@@ -5,13 +5,13 @@ const reviews = defineCollection({
   schema: z.object({
     title: z.string(),
     product: z.string(),
-    author: z.string(),
-    price: z.number().positive(),
+    company: z.string(),
+    price: z.number().nonnegative(),
     priceCurrency: z.string().default('BRL'),
     reviewCount: z.number().int().nonnegative(),
     score: z.number().min(0).max(10),
     subscores: z.object({
-      conteudo: z.number().min(0).max(10),
+      taxas: z.number().min(0).max(10),
       suporte: z.number().min(0).max(10),
       garantia: z.number().min(0).max(10),
       custoBeneficio: z.number().min(0).max(10),

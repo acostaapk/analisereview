@@ -25,6 +25,7 @@ const { title, description } = Astro.props;
     <header>
       <nav>
         <a href="/"><strong>AnaliseReview</strong></a>
+        <span class="partner-badge">Parceiro Ton</span>
         <a href="/metodologia">Metodologia</a>
       </nav>
     </header>
@@ -32,7 +33,19 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <footer>
-      <p>Análises independentes de cursos de renda extra. © {new Date().getFullYear()}</p>
+      <p class="partner-badge">Parceiro Ton</p>
+      <p class="legal">Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton. Este ambiente não se confunde com os canais oficiais do Ton.</p>
+      <p class="site-link"><a href="https://www.ton.com.br" rel="noopener">Site oficial do Ton</a></p>
+      <p class="copyright">© {new Date().getFullYear()} AnaliseReview</p>
     </footer>
   </body>
 </html>
+
+<style>
+  header nav { display: flex; align-items: center; gap: var(--space-3); max-width: var(--measure); margin: 0 auto; padding: var(--space-3) var(--space-4); }
+  .partner-badge { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent); border: 1px solid var(--color-accent); padding: 2px var(--space-2); display: inline-block; }
+  footer { max-width: var(--measure); margin: var(--space-6) auto 0; padding: var(--space-4); border-top: 1px solid var(--color-rule); font-size: 0.875rem; color: var(--color-muted); }
+  .legal { font-size: 0.8125rem; }
+  .site-link a { color: var(--color-accent); }
+  .copyright { margin-top: var(--space-3); }
+</style>

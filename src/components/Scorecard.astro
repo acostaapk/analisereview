@@ -1,11 +1,11 @@
 ---
 interface Props {
   score: number;
-  subscores: { conteudo: number; suporte: number; garantia: number; custoBeneficio: number };
+  subscores: { taxas: number; suporte: number; garantia: number; custoBeneficio: number };
 }
 const { score, subscores } = Astro.props;
 const items = [
-  ['Conteúdo', subscores.conteudo],
+  ['Taxas e planos', subscores.taxas],
   ['Suporte', subscores.suporte],
   ['Garantia', subscores.garantia],
   ['Custo-benefício', subscores.custoBeneficio],
