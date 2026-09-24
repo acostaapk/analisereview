@@ -1,7 +1,7 @@
 ---
 import Base from './Base.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { affiliateUrl, siteBase, updatedAt, publisher } from '../data/site';
+import { affiliateUrl, maquininhasUrl, siteBase, updatedAt, publisher } from '../data/site';
 
 interface Faq {
   q: string;
@@ -19,9 +19,10 @@ interface Props {
   ctaHref?: string;
 }
 
-const { title, description, canonicalUrl, eyebrow = 'Guia · maquininha Ton', faqs, breadcrumbName, ctaLabel = 'Pedir a maquininha Ton', ctaHref = affiliateUrl } = Astro.props;
+const { title, description, canonicalUrl, eyebrow = 'Guia · maquininha Ton', faqs, breadcrumbName, ctaLabel = 'Pedir a maquininha Ton', ctaHref = maquininhasUrl } = Astro.props;
 const ctaIsAffiliate = ctaHref === affiliateUrl;
 const ctaRel = ctaIsAffiliate ? 'nofollow sponsored' : 'noopener';
+const ctaTarget = ctaHref.startsWith('http') ? '_blank' : undefined;
 
 const structuredData = [
   {
@@ -66,7 +67,7 @@ const structuredData = [
       <h1>{title}</h1>
       <p class="hero-dek">{description}</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href={ctaHref} rel={ctaRel} target="_blank">{ctaLabel}</a>
+        <a class="btn btn-primary" href={ctaHref} rel={ctaRel} target={ctaTarget}>{ctaLabel}</a>
         <a class="btn btn-outline-dark" href="/reviews/maquininha-ton/">Ver a página completa</a>
       </div>
     </div>
@@ -107,7 +108,7 @@ const structuredData = [
         <span class="eyebrow">Pronto para vender?</span>
         <h2>Peça sua maquininha Ton</h2>
         <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
-        <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
         <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
       </div>
     </div>

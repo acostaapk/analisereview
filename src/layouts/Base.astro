@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
-import { affiliateUrl } from '../data/site';
+import { affiliateUrl, maquininhasUrl } from '../data/site';
 
 interface Props {
   title: string;
@@ -34,23 +34,58 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${site}/og-image.png`} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/TonCondensedVF.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/SharonSans.woff2" crossorigin />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap header-row">
-        <a class="brand" href="/">Analise<span>Review</span></a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
+        <a class="brand-sm" href="/">AnaliseReview</a>
         <nav class="header-nav">
+          <a class="nav-link" href="/reviews/maquininha-ton/">Maquininha Ton</a>
           <a class="nav-link" href="/guias/modelos-ton/">Modelos</a>
           <a class="nav-link" href="/guias/taxas-ton/">Taxas</a>
           <a class="nav-link" href="/metodologia">Como analisamos</a>
-          <a class="btn btn-primary header-cta" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir minha maquininha</a>
+          <a class="btn btn-primary header-cta" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir minha maquininha</a>
         </nav>
       </div>
+      <div id="mobile-menu" class="mobile-menu" hidden>
+        <a href="/">Início</a>
+        <a href="/reviews/maquininha-ton/">Maquininha Ton</a>
+        <a href="/guias/modelos-ton/">Modelos</a>
+        <a href="/guias/taxas-ton/">Taxas</a>
+        <a href="/guias/qual-maquininha-ton/">Qual maquininha escolher</a>
+        <a href="/guias/bandeiras-e-vouchers-ton/">Bandeiras e vouchers</a>
+        <a href="/metodologia">Como analisamos</a>
+        <a href="/privacidade">Política de Privacidade</a>
+        <a href="/termos">Termos de Uso</a>
+        <a href="/contato">Contato</a>
+      </div>
     </header>
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          const open = mobileMenu.hidden;
+          mobileMenu.hidden = !open;
+          menuToggle.setAttribute('aria-expanded', String(open));
+          menuToggle.classList.toggle('open', open);
+        });
+        mobileMenu.addEventListener('click', (event) => {
+          if (event.target.closest('a')) {
+            mobileMenu.hidden = true;
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.classList.remove('open');
+          }
+        });
+      }
+    </script>
     <main>
       <slot />
     </main>
@@ -58,8 +93,8 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
       <div class="wrap">
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
         <p class="legal">Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton. Este ambiente não se confunde com os canais oficiais do Ton.</p>
-        <p><a href={affiliateUrl} rel="nofollow sponsored">Site oficial do Ton</a> · <a href={affiliateUrl} rel="nofollow sponsored">Simulador de taxas</a></p>
-        <p class="footer-links"><a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
+        <p><a href={affiliateUrl} rel="nofollow sponsored">Site oficial do Ton</a> · <a href="/reviews/maquininha-ton#simulador">Simulador de taxas</a></p>
+        <p class="footer-links"><a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
         <p class="copyright">© {new Date().getFullYear()} AnaliseReview — Guia de escolha da maquininha Ton.</p>
       </div>
     </footer>
@@ -81,6 +116,48 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         });
       }
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PXXTST395"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500,
+      });
+      gtag('config', 'G-1PXXTST395');
+
+      function applyConsent(consent) {
+        gtag('consent', 'update', {
+          ad_storage: consent.marketing ? 'granted' : 'denied',
+          ad_user_data: consent.marketing ? 'granted' : 'denied',
+          ad_personalization: consent.marketing ? 'granted' : 'denied',
+          analytics_storage: consent.analytics ? 'granted' : 'denied',
+        });
+      }
+      window.__applyConsent = applyConsent;
+
+      try {
+        const stored = JSON.parse(localStorage.getItem('cookieConsent'));
+        if (stored) applyConsent(stored);
+      } catch {
+        // sem consentimento salvo: mantém negado
+      }
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        const link = target instanceof Element ? target.closest('a[rel~="sponsored"]') : null;
+        if (!link) return;
+        gtag('event', 'affiliate_click', {
+          page_location: window.location.pathname,
+          link_url: link.href,
+          link_text: (link.textContent || '').trim().slice(0, 60),
+        });
+      });
+    </script>
     <CookieBanner />
   </body>
 </html>
@@ -101,11 +178,11 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     padding-block: var(--space-2);
     flex-wrap: nowrap;
   }
-  .brand {
+  .brand-sm {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: var(--color-ink);
+    color: var(--color-muted);
     text-decoration: none;
     letter-spacing: -0.02em;
     white-space: nowrap;
@@ -113,8 +190,8 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .brand span { color: var(--color-ton-dark); }
-  .partner-logo { height: 1.9rem; width: auto; }
+  .brand-sm:hover { color: var(--color-ton-dark); }
+  .partner-logo { height: 2.5rem; width: auto; flex: 0 0 auto; }
   .header-nav {
     margin-left: 0;
     display: flex;
@@ -130,6 +207,47 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   }
   .header-nav a:not(.btn):hover { color: var(--color-ton-dark); }
   .header-cta { padding: 0.55rem 1.25rem; min-height: 44px; font-size: 0.9375rem; white-space: nowrap; }
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius);
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+  .menu-toggle span {
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    background: var(--color-ton-dark);
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  .mobile-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--color-paper);
+    border-bottom: 2px solid var(--color-ink);
+    padding: var(--space-3) var(--space-4) var(--space-4);
+  }
+  .mobile-menu a {
+    padding: 0.85rem var(--space-2);
+    text-decoration: none;
+    color: var(--color-ink);
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .mobile-menu a:hover { color: var(--color-ton-dark); }
   .share-fab {
     position: fixed;
     right: 1rem;
@@ -150,15 +268,18 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   .footer-links { display: flex; flex-wrap: wrap; gap: var(--space-3); }
   .footer-links a { font-size: 0.875rem; }
   @media (max-width: 760px) {
-    .header-row { flex-wrap: nowrap; justify-content: center; }
-    .header-nav { width: auto; margin-left: 0; gap: var(--space-2); }
+    .header-row { flex-wrap: nowrap; justify-content: center; gap: var(--space-1); }
+    .header-nav { width: auto; margin-left: 0; gap: var(--space-1); }
     .nav-link { display: none; }
-    .header-cta { margin-left: 0; }
+    .brand-sm { display: none; }
+    .menu-toggle { display: flex; flex: 0 0 auto; }
+    .header-cta { margin-left: 0; font-size: 0.8125rem; padding: 0.5rem 0.9rem; }
+    .partner-logo { height: 2rem; }
   }
   @media (max-width: 380px) {
     .header-row { gap: var(--space-1); padding-inline: 0.75rem; }
-    .brand { font-size: 1.05rem; }
-    .partner-logo { height: 1.35rem; flex: 0 0 auto; }
+    .brand-sm { display: none; }
+    .partner-logo { height: 1.9rem; flex: 0 0 auto; }
     .header-cta { font-size: 0.75rem; padding: 0.4rem 0.7rem; min-height: 38px; flex: 0 0 auto; }
   }
 </style>

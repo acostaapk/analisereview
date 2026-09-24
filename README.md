@@ -1,17 +1,18 @@
 # AnaliseReview
 
-Guia de escolha da **maquininha Ton** para autônomos, MEIs e pequenos negócios, operado como **Parceiro Renda Ton** (programa de indicação da Ton). O site apresenta modelos, taxas e condições com fontes datadas e direciona o visitante para o link de indicação do parceiro.
+Guia de escolha da **maquininha Ton** para autônomos, MEIs e pequenos negócios, operado como **Parceiro Renda Ton** (programa de indicação da Ton). O site apresenta modelos, taxas e condições com fontes datadas e direciona o visitante para os links de indicação do parceiro.
 
 - **Produção**: https://analisereview.com.br (Cloudflare Pages)
 - **Domínio**: `analisereview.com.br` (DNS no Cloudflare)
-- **E-mail do site**: `contato@analisereview.com.br` (hospedado na Umber; MX/SPF/DMARC/SRV configurados no Cloudflare)
+- **E-mail do site**: `contato@analisereview.com.br` (hospedado na Umber; MX/SPF/DMARC/SRV no Cloudflare)
+- **Mensuração**: GA4 `G-1PXXTST395` com Consent Mode v2 (LGPD) e evento `affiliate_click`
 - **Repositório**: https://github.com/acostaapk/analisereview
 
 ## Stack
 
 | Camada | Tecnologia |
 |---|---|
-| Framework | Astro 5 (output estático, CSS inline, sem runtime JS por padrão) |
+| Framework | Astro 5 (output estático, CSS inline, scripts mínimos) |
 | Conteúdo | Content collections do Astro + validação Zod |
 | Tipografia | Ton Condensed, Sharon Sans (self-hosted) + Inter (`@fontsource`) |
 | SEO | `@astrojs/sitemap`, JSON-LD (Product, FAQPage, Article, Breadcrumb), `llms.txt` |
@@ -26,28 +27,30 @@ analisereview/
 ├── astro.config.mjs
 ├── package.json
 ├── public/
-│   ├── parceiro-ton.webp        # logo obrigatório "Parceiro Ton"
-│   ├── 660x500_t3-smart.webp    # imagem do produto (hero)
+│   ├── parceiro-ton.webp/.png    # logo obrigatório "Parceiro Ton"
+│   ├── 660x500_t3-smart.webp     # imagem do produto (hero)
 │   ├── t1-showcase-new.webp … t3-smart-showcase-new.webp  # fotos dos modelos
-│   ├── fonts/                   # TonCondensedVF, SharonSans, SharonDisplay (woff2)
-│   ├── favicon.svg              # "AR" em glifos da Ton Condensed
-│   ├── og-image.png             # imagem social 1200×630
-│   ├── robots.txt               # inclui AI crawlers + sitemap
-│   └── llms.txt                 # mapa do conteúdo para agentes de IA
+│   ├── qr-afiliado.png           # QR com logo do parceiro → link de indicação
+│   ├── fonts/                    # TonCondensedVF, SharonSans, SharonDisplay (woff2)
+│   ├── favicon.svg               # verde #12ca65 com cartão NFC (original)
+│   ├── og-image.png              # imagem social 1200×630 (peça do kit)
+│   ├── robots.txt                # inclui AI crawlers + sitemap
+│   └── llms.txt                  # mapa do conteúdo para agentes de IA
 ├── src/
 │   ├── content/
-│   │   ├── config.ts            # schema (Zod) da collection "reviews"
+│   │   ├── config.ts             # schema (Zod) da collection "reviews"
 │   │   └── reviews/maquininha-ton.md
 │   ├── data/
-│   │   ├── site.ts              # siteBase, affiliateUrl, contactEmail, publisher
-│   │   └── models.ts            # catálogo de modelos (nome, tags, preço e parcelas)
+│   │   ├── site.ts               # siteBase, affiliateUrl, maquininhasUrl, contactEmail
+│   │   └── models.ts             # catálogo de modelos + deep links de checkout
 │   ├── layouts/
-│   │   ├── Base.astro           # <head>, header fixo, rodapé legal, cookie banner
-│   │   └── Guide.astro          # layout dos guias (hero, FAQ, CTA, JSON-LD)
+│   │   ├── Base.astro            # <head>, header (logo+menu hambúrguer+CTA), rodapé, GA4
+│   │   └── Guide.astro           # layout dos guias (hero, FAQ, CTA, JSON-LD)
 │   ├── components/
-│   │   ├── AffiliateCTA.astro   # CTA de indicação + disclosure
-│   │   ├── JsonLd.astro         # injeta JSON-LD
-│   │   └── CookieBanner.astro   # consentimento LGPD
+│   │   ├── AffiliateCTA.astro    # CTA de indicação + disclosure
+│   │   ├── Simulator.astro       # simulador interativo de taxas promocionais
+│   │   ├── JsonLd.astro          # injeta JSON-LD
+│   │   └── CookieBanner.astro    # consentimento LGPD (integra Consent Mode)
 │   ├── pages/
 │   │   ├── index.astro                 # home de vendas
 │   │   ├── metodologia.astro           # como escolhemos e explicamos
@@ -57,12 +60,12 @@ analisereview/
 │   │   ├── 404.astro                   # página não encontrada
 │   │   ├── reviews/[slug].astro        # página da maquininha Ton
 │   │   └── guias/
-│   │       ├── taxas-ton.astro         # taxas e condições
+│   │       ├── taxas-ton.astro         # taxas e condições + simulador
 │   │       ├── modelos-ton.astro       # comparativo dos modelos
 │   │       ├── qual-maquininha-ton.astro  # escolha por perfil de venda
 │   │       └── bandeiras-e-vouchers-ton.astro  # bandeiras e vouchers
 │   └── styles/global.css       # design tokens + estilos base
-├── docs/marketing/             # auditoria, proposta comercial e baseline
+├── docs/marketing/             # auditoria, proposta comercial, baseline e plano de ads
 └── images/                     # acervo EducaTon (não versionado)
 ```
 
@@ -71,9 +74,9 @@ analisereview/
 | Rota | Descrição |
 |---|---|
 | `/` | Home de vendas: hero, diferenciais, modelos com preço e parcelas, taxas, FAQ, como pedir |
-| `/reviews/maquininha-ton` | Página da Ton: benefícios, condições, Pix, modelos, prova social (fonte oficial), FAQ |
+| `/reviews/maquininha-ton` | Página da Ton: benefícios, condições, simulador, Pix, modelos, prova social, FAQ |
 | `/guias/taxas-ton` | Taxas: promoção, faixa de vendas, Pix e parcelamento |
-| `/guias/modelos-ton` | Comparativo T1/T2/T3/T3 Smart |
+| `/guias/modelos-ton` | Comparativo T1/T2/T3/T3 Smart (tabela vira cards no mobile) |
 | `/guias/qual-maquininha-ton` | Recomendação por perfil (rua, delivery, balcão, loja, MEI) |
 | `/guias/bandeiras-e-vouchers-ton` | Bandeiras, vouchers e exigência de CNPJ |
 | `/metodologia` | Como escolhemos e explicamos cada maquininha |
@@ -83,52 +86,44 @@ analisereview/
 
 ## Modelo de conteúdo
 
-Cada review é um arquivo `.md` em `src/content/reviews/`, com frontmatter validado por Zod (`src/content/config.ts`):
+Cada review é um arquivo `.md` em `src/content/reviews/`, com frontmatter validado por Zod (`src/content/config.ts`): `title`, `description`, `product`, `company`, `benefits[]`, `category`, `updatedAt`, `affiliateUrl`, `image`, `faqs[{q,a}]`.
 
-| Campo | Tipo | Descrição |
-|---|---|---|
-| `title` | string | Título da página |
-| `description` | string | Resumo (SEO/OG) |
-| `product` | string | Nome do produto |
-| `company` | string | Empresa responsável |
-| `benefits` | string[] | Diferenciais exibidos no hero |
-| `category` | string | Categoria exibida no eyebrow |
-| `updatedAt` | `YYYY-MM-DD` | Data da coleta dos dados (obrigatória) |
-| `affiliateUrl` | URL | Link de indicação (Renda Ton) |
-| `image` | string (opcional) | Imagem do produto |
-| `faqs` | `{q, a}[]` | Perguntas frequentes (visíveis + FAQPage JSON-LD, fonte única) |
-
-Os modelos e seus preços/parcelas ficam em `src/data/models.ts`; as taxas e condições ficam no corpo do `.md`, sempre com data e fonte.
+Os modelos e seus preços/parcelas/deep links ficam em `src/data/models.ts`; as taxas e condições ficam no corpo do `.md`, sempre com data e fonte.
 
 ## Design system
 
 Definido em `src/styles/global.css`:
 
-- **Cores**: verde Ton `#88ff00` (ações), verde-escuro `#203d00`/`#002e1f`, texto `#20252a`, títulos `#1b221f`, superfície `#eef3f0` — paleta verde/preto/branco do guia de marca.
-- **Tipografia**: `Ton Condensed` (títulos), `Sharon Sans` (labels), `Inter` (corpo) — as mesmas famílias do site oficial, self-hosted com `font-display: optional` (CLS zero).
-- **Layout**: conteúdo centralizado em todas as páginas, CTA de pedido no topo (fixo) e acima da dobra.
-- **Componentes**: botões pill, cards de modelo com caixa de preço, tabelas (rolagem própria em telas estreitas), FAQ, detalhes de condições, prova social.
-- **Acessibilidade**: contraste AA (auditado via script, 141 elementos ≥ 4,5:1), foco visível, um único `<h1>` por página, `prefers-reduced-motion`, reflow até 320px.
-
-## SEO e GEO
-
-- Sitemap XML gerado por `@astrojs/sitemap` em `sitemap-index.xml`, referenciado no `robots.txt`.
-- Canonical, Open Graph e Twitter cards em todas as páginas.
-- JSON-LD: `Organization`/`WebSite` (home), `Product` + 4 `Offer`s + `FAQPage` + `BreadcrumbList` (página Ton), `Article` + `FAQPage` + `BreadcrumbList` (guias).
-- GEO: `robots.txt` libera GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros; `llms.txt` no raiz; resposta direta no início das páginas ("Em resumo") com números, unidades e data.
-- CSS 100% inline (sem requisições de folha de estilo bloqueando a renderização).
+- **Cores**: verde Ton `#88ff00` (ações), verde-escuro `#203d00`/`#002e1f`, texto `#20252a`, títulos `#1b221f`, superfície `#eef3f0`.
+- **Tipografia**: `Ton Condensed` (títulos), `Sharon Sans` (labels), `Inter` (corpo), self-hosted com `font-display: swap` + preload.
+- **Layout**: conteúdo centralizado; CTA de pedido fixo no topo; menu hambúrguer no mobile (logo Parceiro Ton na frente); cards com altura uniforme por seção (`grid-auto-rows: 1fr`); tabelas largas viram cards empilhados no mobile (sem rolagem lateral).
+- **Acessibilidade**: contraste AA (auditado), foco visível, um único `<h1>` por página, `prefers-reduced-motion`, reflow até 320px.
 
 ## Monetização
 
-Todos os links para `ton.com.br` usam o **link de indicação do parceiro** (`referrer=B7C09243…`, `rel="nofollow sponsored"`), exceto os PDFs legais em `documentos.ton.com.br` (Política de Privacidade e Termos da Ton), mantidos por exigência de conformidade.
+- **CTAs gerais** ("Pedir minha maquininha", "Pedir no site da Ton") → `ton.com.br/maquininhas?referrer=B7C09243…` (escolha de modelos com referrer; desconto validado).
+- **Cards de modelo** → deep link direto ao carrinho daquele modelo (`ton.com.br/checkout/cart?productId=…&referrer=…`).
+- Links de indicação com `rel="nofollow sponsored"`; exceção: PDFs legais em `documentos.ton.com.br`.
+- "Simular minhas taxas" e links de simulador → simulador interno do site (`/reviews/maquininha-ton#simulador`); "simulador oficial" continua apontando para o catálogo da Ton com referrer.
+
+## SEO e GEO
+
+- Sitemap XML (`sitemap-index.xml`) referenciado no `robots.txt`; canonical, Open Graph e Twitter cards em todas as páginas.
+- JSON-LD: `Organization`/`WebSite` (home), `Product` + `AggregateOffer` (lowPrice/highPrice) + 4 `Offer`s + `FAQPage` + `BreadcrumbList` (página Ton), `Article` + `FAQPage` + `BreadcrumbList` (guias).
+- GEO: `robots.txt` libera GPTBot, ClaudeBot, PerplexityBot, Google-Extended e outros; `llms.txt` no raiz; resposta direta ("Em resumo") com números, unidades e data.
+- CSS 100% inline; fontes com preload.
+
+## Mensuração e publicidade
+
+- **GA4** `G-1PXXTST395`: Consent Mode v2 (tudo negado por padrão; atualiza conforme o banner LGPD) + evento `affiliate_click` em todos os links patrocinados.
+- **Google Ads** (conta Sleep 2661197125): campanha Search **"Maquininha Sem Aluguel — AnaliseReview"** (id 24279500526), **PAUSADA**, anúncio **APROVADO** pelo Google. R$ 20/dia, CPC manual R$ 3, Brasil/pt-BR, 10 palavras-chave em frase, 16 negativas de marca, URL final `/reviews/maquininha-ton/`. Detalhes em `docs/marketing/2026-09-24-google-ads-campanha.md`.
+- **Ativação pendente** de aprovação explícita + vínculo GA4↔Google Ads + confirmação da comissão no app.
 
 ## Compliance (diretrizes Renda Ton)
 
-- Logo **"Parceiro Ton"** no cabeçalho e no rodapé.
-- **Texto legal obrigatório** no rodapé, idêntico ao modelo da diretriz.
+- Logo **"Parceiro Ton"** no cabeçalho e no rodapé; texto legal idêntico ao modelo da diretriz.
 - **Proibido** comparar a Ton com concorrentes; **proibido** comprar palavras-chave de marca em mídia paga.
-- Link para o site oficial (`ton.com.br`).
-- **Banner de cookies (LGPD)** com checkboxes desmarcados por padrão.
+- Link para o site oficial (`ton.com.br`); **banner de cookies (LGPD)** com checkboxes desmarcados por padrão.
 - Sem informação falsa; taxas, preços e depoimentos sempre com data e fonte.
 
 > O site não é o canal oficial do Ton e não deve ser apresentado como tal.
@@ -166,8 +161,6 @@ npm run preview  # pré-visualiza o build
 
 ## Deploy (Cloudflare Pages)
 
-Direct upload:
-
 ```bash
 npm run build
 wrangler pages deploy dist --project-name analisereview
@@ -178,6 +171,6 @@ wrangler pages deploy dist --project-name analisereview
 
 ## Notas
 
-- `images/` (materiais de divulgação do EducaTon) e `.wrangler/` estão no `.gitignore` — não versionar arquivos pesados ou estado local. Para publicar no site, exportar derivados otimizados (WebP) para `public/`.
-- O acervo local contém peças de momentos diferentes (ex.: parcelamento 18x em peça antiga vs. 21x no catálogo atual). Sempre confira a oferta vigente antes de usar.
+- `images/` (materiais de divulgação do EducaTon) e `.wrangler/` estão no `.gitignore`. Para publicar no site, exportar derivados otimizados (WebP) para `public/`.
+- O acervo local contém peças de momentos diferentes; sempre confira a oferta vigente antes de usar.
 - A moeda dos valores é BRL; os dados de taxas são coletados das páginas públicas da Ton e datados em `updatedAt`.

@@ -32,6 +32,7 @@ const faqs = [
   faqs={faqs}
   breadcrumbName="Taxas da Ton"
   ctaLabel="Simular minhas taxas"
+  ctaHref="/reviews/maquininha-ton#simulador"
 >
   <div class="tldr">
     <strong>Em resumo:</strong> no Período Promocional para novos clientes
@@ -77,25 +78,38 @@ const faqs = [
   mês anterior. Dois exemplos do simulador, nas mesmas condições de
   bandeira e prazo:</p>
   <div class="table-scroll">
-  <table class="rates-table">
+  <table class="rates-table card-table">
     <thead>
       <tr><th scope="col">Vendas mensais</th><th scope="col">Débito</th><th scope="col">Crédito à vista</th><th scope="col">Crédito 12x</th></tr>
     </thead>
     <tbody>
-      <tr><th scope="row">Até R$ 3 mil</th><td>1,69%</td><td>3,86%</td><td>20,39%</td></tr>
-      <tr><th scope="row">Acima de R$ 30 mil</th><td>1,19%</td><td>2,85%</td><td>11,51%</td></tr>
+      <tr><th scope="row">Até R$ 3 mil</th><td data-label="Débito">1,69%</td><td data-label="Crédito à vista">3,86%</td><td data-label="Crédito 12x">20,39%</td></tr>
+      <tr><th scope="row">Acima de R$ 30 mil</th><td data-label="Débito">1,19%</td><td data-label="Crédito à vista">2,85%</td><td data-label="Crédito 12x">11,51%</td></tr>
     </tbody>
   </table>
   </div>
   <p class="rates-note">Cenários do simulador oficial da Ton em {updatedAt}, para novos clientes. O valor muda para bandeiras Elo/Amex e recebimento na hora.</p>
 
-  <h2>Quanto você recebe em uma venda de R$ 100</h2>
+  <h2>Quanto você recebe em cada venda</h2>
   <p>Na promoção, com recebimento em 1 dia útil:</p>
-  <ul>
-    <li>No <strong>débito</strong> (0,57%): tarifa de R$ 0,57; você recebe <strong>R$ 99,43</strong>.</li>
-    <li>No <strong>crédito à vista</strong> (0,57%): tarifa de R$ 0,57; você recebe <strong>R$ 99,43</strong>.</li>
-    <li>No <strong>crédito em 12x</strong> (7,97%): tarifa de R$ 7,97; você recebe <strong>R$ 92,03</strong>.</li>
-  </ul>
+  <div class="example-grid">
+    <div class="example-card">
+      <p class="example-title">Venda de R$ 150 no débito</p>
+      <p class="example-fee">Taxa de 0,57% · custo de R$ 0,86</p>
+      <p class="example-net">Você recebe R$ 149,14</p>
+    </div>
+    <div class="example-card">
+      <p class="example-title">Pix de R$ 500</p>
+      <p class="example-fee">Taxa grátis com chave cadastrada</p>
+      <p class="example-net">Você recebe R$ 500,00</p>
+    </div>
+    <div class="example-card">
+      <p class="example-title">Venda de R$ 200 em 12x</p>
+      <p class="example-fee">Taxa de 7,97% · custo de R$ 15,94</p>
+      <p class="example-net">Você recebe R$ 184,06</p>
+    </div>
+  </div>
+  <p class="rates-note">Exemplos com taxas promocionais do Mega+ (Mastercard e Visa, 1 dia útil), simulador oficial em {updatedAt}. Para calcular o seu cenário, use o <a href="/reviews/maquininha-ton#simulador">simulador da página da maquininha</a>.</p>
 
   <h2>Pix na maquininha</h2>
   <p>O Pix na maquininha tem regra própria: <strong>30 dias com taxa zero</strong>
@@ -111,8 +125,8 @@ const faqs = [
 
   <h2>Como consultar a taxa do seu cenário</h2>
   <ol>
-    <li>Acesse o <a href={affiliateUrl} rel="nofollow sponsored">simulador de taxas da Ton</a> no catálogo oficial.</li>
-    <li>Escolha produto, faixa de vendas, prazo de recebimento, bandeira e parcelas.</li>
+    <li>Use o <a href="/reviews/maquininha-ton#simulador">nosso simulador de taxas</a>, com as taxas promocionais do Mega+.</li>
+    <li>Para o valor exato do seu cadastro, confira no <a href={affiliateUrl} rel="nofollow sponsored">simulador oficial da Ton</a>.</li>
     <li>O simulador mostra o percentual e o valor líquido da venda.</li>
   </ol>
   <p>Guia relacionado: <a href="/guias/modelos-ton/">modelos de maquininha Ton</a> e <a href="/reviews/maquininha-ton/">página completa com condições</a>.</p>
@@ -127,4 +141,9 @@ const faqs = [
     font-size: 1.0625rem;
   }
   .tldr strong { font-weight: 700; }
+  .example-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); grid-auto-rows: 1fr; margin-top: var(--space-3); }
+  .example-card { background: var(--color-ton-night); border-radius: var(--radius); padding: var(--space-4); text-align: center; display: grid; gap: var(--space-1); }
+  .example-title { color: #cfe3d5; font-weight: 600; }
+  .example-fee { color: #d3e5d8; font-size: 0.875rem; }
+  .example-net { color: var(--color-ton); font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
 </style>

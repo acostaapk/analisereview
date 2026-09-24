@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { models } from '../data/models';
-import { siteBase, affiliateUrl } from '../data/site';
+import { siteBase, affiliateUrl, maquininhasUrl } from '../data/site';
 
 const reviews = await getCollection('reviews');
 const review = reviews[0];
@@ -43,7 +43,7 @@ const trustItems = [
         <h1>Sua maquininha <em>sem aluguel</em> e sem mensalidade</h1>
         <p class="hero-dek">Taxa única de adesão, garantia vitalícia e recebimento em 1 dia útil ou na hora. Compare os modelos, entenda as taxas e peça a sua.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir minha maquininha</a>
+          <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir minha maquininha</a>
           <a class="btn btn-outline-dark" href="#modelos">Ver modelos</a>
         </div>
         <p class="hero-note"><strong>Desconto na adesão</strong> ao pedir pelo nosso link de indicação. Você segue para o site oficial da Ton.</p>
@@ -132,13 +132,13 @@ const trustItems = [
               <div class="model-tags">
                 {model.tags.map((tag) => <span class="tag">{tag}</span>)}
               </div>
-              <p>{model.desc}</p>
+              <p class="model-desc">{model.desc}</p>
               <p class="model-price">
                 <span class="price-value">{model.price}</span>
                 <span class="price-installment">{model.installment}</span>
-                <small>{model.maxInstallments} · à vista no catálogo em 23/09/2026</small>
+                <small>{model.maxInstallments} · catálogo em 23/09/2026</small>
               </p>
-              <a class="btn btn-primary" href={review.data.affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir a {model.name}</a>
+              <a class="btn btn-primary" href={model.checkoutUrl} rel="nofollow sponsored" target="_blank">Pedir a {model.name}</a>
             </div>
           </article>
         ))}
@@ -226,7 +226,7 @@ const trustItems = [
         <span class="eyebrow">Pronto para vender?</span>
         <h2>Peça sua maquininha Ton</h2>
         <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
-        <a class="btn btn-primary" href={review.data.affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
         <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
       </div>
     </div>
@@ -315,6 +315,7 @@ const trustItems = [
     display: grid;
     gap: var(--space-3);
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-auto-rows: 1fr;
   }
   .steps li {
     counter-increment: step;

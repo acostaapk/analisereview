@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import AffiliateCTA from '../../components/AffiliateCTA.astro';
 import JsonLd from '../../components/JsonLd.astro';
+import Simulator from '../../components/Simulator.astro';
 import { models } from '../../data/models';
 
 export async function getStaticPaths() {
@@ -14,8 +15,13 @@ const { review } = Astro.props;
 const { Content } = await review.render();
 const { title, product, company, benefits, affiliateUrl, updatedAt, description, image, faqs } = review.data;
 const updatedLabel = updatedAt.split('-').reverse().join('/');
-const siteBase = 'https://analisereview.com.br';
+import { siteBase, maquininhasUrl } from '../../data/site';
+
 const canonicalUrl = `${siteBase}/reviews/${review.slug}/`;
+
+const priceNumbers = models.map((model) => Number(model.price.replace(/\D/g, '')) / 100);
+const lowPrice = Math.min(...priceNumbers).toFixed(2);
+const highPrice = Math.max(...priceNumbers).toFixed(2);
 
 const structuredData = [
   {
@@ -30,12 +36,14 @@ const structuredData = [
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'BRL',
+      lowPrice,
+      highPrice,
       offerCount: models.length,
       offers: models.map((model) => ({
         '@type': 'Offer',
         name: model.name,
         url: affiliateUrl,
-        price: model.price.replace(/\D/g, ''),
+        price: (Number(model.price.replace(/\D/g, '')) / 100).toFixed(2),
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
       })),
@@ -96,7 +104,7 @@ const ratings = [
           {benefits.map((benefit) => <li><span aria-hidden="true">✓</span>{benefit}</li>)}
         </ul>
         <div class="hero-actions">
-          <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir a {product}</a>
+          <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir a {product}</a>
           <a class="btn btn-outline-dark" href="#modelos">Comparar modelos</a>
         </div>
         <p class="hero-note">Você pode ter <strong>desconto na adesão</strong> pelo nosso link de indicação. Condições consultadas em {updatedAt}.</p>
@@ -115,8 +123,14 @@ const ratings = [
     </div>
   </section>
 
+  <section class="section section-alt" id="simulador">
+    <div class="wrap">
+      <Simulator />
+    </div>
+  </section>
+
   <div class="wrap mid-cta">
-    <AffiliateCTA href={affiliateUrl} product={product} />
+    <AffiliateCTA href={maquininhasUrl} product={product} />
   </div>
 
   <section class="section section-alt" id="modelos">
@@ -138,13 +152,13 @@ const ratings = [
               <div class="model-tags">
                 {model.tags.map((tag) => <span class="tag">{tag}</span>)}
               </div>
-              <p>{model.desc}</p>
+              <p class="model-desc">{model.desc}</p>
               <p class="model-price">
                 <span class="price-value">{model.price}</span>
                 <span class="price-installment">{model.installment}</span>
-                <small>{model.maxInstallments} · à vista no catálogo em {updatedLabel}</small>
+                <small>{model.maxInstallments} · catálogo em {updatedLabel}</small>
               </p>
-              <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir a {model.name}</a>
+              <a class="btn btn-primary" href={model.checkoutUrl} rel="nofollow sponsored" target="_blank">Pedir a {model.name}</a>
             </div>
           </article>
         ))}
@@ -196,13 +210,26 @@ const ratings = [
     </div>
   </section>
 
+  <section class="section" id="quem-indica">
+    <div class="wrap">
+      <div class="author-card">
+        <div class="author-copy">
+          <span class="eyebrow">Quem indica</span>
+          <h2 class="section-title">André Costa Purificação · Parceiro Renda Ton</h2>
+          <p>Eu criei o AnaliseReview para reunir, num só lugar, os modelos, as taxas e as condições da maquininha Ton — sempre com data e fonte. Ao pedir pelo meu link, você pode ter desconto na adesão e conta com este guia para escolher antes de fechar o pedido no site oficial da Ton.</p>
+        </div>
+        <img src="/parceiro-ton.webp" alt="Parceiro Ton" width="534" height="188" class="author-logo" />
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="cta-panel">
         <span class="eyebrow">Pronto para vender?</span>
         <h2>Peça sua maquininha Ton</h2>
         <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
-        <a class="btn btn-primary" href={affiliateUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
         <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
       </div>
     </div>
@@ -263,6 +290,22 @@ const ratings = [
   .mid-cta { padding-block: var(--space-5); }
   .section-alt { background: var(--color-surface); }
   .section-note { font-size: 0.9375rem; color: var(--color-muted); margin-top: var(--space-4); max-width: 70ch; }
+
+  .author-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    justify-items: center;
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .author-copy { display: grid; gap: var(--space-2); justify-items: center; }
+  .author-copy .section-title { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .author-copy p { color: var(--color-muted); max-width: 60ch; }
+  .author-logo { width: 160px; height: auto; }
 
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns: 1fr; }

@@ -1,0 +1,135 @@
+---
+---
+
+<div class="simulator" id="tax-simulator">
+  <div class="sim-head">
+    <span class="eyebrow">Simulador · taxas promocionais</span>
+    <h2>Quanto você recebe em cada venda?</h2>
+    <p class="sim-dek">Taxas promocionais do plano Mega+ para novos clientes (Mastercard e Visa, recebimento em 1 dia útil).</p>
+  </div>
+  <div class="sim-controls">
+    <label class="sim-field">
+      <span>Valor da venda (R$)</span>
+      <input type="number" id="sim-amount" value="100" min="1" step="0.01" inputmode="decimal" />
+    </label>
+    <label class="sim-field">
+      <span>Forma de pagamento</span>
+      <select id="sim-payment">
+        <option value="pix">Pix</option>
+        <option value="debito" selected>Débito</option>
+        <option value="credito">Crédito à vista</option>
+        <option value="2x">Crédito em 2x</option>
+        <option value="3x">Crédito em 3x</option>
+        <option value="4x">Crédito em 4x</option>
+        <option value="5x">Crédito em 5x</option>
+        <option value="6x">Crédito em 6x</option>
+        <option value="7x">Crédito em 7x</option>
+        <option value="8x">Crédito em 8x</option>
+        <option value="9x">Crédito em 9x</option>
+        <option value="10x">Crédito em 10x</option>
+        <option value="11x">Crédito em 11x</option>
+        <option value="12x">Crédito em 12x</option>
+        <option value="13x">Crédito em 13x</option>
+        <option value="14x">Crédito em 14x</option>
+        <option value="15x">Crédito em 15x</option>
+        <option value="16x">Crédito em 16x</option>
+        <option value="17x">Crédito em 17x</option>
+        <option value="18x">Crédito em 18x</option>
+        <option value="19x">Crédito em 19x</option>
+        <option value="20x">Crédito em 20x</option>
+        <option value="21x">Crédito em 21x</option>
+      </select>
+    </label>
+  </div>
+  <div class="sim-result">
+    <p class="sim-receive">Você recebe <strong id="sim-net">R$ 99,43</strong></p>
+    <p class="sim-fee">Taxa de <span id="sim-rate">0,57%</span> · custo de <span id="sim-cost">R$ 0,57</span></p>
+  </div>
+  <p class="sim-note">Taxas promocionais por 30 dias ou até R$ 5 mil em vendas · depois vale a taxa da sua faixa de faturamento · Pix grátis com chave cadastrada no app · valores do simulador oficial da Ton em 23/09/2026.</p>
+</div>
+
+<script>
+  const rates = {
+    pix: 0,
+    debito: 0.57,
+    credito: 0.57,
+    '2x': 3.97,
+    '3x': 3.97,
+    '4x': 4.97,
+    '5x': 5.97,
+    '6x': 6.97,
+    '7x': 7.97,
+    '8x': 7.97,
+    '9x': 7.97,
+    '10x': 7.97,
+    '11x': 7.97,
+    '12x': 7.97,
+    '13x': 14.87,
+    '14x': 14.87,
+    '15x': 14.87,
+    '16x': 14.87,
+    '17x': 14.87,
+    '18x': 14.87,
+    '19x': 14.87,
+    '20x': 14.87,
+    '21x': 14.87,
+  };
+
+  function brl(value) {
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  function update() {
+    const amountEl = document.getElementById('sim-amount');
+    const paymentEl = document.getElementById('sim-payment');
+    if (!amountEl || !paymentEl) return;
+    const amount = Number(amountEl.value) || 0;
+    const rate = rates[paymentEl.value] ?? 0;
+    const cost = (amount * rate) / 100;
+    const net = amount - cost;
+    document.getElementById('sim-net').textContent = brl(net);
+    document.getElementById('sim-rate').textContent = rate.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+    document.getElementById('sim-cost').textContent = brl(cost);
+  }
+
+  document.getElementById('sim-amount')?.addEventListener('input', update);
+  document.getElementById('sim-payment')?.addEventListener('change', update);
+  update();
+</script>
+
+<style>
+  .simulator {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    display: grid;
+    gap: var(--space-4);
+  }
+  .sim-head { text-align: center; }
+  .sim-head h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); margin-top: var(--space-2); }
+  .sim-dek { color: var(--color-muted); margin-top: var(--space-2); max-width: 52ch; margin-inline: auto; }
+  .sim-controls { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
+  .sim-field { display: grid; gap: var(--space-1); font-weight: 600; font-size: 0.9375rem; justify-items: center; text-align: center; }
+  .sim-field input, .sim-field select {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    min-width: 220px;
+  }
+  .sim-result {
+    text-align: center;
+    background: var(--color-ton-night);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+    color: #ffffff;
+  }
+  .sim-receive { font-size: 1.125rem; color: #cfe3d5; }
+  .sim-receive strong { display: block; font-family: var(--font-display); font-size: 2.5rem; color: var(--color-ton); line-height: 1.1; margin-top: var(--space-1); }
+  .sim-fee { margin-top: var(--space-2); color: #d3e5d8; }
+  .sim-note { font-size: 0.8125rem; color: var(--color-muted); text-align: center; max-width: 64ch; margin-inline: auto; }
+</style>

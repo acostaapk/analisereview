@@ -27,6 +27,10 @@ faqs:
     a: "Troca e manutenção gratuitas da maquininha durante toda a parceria com a Ton, sem precisar sair de casa."
   - q: "Quais bandeiras a maquininha Ton aceita?"
     a: "Mais de 50 bandeiras, incluindo débito, crédito e vouchers de alimentação e refeição."
+  - q: "Por que pedir pelo link do AnaliseReview e não direto no site da Ton?"
+    a: "Pedindo pelo nosso link de indicação, você pode ter desconto na adesão e não paga nada a mais por isso. Além disso, este site reúne modelos, taxas e condições em um só lugar, para você escolher com clareza antes de fechar o pedido no site oficial da Ton."
+  - q: "A Ton é confiável?"
+    a: "A Ton faz parte do grupo StoneCo, instituição de pagamento autorizada pelo Banco Central do Brasil. A própria Ton informa mais de 4,6 milhões de empreendedores atendidos, com nota 9,4/10 no Reclame Aqui, 4,8/5 no Google Play e 4,9/5 na App Store, conforme publicado no site oficial da Ton em 23/09/2026."
 ---
 
 ## Em resumo
@@ -69,12 +73,17 @@ As taxas variam conforme a modalidade, o número de parcelas, as bandeiras,
 o prazo de recebimento e a sua faixa de vendas mensais. No período
 promocional para novos clientes, as condições são as seguintes:
 
-| Modalidade | Taxa promocional |
-|---|---:|
-| Débito | 0,57% |
-| Crédito à vista | 0,57% |
-| Crédito em 12x | 7,97% |
-| Crédito em 21x | 14,87% |
+<table class="rates-table">
+  <thead>
+    <tr><th scope="col">Modalidade</th><th scope="col">Taxa promocional</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">Débito</th><td>0,57%</td></tr>
+    <tr><th scope="row">Crédito à vista</th><td>0,57%</td></tr>
+    <tr><th scope="row">Crédito em 12x</th><td>7,97%</td></tr>
+    <tr><th scope="row">Crédito em 21x</th><td>14,87%</td></tr>
+  </tbody>
+</table>
 
 <details class="conditions">
 <summary>Condições completas da promoção</summary>

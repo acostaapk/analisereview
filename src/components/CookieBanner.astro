@@ -54,6 +54,7 @@
     localStorage.setItem(KEY, JSON.stringify(value));
     const el = document.getElementById('cookie-banner');
     if (el) el.hidden = true;
+    if (window.__applyConsent) window.__applyConsent(value);
   }
 
   const banner = document.getElementById('cookie-banner');
