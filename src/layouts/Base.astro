@@ -173,7 +173,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
       (function () {
         var token = "52bdd3966dd94d478e17d2865c4b410c";
         var siteUrl = "https://analisereview.com.br";
-        var api = "https://rastro.seuservidor.com/api/sites/events/" + token;
+        var api = "https://rastro.orionsystems.com.br/api/sites/events/" + token;
 
         function send(type, extra) {
           var body = Object.assign({ event_type: type, site_url: siteUrl, page_url: location.href }, extra);

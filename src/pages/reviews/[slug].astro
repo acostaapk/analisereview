@@ -93,6 +93,7 @@ const ratings = [
 ---
 
 <Base title={title} description={description} canonicalUrl={canonicalUrl}>
+  <link rel="preload" as="image" href={image ?? '/660x500_t3-smart.webp'} fetchpriority="high" />
   <JsonLd data={structuredData} />
   <section class="hero">
     <div class="wrap hero-grid">
@@ -110,7 +111,7 @@ const ratings = [
         <p class="hero-note">Você pode ter <strong>desconto na adesão</strong> pelo nosso link de indicação. Condições consultadas em {updatedAt}.</p>
       </div>
       <div class="hero-media">
-        {image && <img src={image} alt={product} width="858" height="650" fetchpriority="high" />}
+        {image && <img src={image} alt={product} width="660" height="500" fetchpriority="high" />}
       </div>
     </div>
   </section>
