@@ -1,0 +1,242 @@
+{
+  "astro.config.mjs": {
+    "mtime": 1790614203.828923,
+    "seen": 1790616427.2087731,
+    "ast_hash": "2fdcfb259089088a25b535a50ed6eea0",
+    "semantic_hash": "2fdcfb259089088a25b535a50ed6eea0"
+  },
+  "docs/marketing/2026-09-23-baseline.json": {
+    "mtime": 1790180265.8024704,
+    "seen": 1790616427.2087784,
+    "ast_hash": "af4ba80564d9a5d7b2b676a937592595",
+    "semantic_hash": "af4ba80564d9a5d7b2b676a937592595"
+  },
+  "package.json": {
+    "mtime": 1790614060.325617,
+    "seen": 1790616427.208781,
+    "ast_hash": "da0f5e62498ebbfe0c6d9bf8841dd39a",
+    "semantic_hash": "da0f5e62498ebbfe0c6d9bf8841dd39a"
+  },
+  "src/components/AffiliateCTA.astro": {
+    "mtime": 1790274157.3082561,
+    "seen": 1790616427.208783,
+    "ast_hash": "6142293090c28ddbf5e8c78c06d5a7bc",
+    "semantic_hash": "6142293090c28ddbf5e8c78c06d5a7bc"
+  },
+  "src/components/CookieBanner.astro": {
+    "mtime": 1790254371.2496274,
+    "seen": 1790616427.2087843,
+    "ast_hash": "0b10074e03006cdcba8731112019de47",
+    "semantic_hash": "0b10074e03006cdcba8731112019de47"
+  },
+  "src/components/JsonLd.astro": {
+    "mtime": 1790181634.8912494,
+    "seen": 1790616427.2087853,
+    "ast_hash": "04faba6a8a9cc6a5bb8446621f11d7f4",
+    "semantic_hash": "04faba6a8a9cc6a5bb8446621f11d7f4"
+  },
+  "src/components/Simulator.astro": {
+    "mtime": 1790273896.8786495,
+    "seen": 1790616427.208787,
+    "ast_hash": "3511c5e96abea15ef5fa7e446fc0c2d6",
+    "semantic_hash": "3511c5e96abea15ef5fa7e446fc0c2d6"
+  },
+  "src/content/config.ts": {
+    "mtime": 1790181682.6663675,
+    "seen": 1790616427.208788,
+    "ast_hash": "db7c7acdcaabe2f7df8bd9d79173f639",
+    "semantic_hash": "db7c7acdcaabe2f7df8bd9d79173f639"
+  },
+  "src/data/models.ts": {
+    "mtime": 1790276235.3832376,
+    "seen": 1790616427.2087893,
+    "ast_hash": "53a8a9277acac6e53181e83700454743",
+    "semantic_hash": "53a8a9277acac6e53181e83700454743"
+  },
+  "src/data/site.ts": {
+    "mtime": 1790275889.884414,
+    "seen": 1790616427.2087903,
+    "ast_hash": "5122f911847286ebced6064eb88abc3e",
+    "semantic_hash": "5122f911847286ebced6064eb88abc3e"
+  },
+  "src/env.d.ts": {
+    "mtime": 1790165461.5384848,
+    "seen": 1790616427.2087915,
+    "ast_hash": "72c584e3bd8b5f007b2beb870517b437",
+    "semantic_hash": "72c584e3bd8b5f007b2beb870517b437"
+  },
+  "src/layouts/Base.astro": {
+    "mtime": 1790616104.2372262,
+    "seen": 1790616427.2087932,
+    "ast_hash": "64c34cb7fd6d37f0e5b799c81362e024",
+    "semantic_hash": "64c34cb7fd6d37f0e5b799c81362e024"
+  },
+  "src/layouts/Guide.astro": {
+    "mtime": 1790275586.8337088,
+    "seen": 1790616427.2087944,
+    "ast_hash": "74e62c20e42957c480b4aa74aaff46b4",
+    "semantic_hash": "74e62c20e42957c480b4aa74aaff46b4"
+  },
+  "src/lib/notfair/auth.ts": {
+    "mtime": 1790613965.0794005,
+    "seen": 1790616427.2087955,
+    "ast_hash": "2423ea1c0ce5dfd72064127d5808a620",
+    "semantic_hash": "2423ea1c0ce5dfd72064127d5808a620"
+  },
+  "src/lib/notfair/db.ts": {
+    "mtime": 1790613965.0794005,
+    "seen": 1790616427.208797,
+    "ast_hash": "675f72edd48e07143756a4081d0c5d33",
+    "semantic_hash": "675f72edd48e07143756a4081d0c5d33"
+  },
+  "src/lib/notfair/env.ts": {
+    "mtime": 1790613965.0854003,
+    "seen": 1790616427.208798,
+    "ast_hash": "c7be7aafc08f4c53c6122812d1e71529",
+    "semantic_hash": "c7be7aafc08f4c53c6122812d1e71529"
+  },
+  "src/lib/notfair/sanitize.ts": {
+    "mtime": 1790613965.0794005,
+    "seen": 1790616427.2087991,
+    "ast_hash": "89996e747e6423f9b9b2c82121fad004",
+    "semantic_hash": "89996e747e6423f9b9b2c82121fad004"
+  },
+  "src/lib/notfair/types.ts": {
+    "mtime": 1790613965.0854003,
+    "seen": 1790616427.2088006,
+    "ast_hash": "31015b756608e2c840e3ca76a39e692b",
+    "semantic_hash": "31015b756608e2c840e3ca76a39e692b"
+  },
+  "src/lib/notfair/validate.ts": {
+    "mtime": 1790613965.0794005,
+    "seen": 1790616427.2088015,
+    "ast_hash": "1798e4f4955a9e8082c147f26f2cf460",
+    "semantic_hash": "1798e4f4955a9e8082c147f26f2cf460"
+  },
+  "src/pages/404.astro": {
+    "mtime": 1790275574.3964252,
+    "seen": 1790616427.2088027,
+    "ast_hash": "dc3e380da029673da5975095c73fe787",
+    "semantic_hash": "dc3e380da029673da5975095c73fe787"
+  },
+  "src/pages/api/seo-webhook.ts": {
+    "mtime": 1790614814.1454644,
+    "seen": 1790616427.2088041,
+    "ast_hash": "d88bc068a83a7d928f8342cea1051843",
+    "semantic_hash": "d88bc068a83a7d928f8342cea1051843"
+  },
+  "src/pages/blog/[slug].astro": {
+    "mtime": 1790614021.892338,
+    "seen": 1790616427.208805,
+    "ast_hash": "4acd8145373774da8dcd03e20025dd5f",
+    "semantic_hash": "4acd8145373774da8dcd03e20025dd5f"
+  },
+  "src/pages/blog/index.astro": {
+    "mtime": 1790614021.892338,
+    "seen": 1790616427.2088068,
+    "ast_hash": "5d01b2533ee875cc068997211875b986",
+    "semantic_hash": "5d01b2533ee875cc068997211875b986"
+  },
+  "src/pages/contato.astro": {
+    "mtime": 1790276779.5939243,
+    "seen": 1790616427.208808,
+    "ast_hash": "bd63ad125f07c5b34d929ac289c864f7",
+    "semantic_hash": "bd63ad125f07c5b34d929ac289c864f7"
+  },
+  "src/pages/guias/bandeiras-e-vouchers-ton.astro": {
+    "mtime": 1790183250.4391239,
+    "seen": 1790616427.208809,
+    "ast_hash": "1fd7aa5fb9850da40f905ea503ffd2f5",
+    "semantic_hash": "1fd7aa5fb9850da40f905ea503ffd2f5"
+  },
+  "src/pages/guias/modelos-ton.astro": {
+    "mtime": 1790277464.4466808,
+    "seen": 1790616427.2088103,
+    "ast_hash": "db327f98fd3906990eab79eca2f8f2ed",
+    "semantic_hash": "db327f98fd3906990eab79eca2f8f2ed"
+  },
+  "src/pages/guias/qual-maquininha-ton.astro": {
+    "mtime": 1790192348.5490103,
+    "seen": 1790616427.2088115,
+    "ast_hash": "179b9f29deeba1640b83e588b8d0bc21",
+    "semantic_hash": "179b9f29deeba1640b83e588b8d0bc21"
+  },
+  "src/pages/guias/taxas-ton.astro": {
+    "mtime": 1790277474.774466,
+    "seen": 1790616427.2088127,
+    "ast_hash": "8799134f3b2699e2ba2c09740c12f261",
+    "semantic_hash": "8799134f3b2699e2ba2c09740c12f261"
+  },
+  "src/pages/index.astro": {
+    "mtime": 1790282512.444092,
+    "seen": 1790616427.208814,
+    "ast_hash": "3687aa781436c4915153c3bcbd82390e",
+    "semantic_hash": "3687aa781436c4915153c3bcbd82390e"
+  },
+  "src/pages/metodologia.astro": {
+    "mtime": 1790274571.917683,
+    "seen": 1790616427.208815,
+    "ast_hash": "66707b925027f18c20867b896a4b5044",
+    "semantic_hash": "66707b925027f18c20867b896a4b5044"
+  },
+  "src/pages/privacidade.astro": {
+    "mtime": 1790184686.666153,
+    "seen": 1790616427.208816,
+    "ast_hash": "de87c4a8530df2d82556808eadd2e423",
+    "semantic_hash": "de87c4a8530df2d82556808eadd2e423"
+  },
+  "src/pages/reviews/[slug].astro": {
+    "mtime": 1790282520.6779187,
+    "seen": 1790616427.2088175,
+    "ast_hash": "de3be3e841efdc4bec4026f111f13d37",
+    "semantic_hash": "de3be3e841efdc4bec4026f111f13d37"
+  },
+  "src/pages/termos.astro": {
+    "mtime": 1790193487.4595509,
+    "seen": 1790616427.2088184,
+    "ast_hash": "98610f2d74fdfe7dbae6fbefc3a2c4ae",
+    "semantic_hash": "98610f2d74fdfe7dbae6fbefc3a2c4ae"
+  },
+  "tests/auth.test.ts": {
+    "mtime": 1790614060.3176172,
+    "seen": 1790616427.2088194,
+    "ast_hash": "4c5e7f059bac4bc64213b18196965bf5",
+    "semantic_hash": "4c5e7f059bac4bc64213b18196965bf5"
+  },
+  "tests/db.test.ts": {
+    "mtime": 1790614060.3743644,
+    "seen": 1790616427.2088208,
+    "ast_hash": "f4d3398e85fd6260bfb39ce02c48bce8",
+    "semantic_hash": "f4d3398e85fd6260bfb39ce02c48bce8"
+  },
+  "tests/sanitize.test.ts": {
+    "mtime": 1790614060.325617,
+    "seen": 1790616427.2088218,
+    "ast_hash": "bc356d5b923b0040694ce3d76cc47097",
+    "semantic_hash": "bc356d5b923b0040694ce3d76cc47097"
+  },
+  "tests/validate.test.ts": {
+    "mtime": 1790614060.3076174,
+    "seen": 1790616427.2088227,
+    "ast_hash": "93a20c5dee366f56e052d14709e3a79a",
+    "semantic_hash": "93a20c5dee366f56e052d14709e3a79a"
+  },
+  "tests/webhook.test.ts": {
+    "mtime": 1790614159.2105908,
+    "seen": 1790616427.2088242,
+    "ast_hash": "f6d39f44c8867d500555e632ee2d54c7",
+    "semantic_hash": "f6d39f44c8867d500555e632ee2d54c7"
+  },
+  "tsconfig.json": {
+    "mtime": 1790165458.407545,
+    "seen": 1790616427.208825,
+    "ast_hash": "99d4c38cb967ab5ba09ac2b735241dac",
+    "semantic_hash": "99d4c38cb967ab5ba09ac2b735241dac"
+  },
+  "vitest.config.ts": {
+    "mtime": 1790614060.2886178,
+    "seen": 1790616427.2088263,
+    "ast_hash": "e11a1bebd334214ba07ff68242dee05c",
+    "semantic_hash": "e11a1bebd334214ba07ff68242dee05c"
+  }
+}

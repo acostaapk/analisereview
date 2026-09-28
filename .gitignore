@@ -8,3 +8,5 @@ images/
 .dev.vars
 .env
 .env.*
+graphify-out/.graphify_root
+graphify-out/cache/

@@ -1,0 +1,345 @@
+{
+  "communities": {
+    "0": [
+      "src_components_jsonld",
+      "src_data_site",
+      "src_data_site_affiliateurl",
+      "src_data_site_contactemail",
+      "src_data_site_maquininhasurl",
+      "src_data_site_publisher",
+      "src_data_site_simulatorurl",
+      "src_data_site_sitebase",
+      "src_data_site_updatedat",
+      "src_layouts_base",
+      "src_layouts_base_site",
+      "src_layouts_guide",
+      "src_layouts_guide_structureddata",
+      "src_pages_404",
+      "src_pages_contato",
+      "src_pages_contato_structureddata",
+      "src_pages_guias_bandeiras_e_vouchers_ton",
+      "src_pages_guias_bandeiras_e_vouchers_ton_faqs",
+      "src_pages_guias_modelos_ton",
+      "src_pages_guias_modelos_ton_faqs",
+      "src_pages_guias_qual_maquininha_ton",
+      "src_pages_guias_qual_maquininha_ton_faqs",
+      "src_pages_guias_taxas_ton",
+      "src_pages_guias_taxas_ton_faqs",
+      "src_pages_metodologia",
+      "src_pages_metodologia_structureddata",
+      "src_pages_privacidade",
+      "src_pages_privacidade_structureddata",
+      "src_pages_termos",
+      "src_pages_termos_structureddata"
+    ],
+    "1": [
+      "src_lib_notfair_auth",
+      "src_lib_notfair_auth_safeequal",
+      "src_lib_notfair_auth_verifybearer",
+      "src_lib_notfair_types_notfairdelivery",
+      "src_lib_notfair_validate",
+      "src_lib_notfair_validate_validatedelivery",
+      "src_lib_notfair_validate_validatepost",
+      "src_lib_notfair_validate_validationerror",
+      "src_lib_notfair_validate_validationerror_constructor",
+      "src_pages_api_seo_webhook",
+      "src_pages_api_seo_webhook_json",
+      "src_pages_api_seo_webhook_post",
+      "src_pages_api_seo_webhook_prerender",
+      "src_pages_api_seo_webhook_requiresecret",
+      "tests_auth_test",
+      "tests_validate_test",
+      "tests_validate_test_expectinvalid",
+      "tests_validate_test_realdelivery",
+      "tests_validate_test_realpost",
+      "tests_webhook_test",
+      "tests_webhook_test_makecontext",
+      "tests_webhook_test_makefakedb",
+      "tests_webhook_test_post",
+      "tests_webhook_test_realdelivery"
+    ],
+    "2": [
+      "src_lib_notfair_db",
+      "src_lib_notfair_db_d1like",
+      "src_lib_notfair_db_d1like_batch",
+      "src_lib_notfair_db_d1like_prepare",
+      "src_lib_notfair_db_d1preparedstatement",
+      "src_lib_notfair_db_d1preparedstatement_all",
+      "src_lib_notfair_db_d1preparedstatement_bind",
+      "src_lib_notfair_db_d1preparedstatement_first",
+      "src_lib_notfair_db_d1preparedstatement_run",
+      "src_lib_notfair_db_getpostbyslug",
+      "src_lib_notfair_db_listposts",
+      "src_lib_notfair_db_parsetags",
+      "src_lib_notfair_db_rowtopost",
+      "src_lib_notfair_db_upsert_sql",
+      "src_lib_notfair_db_upsertposts",
+      "src_lib_notfair_types",
+      "src_lib_notfair_types_notfairpost",
+      "src_lib_notfair_types_notfairpostrow",
+      "tests_db_test",
+      "tests_db_test_faked1",
+      "tests_db_test_faked1_batch",
+      "tests_db_test_faked1_prepare",
+      "tests_db_test_post"
+    ],
+    "3": [
+      "astrojs_check",
+      "package",
+      "package_devdependencies",
+      "package_devdependencies_astrojs_check",
+      "package_devdependencies_types_sanitize_html",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vitest",
+      "package_name",
+      "package_scripts",
+      "package_scripts_astro",
+      "package_scripts_build",
+      "package_scripts_check",
+      "package_scripts_dev",
+      "package_scripts_preview",
+      "package_scripts_test",
+      "package_type",
+      "package_version",
+      "types_sanitize_html",
+      "typescript",
+      "vitest"
+    ],
+    "4": [
+      "astro_content",
+      "src_components_affiliatecta",
+      "src_components_simulator",
+      "src_data_models",
+      "src_data_models_checkout",
+      "src_data_models_machinemodel",
+      "src_data_models_models",
+      "src_pages_index",
+      "src_pages_index_structureddata",
+      "src_pages_index_trustitems",
+      "src_pages_reviews_slug",
+      "src_pages_reviews_slug_getstaticpaths",
+      "src_pages_reviews_slug_highprice",
+      "src_pages_reviews_slug_lowprice",
+      "src_pages_reviews_slug_pricenumbers",
+      "src_pages_reviews_slug_ratings",
+      "src_pages_reviews_slug_structureddata",
+      "src_pages_reviews_slug_testimonials",
+      "src_pages_reviews_slug_updatedlabel"
+    ],
+    "5": [
+      "astro",
+      "astrojs_cloudflare",
+      "astrojs_sitemap",
+      "fontsource_fraunces",
+      "fontsource_inter",
+      "fontsource_source_serif_4",
+      "package_dependencies",
+      "package_dependencies_astro",
+      "package_dependencies_astrojs_cloudflare",
+      "package_dependencies_astrojs_sitemap",
+      "package_dependencies_fontsource_fraunces",
+      "package_dependencies_fontsource_inter",
+      "package_dependencies_fontsource_source_serif_4",
+      "package_dependencies_sanitize_html",
+      "sanitize_html"
+    ],
+    "6": [
+      "src_lib_notfair_env",
+      "src_lib_notfair_env_getdb",
+      "src_lib_notfair_env_getwebhooksecret",
+      "src_lib_notfair_env_runtimeenv",
+      "src_lib_notfair_env_runtimelocals",
+      "src_lib_notfair_sanitize",
+      "src_lib_notfair_sanitize_sanitizearticlehtml",
+      "src_pages_blog_index",
+      "src_pages_blog_slug",
+      "tests_sanitize_test"
+    ],
+    "7": [
+      "src_components_cookiebanner",
+      "src_components_cookiebanner_banner",
+      "src_components_cookiebanner_readconsent",
+      "src_components_cookiebanner_writeconsent"
+    ],
+    "8": [
+      "ref_astro_tsconfigs_strict",
+      "tsconfig",
+      "tsconfig_extends"
+    ],
+    "9": [
+      "src_content_config",
+      "src_content_config_collections",
+      "src_content_config_reviews"
+    ],
+    "10": [
+      "astro_config"
+    ],
+    "11": [
+      "src_env_d"
+    ],
+    "12": [
+      "vitest_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.15632183908045977,
+    "1": 0.14492753623188406,
+    "2": 0.17391304347826086,
+    "3": 0.1,
+    "4": 0.12280701754385964,
+    "5": 0.13333333333333333,
+    "6": 0.3333333333333333,
+    "7": 0.5,
+    "8": 0.6666666666666666,
+    "9": 0.6666666666666666,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_data_site_sitebase",
+      "label": "siteBase",
+      "degree": 9
+    },
+    {
+      "id": "src_lib_notfair_db_d1preparedstatement",
+      "label": "D1PreparedStatement",
+      "degree": 8
+    },
+    {
+      "id": "src_pages_api_seo_webhook_post",
+      "label": "POST()",
+      "degree": 8
+    },
+    {
+      "id": "src_data_site_affiliateurl",
+      "label": "affiliateUrl",
+      "degree": 8
+    },
+    {
+      "id": "src_data_site_updatedat",
+      "label": "updatedAt",
+      "degree": 8
+    },
+    {
+      "id": "src_lib_notfair_db_upsertposts",
+      "label": "upsertPosts()",
+      "degree": 7
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "src_lib_notfair_db_d1like",
+      "label": "D1Like",
+      "degree": 6
+    },
+    {
+      "id": "src_lib_notfair_validate_validatedelivery",
+      "label": "validateDelivery()",
+      "degree": 6
+    },
+    {
+      "id": "src_lib_notfair_db_getpostbyslug",
+      "label": "getPostBySlug()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "expectInvalid()",
+      "target": "validateDelivery()",
+      "source_files": [
+        "tests/validate.test.ts",
+        "src/lib/notfair/validate.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `expectInvalid()` unexpectedly reaches hub `validateDelivery()`"
+    },
+    {
+      "source": "FakeD1",
+      "target": "D1Like",
+      "source_files": [
+        "tests/db.test.ts",
+        "src/lib/notfair/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "implements",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "POST()",
+      "target": "upsertPosts()",
+      "source_files": [
+        "src/pages/api/seo-webhook.ts",
+        "src/lib/notfair/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "POST()",
+      "target": "getDb()",
+      "source_files": [
+        "src/pages/api/seo-webhook.ts",
+        "src/lib/notfair/env.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "requireSecret()",
+      "target": "getWebhookSecret()",
+      "source_files": [
+        "src/pages/api/seo-webhook.ts",
+        "src/lib/notfair/env.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `getDb()` connect `Runtime Environment Setup` to `Post Validation Logic`?",
+      "why": "High betweenness centrality (0.053) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `siteBase` connect `Site Configuration` to `Content Models and Pages`, `Runtime Environment Setup`?",
+      "why": "High betweenness centrality (0.033) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `MachineModel`, `RuntimeLocals`, `simulatorUrl` to the rest of the system?",
+      "why": "54 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Post Validation Logic` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14492753623188406 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Build and Type Scripts` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Content Models and Pages` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12280701754385964 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Astro Dependencies` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
