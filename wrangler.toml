@@ -1,0 +1,13 @@
+name = "analisereview"
+compatibility_date = "2024-11-01"
+pages_build_output_dir = "./dist"
+
+# D1 database that stores NotFair SEO posts.
+# Create it with:  wrangler d1 create analisereview
+# then replace database_id below, or set the DB binding in the
+# Cloudflare Pages dashboard (Settings -> Bindings).
+[[d1_databases]]
+binding = "DB"
+database_name = "analisereview"
+database_id = "2161d7c4-b5ed-40c0-877f-0a46775db2c3"
+migrations_dir = "migrations"

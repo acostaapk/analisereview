@@ -5,3 +5,6 @@ dist/
 .wrangler/
 images/
 *.zip
+.dev.vars
+.env
+.env.*

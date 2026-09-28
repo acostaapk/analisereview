@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import { listPosts } from '../../lib/notfair/db';
+import { getDb } from '../../lib/notfair/env';
+
+export const prerender = false;
+
+const db = getDb(Astro.locals);
+const posts = db ? await listPosts(db) : [];
+
+const title = 'Blog';
+const description = 'Artigos e guias do AnaliseReview: maquininha Ton, taxas, modelos e vendas.';
+
+function readingLabel(minutes: number | null): string | null {
+  return typeof minutes === 'number' ? `${minutes} min de leitura` : null;
+}
+---
+
+<Base title={title} description={description} canonicalUrl="https://analisereview.com.br/blog">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">AnaliseReview</span>
+        <h1 class="section-title">Blog</h1>
+        <p class="section-dek">{description}</p>
+      </div>
+      {
+        posts.length === 0 ? (
+          <p class="section-dek">Nenhum artigo publicado ainda. Volte em breve.</p>
+        ) : (
+          <div class="blog-grid">
+            {posts.map((post) => (
+              <a class="post-card" href={`/blog/${post.slug}`}>
+                {post.image_url && (
+                  <img
+                    src={post.image_url}
+                    alt={post.title}
+                    width="1200"
+                    height="675"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+                <div class="post-card-body">
+                  <h2>{post.title}</h2>
+                  {post.meta_description && <p>{post.meta_description}</p>}
+                  <div class="post-card-tags">
+                    {post.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                  {readingLabel(post.reading_time_minutes) && (
+                    <span class="post-card-meta">{readingLabel(post.reading_time_minutes)}</span>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Base>

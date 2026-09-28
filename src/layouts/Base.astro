@@ -7,8 +7,9 @@ interface Props {
   title: string;
   description: string;
   canonicalUrl?: string;
+  ogImage?: string;
 }
-const { title, description, canonicalUrl } = Astro.props;
+const { title, description, canonicalUrl, ogImage } = Astro.props;
 const site = (Astro.site ? Astro.site.toString() : 'https://analisereview.com.br').replace(/\/$/, '');
 const path = Astro.url.pathname === '/' ? '' : Astro.url.pathname;
 const pageUrl = canonicalUrl ?? `${site}${path}`;
@@ -27,16 +28,15 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:url" content={pageUrl} />
-    <meta property="og:image" content={`${site}/og-image.png`} />
+    <meta property="og:image" content={ogImage ?? `${site}/og-image.png`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${site}/og-image.png`} />
+    <meta name="twitter:image" content={ogImage ?? `${site}/og-image.png`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/TonCondensedVF.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/SharonSans.woff2" crossorigin />
   </head>
   <body>
     <header class="site-header">
@@ -94,7 +94,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
         <p class="legal">Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton. Este ambiente não se confunde com os canais oficiais do Ton.</p>
         <p><a href={affiliateUrl} rel="nofollow sponsored">Site oficial do Ton</a> · <a href="/reviews/maquininha-ton#simulador">Simulador de taxas</a></p>
-        <p class="footer-links"><a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
+        <p class="footer-links"><a href="/blog">Blog</a> · <a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
         <p class="copyright">© {new Date().getFullYear()} AnaliseReview — Guia de escolha da maquininha Ton.</p>
       </div>
     </footer>
@@ -116,11 +116,9 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         });
       }
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PXXTST395"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
       gtag('consent', 'default', {
         ad_storage: 'denied',
         ad_user_data: 'denied',
@@ -128,7 +126,18 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         analytics_storage: 'denied',
         wait_for_update: 500,
       });
-      gtag('config', 'G-1PXXTST395');
+
+      function loadGtag() {
+        if (window.__gtagLoading) return;
+        window.__gtagLoading = true;
+        const s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1PXXTST395';
+        s.async = true;
+        s.onload = () => {
+          gtag('config', 'G-1PXXTST395');
+        };
+        document.head.appendChild(s);
+      }
 
       function applyConsent(consent) {
         gtag('consent', 'update', {
@@ -137,6 +146,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
           ad_personalization: consent.marketing ? 'granted' : 'denied',
           analytics_storage: consent.analytics ? 'granted' : 'denied',
         });
+        if (consent.analytics) loadGtag();
       }
       window.__applyConsent = applyConsent;
 
@@ -144,7 +154,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         const stored = JSON.parse(localStorage.getItem('cookieConsent'));
         if (stored) applyConsent(stored);
       } catch {
-        // sem consentimento salvo: mantém negado
+        // sem consentimento salvo: mantém negado e não carrega a tag
       }
 
       document.addEventListener('click', (event) => {
@@ -159,6 +169,31 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
       });
     </script>
     <CookieBanner />
+    <script>
+      (function () {
+        var token = "52bdd3966dd94d478e17d2865c4b410c";
+        var siteUrl = "https://analisereview.com.br";
+        var api = "https://rastro.seuservidor.com/api/sites/events/" + token;
+
+        function send(type, extra) {
+          var body = Object.assign({ event_type: type, site_url: siteUrl, page_url: location.href }, extra);
+          fetch(api, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).catch(function () {});
+        }
+
+        send("pageview");
+
+        document.addEventListener(
+          "click",
+          function (e) {
+            var a = e.target.closest("a");
+            if (a && a.href && !a.href.startsWith(location.origin)) {
+              send("cta_click", { target_url: a.href, referrer: document.referrer });
+            }
+          },
+          true
+        );
+      })();
+    </script>
   </body>
 </html>
 

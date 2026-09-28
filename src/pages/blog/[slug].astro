@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { getPostBySlug } from '../../lib/notfair/db';
+import { getDb } from '../../lib/notfair/env';
+import { sanitizeArticleHtml } from '../../lib/notfair/sanitize';
+import { siteBase, publisher } from '../../data/site';
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+const db = getDb(Astro.locals);
+const post = typeof slug === 'string' && db ? await getPostBySlug(db, slug) : null;
+
+if (!post) {
+  return new Response('Página não encontrada', { status: 404 });
+}
+
+const canonicalUrl = `${siteBase}/blog/${post.slug}`;
+const description = post.meta_description ?? post.title;
+const safeHtml = sanitizeArticleHtml(post.content_html);
+
+function formatDate(iso: string | null): string | null {
+  if (!iso) return null;
+  const time = Date.parse(iso);
+  if (Number.isNaN(time)) return null;
+  return new Date(time).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+const publishedLabel = formatDate(post.created_at);
+const updatedLabel = formatDate(post.updated_at);
+const readingLabel =
+  typeof post.reading_time_minutes === 'number' ? `${post.reading_time_minutes} min de leitura` : null;
+const metaBits = [publishedLabel && `Publicado em ${publishedLabel}`, readingLabel].filter(Boolean);
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description,
+    image: post.image_url ?? `${siteBase}/og-image.png`,
+    author: { '@type': 'Organization', name: 'AnaliseReview', url: siteBase },
+    publisher,
+    datePublished: post.created_at,
+    dateModified: post.updated_at ?? post.created_at,
+    mainEntityOfPage: canonicalUrl,
+    inLanguage: 'pt-BR',
+    keywords: post.tags.join(', '),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteBase}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Base
+  title={post.title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  ogImage={post.image_url ?? undefined}
+>
+  <JsonLd data={structuredData} />
+  <section class="section">
+    <div class="wrap post-header">
+      {
+        post.image_url && (
+          <img
+            src={post.image_url}
+            alt={post.title}
+            class="post-cover"
+            width="1200"
+            height="675"
+            fetchpriority="high"
+            referrerpolicy="no-referrer"
+          />
+        )
+      }
+      <h1>{post.title}</h1>
+      <p class="post-dek">{description}</p>
+      {
+        post.tags.length > 0 && (
+          <div class="post-tags post-card-tags">
+            {post.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+      {metaBits.length > 0 && <p class="post-meta">{metaBits.join(' · ')}</p>}
+      {updatedLabel && publishedLabel !== updatedLabel && (
+        <p class="post-meta">Atualizado em {updatedLabel}</p>
+      )}
+    </div>
+  </section>
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <article class="article-content" set:html={safeHtml} />
+    </div>
+  </section>
+</Base>
