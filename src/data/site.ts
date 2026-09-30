@@ -12,6 +12,10 @@ export const updatedAt = '2026-09-23';
 
 export const contactEmail = 'contato@analisereview.com.br';
 
+export const contactPhone = '+55 27 98132-8593';
+
+export const contactWhatsApp = 'https://wa.me/5527981328593';
+
 export const publisher = {
   '@type': 'Organization',
   name: 'AnaliseReview',

@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { siteBase, contactEmail, affiliateUrl } from '../data/site';
+import { siteBase, contactEmail, contactPhone, contactWhatsApp, affiliateUrl } from '../data/site';
 
 const canonicalUrl = `${siteBase}/contato/`;
 const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}`;
@@ -39,6 +39,7 @@ const structuredData = [
             <p>Conteúdo, erros de informação, privacidade e parceria: escreva para <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.</p>
             <a class="btn btn-dark mail-mobile" href={`mailto:${contactEmail}`}>Enviar e-mail</a>
             <a class="btn btn-dark mail-desktop" href={gmailUrl} target="_blank" rel="noopener">Enviar e-mail pelo Gmail</a>
+            <p class="contact-whatsapp">Ou pelo WhatsApp: <a href={contactWhatsApp} rel="noopener">{contactPhone}</a></p>
           </div>
           <div class="contact-card">
             <h2>Pedidos, entrega e suporte</h2>

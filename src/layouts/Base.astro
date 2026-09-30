@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
-import { affiliateUrl, maquininhasUrl } from '../data/site';
+import { affiliateUrl, maquininhasUrl, contactEmail, contactPhone, contactWhatsApp } from '../data/site';
 
 interface Props {
   title: string;
@@ -92,9 +92,10 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     <footer class="site-footer">
       <div class="wrap">
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
-        <p class="legal">Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton. Este ambiente não se confunde com os canais oficiais do Ton.</p>
+        <p class="contact">Contato: <a href={`mailto:${contactEmail}`}>{contactEmail}</a> · <a href={contactWhatsApp} rel="noopener">WhatsApp {contactPhone}</a></p>
+        <p class="legal">Este site <strong>não é o site oficial da Ton</strong>. Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton, e não se confunde com os canais oficiais do Ton.</p>
         <p><a href={affiliateUrl} rel="nofollow sponsored">Site oficial do Ton</a> · <a href="/reviews/maquininha-ton#simulador">Simulador de taxas</a></p>
-        <p class="footer-links"><a href="/blog">Blog</a> · <a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
+        <p class="footer-links"><a href="/blog">Blog</a> · <a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/maquininha-sem-aluguel/">Sem aluguel</a> · <a href="/maquininha-cpf/">Para CPF</a> · <a href="/maquininha-mei/">Para MEI</a> · <a href="/maquininha-barata/">Custo da maquininha</a> · <a href="/renda-ton/">Renda Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
         <p class="copyright">© {new Date().getFullYear()} AnaliseReview — Guia de escolha da maquininha Ton.</p>
       </div>
     </footer>
@@ -130,6 +131,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
       function loadGtag() {
         if (window.__gtagLoading) return;
         window.__gtagLoading = true;
+        gtag('js', new Date());
         const s = document.createElement('script');
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1PXXTST395';
         s.async = true;
@@ -167,6 +169,23 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
           link_text: (link.textContent || '').trim().slice(0, 60),
         });
       });
+
+      const offerEls = document.querySelectorAll('[data-offer]');
+      if (offerEls.length && 'IntersectionObserver' in window) {
+        const seen = new WeakSet();
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !seen.has(entry.target)) {
+              seen.add(entry.target);
+              gtag('event', 'view_offer', {
+                page_location: window.location.pathname,
+                offer_id: entry.target.getAttribute('data-offer') || '',
+              });
+            }
+          });
+        }, { threshold: 0.5 });
+        offerEls.forEach((el) => io.observe(el));
+      }
     </script>
     <CookieBanner />
     <script>
@@ -302,6 +321,9 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   .share-fab:focus-visible { outline: 3px solid var(--color-ton-dark); outline-offset: 2px; }
   .footer-links { display: flex; flex-wrap: wrap; gap: var(--space-3); }
   .footer-links a { font-size: 0.875rem; }
+  .site-footer .contact { font-size: 0.9375rem; color: #cfe3d5; }
+  .site-footer .contact a { font-weight: 600; }
+  .site-footer .legal strong { color: #ffffff; }
   @media (max-width: 760px) {
     .header-row { flex-wrap: nowrap; justify-content: center; gap: var(--space-1); }
     .header-nav { width: auto; margin-left: 0; gap: var(--space-1); }
