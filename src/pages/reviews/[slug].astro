@@ -98,7 +98,7 @@ const ratings = [
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="hero-eyebrow">Guia de escolha · Parceiro Renda Ton</span>
+        <span class="hero-eyebrow">Blog Independente de Avaliações · Parceiro Renda Ton</span>
         <h1>{title}</h1>
         <p class="hero-dek">{description}</p>
         <ul class="hero-benefits">
@@ -251,12 +251,18 @@ const ratings = [
   }
   .hero-eyebrow {
     display: block;
+    width: fit-content;
+    margin-inline: auto;
     text-align: center;
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--color-ton-dark);
+    color: var(--color-brand);
+    background: rgba(0, 82, 204, 0.08);
+    border: 1px solid rgba(0, 82, 204, 0.22);
+    border-radius: 999px;
+    padding: 0.375rem 1rem;
     margin-bottom: var(--space-3);
   }
   .hero h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); color: var(--color-heading); text-transform: uppercase; text-align: center; }

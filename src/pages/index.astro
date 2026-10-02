@@ -40,7 +40,7 @@ const trustItems = [
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="hero-eyebrow">Guia de escolha · Parceiro Renda Ton</span>
+        <span class="hero-eyebrow">Blog Independente de Avaliações · Parceiro Renda Ton</span>
         <h1>Sua maquininha <em>sem aluguel</em> e sem mensalidade</h1>
         <p class="hero-dek">Taxa única de adesão, garantia vitalícia e recebimento em 1 dia útil ou na hora. Compare os modelos, entenda as taxas e peça a sua.</p>
         <div class="hero-actions">
@@ -247,20 +247,26 @@ const trustItems = [
     align-items: center;
   }
   .hero-eyebrow {
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--color-ton-dark);
+    color: var(--color-brand);
+    background: rgba(0, 82, 204, 0.08);
+    border: 1px solid rgba(0, 82, 204, 0.22);
+    border-radius: 999px;
+    padding: 0.375rem 1rem;
     margin-bottom: var(--space-3);
   }
   .hero h1 { font-size: clamp(2.75rem, 6.5vw, 4.75rem); color: var(--color-heading); text-transform: uppercase; text-align: center; }
   .hero h1 em { font-style: normal; color: var(--color-ton-dark); }
   .hero-dek { color: var(--color-muted); font-size: 1.1875rem; max-width: 46ch; margin-top: var(--space-3); margin-inline: auto; text-align: center; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); justify-content: center; }
-  .hero-note { color: var(--color-muted); font-size: 0.875rem; margin-top: var(--space-3); text-align: center; }
-  .hero-eyebrow { text-align: center; display: block; }
+  .hero-note { color: var(--color-ink); font-size: 1rem; margin-top: var(--space-3); text-align: center; }
+  .hero-eyebrow { text-align: center; }
   .hero-media img {
     border-radius: var(--radius-lg);
     background: var(--color-paper);

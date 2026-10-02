@@ -51,7 +51,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
             <a class="nav-link" href="/guias/modelos-ton/">Modelos</a>
             <a class="nav-link" href="/guias/taxas-ton/">Taxas</a>
             <a class="nav-link" href="/sobre">Sobre</a>
-            <a class="btn btn-primary header-cta" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir minha maquininha</a>
+            <a class="btn btn-primary header-cta" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Ver Ofertas na Ton</a>
           </nav>
         </div>
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
@@ -224,8 +224,8 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--color-paper);
-    border-bottom: 1px solid var(--color-rule);
+    background: #1a1d20;
+    border-bottom: 1px solid #2a2e33;
   }
   .header-row {
     display: flex;
@@ -245,13 +245,13 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-brand);
+    color: #ffffff;
     text-decoration: none;
     letter-spacing: -0.02em;
     line-height: 1;
     white-space: nowrap;
   }
-  .brand:hover { color: var(--color-brand-dark); }
+  .brand:hover { color: #9db9ff; }
   .partner-logo { height: 2.5rem; width: auto; flex: 0 0 auto; }
   .header-nav {
     margin-left: 0;
@@ -262,19 +262,19 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   }
   .header-nav a:not(.btn) {
     text-decoration: none;
-    color: var(--color-ink);
+    color: #e6e9ec;
     font-weight: 600;
     font-size: 1rem;
   }
-  .header-nav a:not(.btn):hover { color: var(--color-ton-dark); }
+  .header-nav a:not(.btn):hover { color: #9db9ff; }
   .header-cta { padding: 0.55rem 1.25rem; min-height: 44px; font-size: 0.9375rem; white-space: nowrap; }
   .menu-toggle {
     display: none;
     width: 44px;
     height: 44px;
     padding: 10px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-rule);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: var(--radius);
     cursor: pointer;
     flex-direction: column;
@@ -285,7 +285,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     display: block;
     height: 2.5px;
     width: 100%;
-    background: var(--color-ton-dark);
+    background: #ffffff;
     border-radius: 2px;
     transition: transform 0.2s ease;
   }
