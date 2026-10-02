@@ -29,8 +29,10 @@
 :root {
   --color-ton: #88ff00;
   --color-ton-soft: #00eb33;
-  --color-ton-dark: #203d00;
-  --color-ton-night: #002e1f;
+  --color-ton-dark: #0052cc;
+  --color-ton-night: #212529;
+  --color-brand: #0052cc;
+  --color-brand-dark: #0041a8;
   --color-ink: #20252a;
   --color-heading: #1b221f;
   --color-paper: #ffffff;
@@ -151,7 +153,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: #ffffff;
   border-color: var(--color-ton-dark);
 }
-.btn-dark:hover { background: #2c4f00; }
+.btn-dark:hover { background: #0041a8; }
 .btn-outline-light {
   background: transparent;
   color: #ffffff;
@@ -163,7 +165,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-ton-dark);
   border-color: var(--color-ton-dark);
 }
-.btn-outline-dark:hover { background: rgba(0, 46, 31, 0.07); }
+.btn-outline-dark:hover { background: rgba(0, 82, 204, 0.07); }
 
 /* ---- Estrutura compartilhada ---- */
 .wrap { max-width: 1320px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
@@ -305,8 +307,8 @@ img { max-width: 100%; height: auto; display: block; }
   margin-top: auto;
 }
 .model-body .model-price .price-value { font-size: 1.5rem; font-weight: 700; color: #ffffff; line-height: 1.1; }
-.model-body .model-price .price-installment { font-size: 0.9375rem; font-weight: 600; color: #cfe3d5; }
-.model-body .model-price small { font-family: var(--font-body); font-size: 0.8125rem; color: #b6ccbd; font-weight: 400; }
+.model-body .model-price .price-installment { font-size: 0.9375rem; font-weight: 600; color: #cdd3d8; }
+.model-body .model-price small { font-family: var(--font-body); font-size: 0.8125rem; color: #aab2b8; font-weight: 400; }
 
 /* ---- Faixa factual da promoção ---- */
 .promo-strip {
@@ -448,21 +450,22 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .cta-panel .eyebrow { color: var(--color-ton); }
 .cta-panel h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: #ffffff; }
-.cta-panel p { color: #e6f0e8; max-width: 52ch; }
-.cta-panel .disclosure { font-size: 0.875rem; color: #d3e5d8; max-width: 62ch; }
+.cta-panel p { color: #e6e9ec; max-width: 52ch; }
+.cta-panel .disclosure { font-size: 0.875rem; color: #c3c9cf; max-width: 62ch; }
 
 /* ---- Footer (estilo Ton) ---- */
 .site-footer {
   background: var(--color-ton-night);
-  color: #cfe3d5;
+  color: #cdd3d8;
   margin-top: var(--space-7);
   font-size: 0.9375rem;
 }
 .site-footer .wrap { padding-block: var(--space-6); display: grid; gap: var(--space-4); }
-.site-footer .legal { font-size: 0.8125rem; line-height: 1.55; color: #b6ccbd; max-width: 70ch; }
-.site-footer a { color: var(--color-ton); }
+.site-footer .legal { font-size: 0.8125rem; line-height: 1.55; color: #aab2b8; max-width: 70ch; }
+.site-footer a { color: #e6e9ec; }
+.site-footer a:hover { color: #ffffff; }
 .site-footer .partner-logo { height: 2rem; width: auto; }
-.site-footer .copyright { border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: var(--space-3); color: #a9beb0; font-size: 0.8125rem; }
+.site-footer .copyright { border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: var(--space-3); color: #8a9299; font-size: 0.8125rem; }
 
 /* ---- Centralização geral ---- */
 .section-head { text-align: center; }
@@ -609,3 +612,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .article-content th { background: var(--color-ton-night); color: #ffffff; }
 .article-content .nf-attribution { font-size: 0.875rem; color: var(--color-muted); }
+
+/* ---- Figura ilustrativa (landing pages) ---- */
+.figure { margin-inline: auto; max-width: 720px; }
+.figure img { width: 100%; height: auto; border-radius: var(--radius-lg); display: block; }
+.figure figcaption { font-size: 0.8125rem; color: var(--color-muted); margin-top: var(--space-2); }
