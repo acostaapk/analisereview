@@ -230,15 +230,15 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   .header-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
+    justify-content: center;
+    gap: var(--space-6);
     padding-block: var(--space-2);
     flex-wrap: nowrap;
   }
   .header-left {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     flex-wrap: nowrap;
   }
   .brand {
@@ -332,8 +332,8 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   .site-footer .contact a { font-weight: 600; }
   .site-footer .legal strong { color: #ffffff; }
   @media (max-width: 760px) {
-    .header-row { flex-wrap: nowrap; justify-content: space-between; gap: var(--space-1); }
-    .header-left { gap: var(--space-1); }
+    .header-row { flex-wrap: nowrap; justify-content: center; gap: var(--space-4); }
+    .header-left { gap: var(--space-2); }
     .header-nav { width: auto; margin-left: 0; gap: var(--space-1); }
     .nav-link { display: none; }
     .brand { font-size: 1.15rem; }
