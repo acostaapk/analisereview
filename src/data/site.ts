@@ -12,9 +12,9 @@ export const updatedAt = '2026-09-23';
 
 export const contactEmail = 'contato@analisereview.com.br';
 
-export const contactPhone = '+55 27 98132-8593';
+export const contactPhone = '+55 27 99700-0451';
 
-export const contactWhatsApp = 'https://wa.me/5527981328593';
+export const contactWhatsApp = 'https://wa.me/5527997000451';
 
 export const businessName = 'André Costa Purificação';
 export const businessCnpj = '66.211.649/0001-60';
