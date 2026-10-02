@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
-import { affiliateUrl, maquininhasUrl, contactEmail, contactPhone, contactWhatsApp } from '../data/site';
+import { affiliateUrl, maquininhasUrl, contactEmail, contactPhone, contactWhatsApp, businessName, businessCnpj, businessCity } from '../data/site';
 
 interface Props {
   title: string;
@@ -39,6 +39,9 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     <link rel="preload" as="font" type="font/woff2" href="/fonts/TonCondensedVF.woff2" crossorigin />
   </head>
   <body>
+    <div class="transparency-banner" role="note">
+      <strong>Aviso:</strong> O AnaliseReview é um portal independente de avaliações e parceiro de indicação do programa Parceiro Renda Ton. As compras e transações são concluídas com total segurança diretamente no site oficial da Ton.
+    </div>
     <header class="site-header">
       <div class="wrap header-row">
         <div class="header-left">
@@ -51,7 +54,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
             <a class="nav-link" href="/guias/modelos-ton/">Modelos</a>
             <a class="nav-link" href="/guias/taxas-ton/">Taxas</a>
             <a class="nav-link" href="/sobre">Sobre</a>
-            <a class="btn btn-primary header-cta" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Ver Ofertas na Ton</a>
+            <a class="btn btn-primary header-cta" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Ver ofertas no site oficial da Ton</a>
           </nav>
         </div>
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
@@ -96,6 +99,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
       <div class="wrap">
         <img src="/parceiro-ton.webp" alt="Parceiro Ton" class="partner-logo" width="534" height="188" />
         <p class="contact">Contato: <a href={`mailto:${contactEmail}`}>{contactEmail}</a> · <a href={contactWhatsApp} rel="noopener">WhatsApp {contactPhone}</a></p>
+        <p class="identificacao"><strong>{businessName}</strong> · CNPJ {businessCnpj} · {businessCity}</p>
         <p class="legal">Este site <strong>não é o site oficial da Ton</strong>. Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton, e não se confunde com os canais oficiais do Ton.</p>
         <p><a href={affiliateUrl} rel="nofollow sponsored">Site oficial do Ton</a> · <a href="/reviews/maquininha-ton#simulador">Simulador de taxas</a></p>
         <p class="footer-links"><a href="/sobre">Sobre</a> · <a href="/blog">Blog</a> · <a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/maquininha-sem-aluguel/">Sem aluguel</a> · <a href="/maquininha-cpf/">Para CPF</a> · <a href="/maquininha-mei/">Para MEI</a> · <a href="/maquininha-barata/">Custo da maquininha</a> · <a href="/renda-ton/">Renda Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
@@ -227,6 +231,16 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     background: #1a1d20;
     border-bottom: 1px solid #2a2e33;
   }
+  .transparency-banner {
+    background: #eaf1fb;
+    color: #1a2b4a;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid #cfe0f5;
+  }
+  .transparency-banner strong { font-weight: 700; }
   .header-row {
     display: flex;
     align-items: center;
@@ -330,6 +344,7 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
   .footer-links a { font-size: 0.875rem; }
   .site-footer .contact { font-size: 0.9375rem; color: #cdd3d8; }
   .site-footer .contact a { font-weight: 600; }
+  .site-footer .identificacao { font-size: 0.9375rem; color: #cdd3d8; }
   .site-footer .legal strong { color: #ffffff; }
   @media (max-width: 760px) {
     .header-row { flex-wrap: nowrap; justify-content: space-between; gap: var(--space-2); }

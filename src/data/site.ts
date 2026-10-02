@@ -16,6 +16,10 @@ export const contactPhone = '+55 27 98132-8593';
 
 export const contactWhatsApp = 'https://wa.me/5527981328593';
 
+export const businessName = 'André Costa Purificação';
+export const businessCnpj = '66.211.649/0001-60';
+export const businessCity = 'São Mateus – ES';
+
 export const publisher = {
   '@type': 'Organization',
   name: 'AnaliseReview',

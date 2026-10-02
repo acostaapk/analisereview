@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { siteBase, contactEmail, contactPhone, contactWhatsApp, updatedAt, businessCnpj, businessCity } from '../data/site';
+
+const canonicalUrl = `${siteBase}/sobre/`;
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'Sobre o AnaliseReview',
+    url: canonicalUrl,
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AnaliseReview',
+    url: siteBase,
+    email: contactEmail,
+    telephone: contactPhone,
+    founder: { '@type': 'Person', name: 'André Costa Purificação' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: 'Sobre', item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Base title="Sobre o AnaliseReview" description="Quem somos, o que fazemos e qual a nossa relação com a Ton. Guia independente de um Parceiro Renda Ton." canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+  <section class="section">
+    <div class="wrap">
+      <article class="page">
+        <span class="eyebrow">Sobre nós</span>
+        <h1>Sobre o AnaliseReview</h1>
+        <p class="dek">Um guia independente para escolher a maquininha Ton, mantido por um Parceiro Renda Ton.</p>
+
+        <h2>Quem somos</h2>
+        <p>O <strong>AnaliseReview</strong> é um site independente mantido por <strong>André Costa Purificação</strong>, Parceiro Renda Ton. Reunimos, em um só lugar, os modelos, as taxas e as condições das maquininhas Ton — sempre com data e fonte — para ajudar autônomos, MEIs e pequenos negócios a escolher antes de pedir.</p>
+
+        <h2>O que fazemos</h2>
+        <ul>
+          <li>Comparação dos modelos de maquininha (T1, T2, T3 e T3 Smart);</li>
+          <li>Explicação das taxas, do Pix e do parcelamento;</li>
+          <li>Guia de escolha por perfil de venda;</li>
+          <li>Conteúdo educacional sobre a maquininha Ton.</li>
+        </ul>
+        <p>Não vendemos maquininhas diretamente: o pedido, a análise de cadastro, a entrega e o suporte são feitos pela própria Ton, no site oficial.</p>
+
+        <h2>Nossa relação com a Ton</h2>
+        <p>Somos <strong>Parceiro Renda Ton</strong>. Quando você pede pelos nossos links de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
+        <p><strong>Este site não é o site oficial da Ton.</strong> O AnaliseReview é um canal independente de um Parceiro Renda Ton/Renda Extra e não se confunde com os canais oficiais da Ton.</p>
+
+        <h2>Contato</h2>
+        <p>E-mail: <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
+        <p>WhatsApp: <a href={contactWhatsApp} rel="noopener">{contactPhone}</a></p>
+        <p>CNPJ {businessCnpj} · {businessCity}</p>
+
+        <p class="note">Conteúdo revisado em {updatedAt}.</p>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { max-width: var(--measure); margin-inline: auto; }
+  .page h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: var(--space-2) 0 var(--space-3); text-transform: uppercase; }
+  .dek { font-size: 1.0625rem; color: var(--color-muted); max-width: 62ch; margin-inline: auto; }
+  .page h2 { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-2); }
+  .page p + p { margin-top: var(--space-3); }
+  .page ul { padding-left: 1.5rem; }
+  .page li { margin-bottom: var(--space-2); }
+  .page li::marker { color: var(--color-ton-dark); font-weight: 700; }
+  .note { font-size: 0.875rem; color: var(--color-muted); margin-top: var(--space-5); }
+</style>

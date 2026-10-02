@@ -1,7 +1,7 @@
 ---
 import Base from './Base.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { affiliateUrl, maquininhasUrl, siteBase, updatedAt, publisher } from '../data/site';
+import { maquininhasUrl, siteBase, updatedAt, publisher } from '../data/site';
 
 interface Faq {
   q: string;
@@ -19,10 +19,10 @@ interface Props {
   ctaHref?: string;
 }
 
-const { title, description, canonicalUrl, eyebrow = 'Guia · maquininha Ton', faqs, breadcrumbName, ctaLabel = 'Pedir a maquininha Ton', ctaHref = maquininhasUrl } = Astro.props;
-const ctaIsAffiliate = ctaHref === affiliateUrl;
-const ctaRel = ctaIsAffiliate ? 'nofollow sponsored' : 'noopener';
-const ctaTarget = ctaHref.startsWith('http') ? '_blank' : undefined;
+const { title, description, canonicalUrl, eyebrow = 'Guia · maquininha Ton', faqs, breadcrumbName, ctaLabel = 'Pedir a maquininha no site oficial da Ton', ctaHref = maquininhasUrl } = Astro.props;
+const ctaIsExternal = ctaHref.startsWith('http');
+const ctaRel = ctaIsExternal ? 'nofollow sponsored' : 'noopener';
+const ctaTarget = ctaIsExternal ? '_blank' : undefined;
 
 const structuredData = [
   {
@@ -104,11 +104,11 @@ const structuredData = [
 
   <section class="section">
     <div class="wrap">
-      <div class="cta-panel">
+      <div class="cta-panel" data-offer="cta-principal">
         <span class="eyebrow">Pronto para vender?</span>
         <h2>Peça sua maquininha Ton</h2>
         <p>Sem aluguel, sem mensalidade e com garantia vitalícia. Ao pedir pelo nosso link, você pode ter desconto na adesão.</p>
-        <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir no site da Ton</a>
+        <a class="btn btn-primary" href={maquininhasUrl} rel="nofollow sponsored" target="_blank">Pedir no site oficial da Ton</a>
         <p class="disclosure">Somos Parceiro Renda Ton. Ao usar nosso link de indicação, você pode ter desconto na adesão e nós podemos receber comissão — sem custo adicional para você.</p>
       </div>
     </div>
