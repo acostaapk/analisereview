@@ -167,6 +167,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .btn-outline-dark:hover { background: rgba(0, 82, 204, 0.07); }
 .btn-whatsapp {
+  display: none;
   background: transparent;
   color: #128c7e;
   border-color: #128c7e;
