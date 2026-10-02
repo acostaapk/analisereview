@@ -329,13 +329,12 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
     .nav-link { display: none; }
     .brand { font-size: 1.15rem; }
     .menu-toggle { display: flex; flex: 0 0 auto; }
-    .header-cta { margin-left: 0; font-size: 0.8125rem; padding: 0.5rem 0.9rem; }
+    .header-cta { display: none; }
     .partner-logo { height: 2rem; }
   }
   @media (max-width: 380px) {
     .header-row { gap: var(--space-1); padding-inline: 0.75rem; }
     .brand { font-size: 1.05rem; }
     .partner-logo { height: 1.9rem; flex: 0 0 auto; }
-    .header-cta { font-size: 0.75rem; padding: 0.4rem 0.7rem; min-height: 38px; flex: 0 0 auto; }
   }
 </style>
