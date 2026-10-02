@@ -455,7 +455,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ---- Footer (estilo Ton) ---- */
 .site-footer {
-  background: var(--color-ton-night);
+  background: #1a1d20;
   color: #cdd3d8;
   margin-top: var(--space-7);
   font-size: 0.9375rem;
