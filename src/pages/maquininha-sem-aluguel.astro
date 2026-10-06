@@ -1,0 +1,120 @@
+---
+import Guide from '../layouts/Guide.astro';
+import { updatedAt } from '../data/site';
+
+const title = 'Maquininha sem aluguel e sem mensalidade';
+const description = 'Aceite cartão e Pix no seu negócio com a maquininha Ton: taxa única de adesão e sem cobrança fixa depois. Veja condições, modelos e como pedir.';
+const faqs = [
+  {
+    q: 'A maquininha Ton tem mensalidade ou aluguel?',
+    a: 'Não. Você paga uma taxa única de adesão, parcelável em até 12x, e depois não há cobrança fixa mensal pelo uso da maquininha.',
+  },
+  {
+    q: 'Preciso de CNPJ para pedir?',
+    a: 'Não. O cadastro pode ser feito com CPF, MEI ou PJ, direto pelo aplicativo da Ton.',
+  },
+  {
+    q: 'Em quanto tempo recebo o dinheiro das vendas?',
+    a: 'Você escolhe no aplicativo, venda a venda: recebimento em 1 dia útil ou na hora.',
+  },
+  {
+    q: 'O Pix na maquininha tem taxa?',
+    a: 'Não nos primeiros 30 dias. Depois, o Pix continua sem taxa desde que haja uma chave cadastrada na Conta Ton. Sem a chave, a taxa é de 0,49% por venda.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/maquininha-sem-aluguel/"
+  eyebrow="Maquininha Ton · sem aluguel"
+  faqs={faqs}
+  breadcrumbName="Maquininha sem aluguel"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> a maquininha Ton não tem mensalidade nem aluguel.
+    Você paga uma <strong>taxa única de adesão</strong>, parcelável em até 12x, e
+    depois não existe cobrança fixa pelo uso. Aceita <strong>CPF, MEI e PJ</strong>,
+    tem garantia vitalícia e recebe em 1 dia útil ou na hora. Condições do
+    catálogo da Ton consultadas em {updatedAt}.
+  </div>
+
+  <figure class="figure">
+    <img src="/maquininhas-comparacao.webp" alt="Modelos de maquininha Ton lado a lado" width="900" height="900" loading="lazy" />
+    <figcaption>Os modelos da maquininha Ton.</figcaption>
+  </figure>
+
+  <h2>Sem aluguel: como funciona a cobrança</h2>
+  <p>Na Ton, o modelo é simples: em vez de um aluguel ou mensalidade mensal, você
+  paga uma <strong>taxa única de adesão em comodato</strong>. Depois de quitada,
+  não há cobrança fixa — você paga apenas a tarifa por venda.</p>
+
+  <div class="benefit-grid">
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Sem mensalidade</h3>
+      <p>Nenhuma cobrança fixa mensal pelo uso da maquininha.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Garantia vitalícia</h3>
+      <p>Troca e manutenção gratuitas enquanto durar a parceria.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Sem CNPJ</h3>
+      <p>Cadastro com CPF, MEI ou PJ, direto pelo aplicativo.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Receba em 1 dia útil</h3>
+      <p>Ou na hora — você escolhe o prazo de recebimento.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Pix na maquininha</h3>
+      <p>Grátis mantendo uma chave cadastrada na Conta Ton.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Mais de 50 bandeiras</h3>
+      <p>Débito, crédito e vouchers de alimentação e refeição.</p>
+    </div>
+  </div>
+
+  <h2>Taxas para novos clientes (Mega+ e Black)</h2>
+  <p>Nos planos vigentes, com recebimento em 1 dia útil. Confirme a sua taxa no app da Ton:</p>
+  <table class="rates-table">
+    <thead>
+      <tr><th scope="col">Modalidade</th><th scope="col">Taxa</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Débito</th><td class="rate-promo">0,74%*</td></tr>
+      <tr><th scope="row">Crédito à vista</th><td class="rate-promo">0,74%*</td></tr>
+      <tr><th scope="row">Crédito em 12x</th><td class="rate-promo">no app*</td></tr>
+    </tbody>
+  </table>
+  <p class="rates-note">Maquininhas · Mastercard e Visa · recebimento em 1 dia útil · simulador oficial em {updatedAt}.</p>
+
+  <details class="conditions">
+    <summary>Condições completas da promoção</summary>
+    <ul>
+      <li>A promoção vale por 30 dias ou até R$ 5 mil em vendas, o que ocorrer primeiro.</li>
+      <li>Depois, as taxas seguem a sua faixa de vendas mensais.</li>
+      <li>Bandeiras Elo e Amex, recebimento na hora e TapTon têm tabelas próprias.</li>
+      <li>Confira sempre o valor vigente no simulador e no seu aplicativo antes de fechar o pedido.</li>
+    </ul>
+  </details>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>

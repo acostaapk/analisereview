@@ -30,20 +30,20 @@ faqs:
   - q: "Por que pedir pelo link do AnaliseReview e não direto no site da Ton?"
     a: "Pedindo pelo nosso link de indicação, você pode ter desconto na adesão e não paga nada a mais por isso. Além disso, este site reúne modelos, taxas e condições em um só lugar, para você escolher com clareza antes de fechar o pedido no site oficial da Ton."
   - q: "A Ton é confiável?"
-    a: "A Ton faz parte do grupo StoneCo, instituição de pagamento autorizada pelo Banco Central do Brasil. A própria Ton informa mais de 4,6 milhões de empreendedores atendidos, com nota 9,4/10 no Reclame Aqui, 4,8/5 no Google Play e 4,9/5 na App Store, conforme publicado no site oficial da Ton em 23/09/2026."
+    a: "A Ton faz parte do grupo StoneCo, instituição de pagamento autorizada pelo Banco Central do Brasil. A própria Ton informa mais de 4,6 milhões de empreendedores atendidos, com nota 9,4/10 no Reclame Aqui, 4,8/5 no Google Play e 4,9/5 na App Store, conforme publicado no site oficial da Ton em 06/10/2026."
 ---
 
 ## Em resumo
 
 A maquininha Ton funciona com **taxa única de adesão em comodato, sem
 mensalidade e sem aluguel**, tem **garantia vitalícia** enquanto durar a
-parceria e aceita **CPF, MEI e PJ**. No período promocional para novos
-clientes (30 dias ou até R$ 5 mil em vendas), as taxas das maquininhas são
-0,57% no débito, 0,57% no crédito à vista e 7,97% no crédito em 12x, para
-Mastercard e Visa com recebimento em 1 dia útil. Há quatro modelos — T1,
+parceria e aceita **CPF, MEI e PJ**. Nos planos vigentes **Mega+ e Black**,
+as taxas para novos clientes partem de **0,74% no débito e no crédito à
+vista**, para Mastercard e Visa com recebimento em 1 dia útil (confira a sua
+taxa no app da Ton). Há quatro modelos — T1,
 T2, T3 e T3 Smart — e o Pix na maquininha fica grátis com uma chave
-cadastrada na Conta Ton. Valores do simulador oficial da Ton consultados
-em 23/09/2026.
+cadastrada na Conta Ton. Valores do site oficial da Ton consultados
+em 06/10/2026.
 
 ## Por que escolher a maquininha Ton
 
@@ -69,38 +69,38 @@ cobrança fixa depois disso.
 
 ## Taxas e condições
 
-As taxas variam conforme a modalidade, o número de parcelas, as bandeiras,
-o prazo de recebimento e a sua faixa de vendas mensais. No período
-promocional para novos clientes, as condições são as seguintes:
+As taxas variam conforme plano (Mega+ ou Black), modalidade, número de
+parcelas, bandeiras, prazo de recebimento e faixa de vendas mensais. Para
+novos clientes, as condições de referência são as seguintes
+(confirme a sua taxa no app da Ton):
 
 <table class="rates-table">
   <thead>
-    <tr><th scope="col">Modalidade</th><th scope="col">Taxa promocional</th></tr>
+    <tr><th scope="col">Modalidade</th><th scope="col">Taxa*</th></tr>
   </thead>
   <tbody>
-    <tr><th scope="row">Débito</th><td>0,57%</td></tr>
-    <tr><th scope="row">Crédito à vista</th><td>0,57%</td></tr>
-    <tr><th scope="row">Crédito em 12x</th><td>7,97%</td></tr>
-    <tr><th scope="row">Crédito em 21x</th><td>14,87%</td></tr>
+    <tr><th scope="row">Débito</th><td>0,74%*</td></tr>
+    <tr><th scope="row">Crédito à vista</th><td>0,74%*</td></tr>
+    <tr><th scope="row">Crédito em 12x</th><td>no app*</td></tr>
+    <tr><th scope="row">Crédito em 21x</th><td>no app*</td></tr>
   </tbody>
 </table>
 
 <details class="conditions">
-<summary>Condições completas da promoção</summary>
+<summary>Condições completas</summary>
 
-Os valores acima são válidos para maquininhas, bandeiras Mastercard e Visa,
-recebimento em 1 dia útil e vendas mensais no **Período Promocional**,
-conforme o simulador oficial em 23/09/2026.
+Os valores acima são de referência para maquininhas, bandeiras Mastercard e Visa,
+recebimento em 1 dia útil, nos planos Mega+ e Black, conforme o site oficial
+em 06/10/2026.
 
-- A promoção vale por 30 dias ou até R$ 5 mil em vendas, o que ocorrer
-  primeiro.
-- Depois do período promocional, as taxas acompanham a sua faixa de vendas
+- *A partir de: confirme a sua taxa no app da Ton antes de vender.
+- Depois da adesão, as taxas acompanham o plano contratado e a sua faixa de vendas
   mensais, calculada pelo volume do mês anterior.
 - Bandeiras Elo e Amex, recebimento na hora, TapTon e Link de Pagamento
   têm tabelas próprias.
 - O parcelamento em até 21x está disponível para novos clientes nos modelos
   T3 e T3 Smart; T1 e T2 parcelam em até 12x.
-- Confira sempre o valor vigente no simulador e no seu aplicativo antes de
+- Confira sempre o valor vigente no app antes de
   fechar o pedido.
 
 </details>

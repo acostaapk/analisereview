@@ -1,0 +1,105 @@
+---
+import Guide from '../layouts/Guide.astro';
+import { updatedAt } from '../data/site';
+
+const title = 'Maquininha para MEI: aceite cartão no seu negócio';
+const description = 'Solução de recebimento para MEI e pequenos negócios: adesão única, sem cobrança fixa mensal, com débito, crédito, Pix e vouchers. Veja modelos e condições.';
+const faqs = [
+  {
+    q: 'MEI precisa de CNPJ para pedir?',
+    a: 'Sim, o cadastro como MEI usa o seu CNPJ. A Ton também aceita CPF e PJ, conforme o seu caso.',
+  },
+  {
+    q: 'Quais bandeiras a maquininha aceita?',
+    a: 'Mais de 50 bandeiras, incluindo débito, crédito e vouchers de alimentação e refeição (vouchers exigem cadastro CNPJ).',
+  },
+  {
+    q: 'Qual modelo escolher para o meu negócio?',
+    a: 'A T1 é a porta de entrada e opera com o celular; a T2 tem chip próprio; a T3 imprime comprovante; a T3 Smart tem tela Android. Compare no guia de modelos.',
+  },
+  {
+    q: 'Tem mensalidade ou aluguel?',
+    a: 'Não. Você paga uma taxa única de adesão, parcelável em até 12x, e depois não há cobrança fixa mensal.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/maquininha-mei/"
+  eyebrow="Maquininha Ton · para MEI"
+  faqs={faqs}
+  breadcrumbName="Maquininha para MEI"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> a maquininha Ton é uma opção de recebimento para
+    <strong>MEIs e pequenos negócios</strong>: adesão única, sem mensalidade e sem
+    aluguel, com débito, crédito, Pix e vouchers. Garantia vitalícia enquanto
+    durar a parceria. Condições do catálogo em {updatedAt}.
+  </div>
+
+  <figure class="figure">
+    <img src="/ilustra-troca.webp" alt="Ilustração da maquininha Ton com garantia e troca" width="608" height="480" loading="lazy" />
+    <figcaption>Garantia vitalícia e troca grátis enquanto durar a parceria.</figcaption>
+  </figure>
+
+  <h2>Recebimento para o seu negócio</h2>
+  <p>Aceite cartão no caixa, no balcão ou na entrega. A Ton reúne débito, crédito,
+  Pix e vouchers em uma maquininha com adesão única e sem cobrança fixa mensal.</p>
+
+  <div class="benefit-grid">
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Cadastro MEI</h3>
+      <p>Direto pelo aplicativo, com o seu CNPJ.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Sem mensalidade</h3>
+      <p>Adesão única e sem cobrança fixa depois.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Vouchers</h3>
+      <p>Alimentação e refeição, com cadastro CNPJ.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Receba em 1 dia útil</h3>
+      <p>Ou na hora — você escolhe.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Pix na maquininha</h3>
+      <p>Grátis com chave cadastrada na Conta Ton.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Garantia vitalícia</h3>
+      <p>Troca e manutenção enquanto durar a parceria.</p>
+    </div>
+  </div>
+
+  <h2>Modelos para escolher</h2>
+  <p>Do primeiro dia de venda ao caixa completo, todos com garantia vitalícia e
+  Pix na maquininha:</p>
+  <ul>
+    <li><strong>T1</strong> — a porta de entrada, opera com o celular (à vista R$ 16,80).</li>
+    <li><strong>T2</strong> — chip e Wi-Fi próprios, cabe no bolso (à vista R$ 49,88).</li>
+    <li><strong>T3</strong> — comprovante impresso e parcelamento até 21x (à vista R$ 108,00).</li>
+    <li><strong>T3 Smart</strong> — tela Android, chip 4G e bateria de longa duração (à vista R$ 191,88).</li>
+  </ul>
+  <p class="rates-note">Valores à vista do catálogo da Ton em {updatedAt} e podem mudar. Confira o valor vigente ao pedir.</p>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>

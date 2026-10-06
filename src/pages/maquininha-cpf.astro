@@ -1,0 +1,105 @@
+---
+import Guide from '../layouts/Guide.astro';
+import { updatedAt } from '../data/site';
+
+const title = 'Maquininha para CPF: venda no cartão sem CNPJ';
+const description = 'Autônomo também aceita cartão. A maquininha Ton aceita cadastro CPF, direto pelo aplicativo, sem mensalidade e sem aluguel. Veja como pedir.';
+const faqs = [
+  {
+    q: 'Preciso ter empresa para pedir a maquininha Ton?',
+    a: 'Não. O cadastro pode ser feito com CPF, MEI ou PJ. Quem vende por conta própria usa o CPF, direto pelo aplicativo da Ton.',
+  },
+  {
+    q: 'O que preciso para me cadastrar?',
+    a: 'Documento de identificação e os dados solicitados no aplicativo da Ton. A análise de cadastro é feita pela própria Ton.',
+  },
+  {
+    q: 'Posso receber Pix na maquininha?',
+    a: 'Sim. O Pix na maquininha fica grátis mantendo uma chave cadastrada na Conta Ton. Sem a chave, a taxa é de 0,49% por venda.',
+  },
+  {
+    q: 'A entrega e o suporte são da Ton?',
+    a: 'Sim. O pedido, a análise de cadastro, a entrega e o suporte ficam sob responsabilidade da Ton.',
+  },
+];
+---
+
+<Guide
+  title={title}
+  description={description}
+  canonicalUrl="https://analisereview.com.br/maquininha-cpf/"
+  eyebrow="Maquininha Ton · para CPF e autônomo"
+  faqs={faqs}
+  breadcrumbName="Maquininha para CPF"
+>
+  <div class="tldr">
+    <strong>Em resumo:</strong> você não precisa de CNPJ para aceitar cartão. A
+    maquininha Ton aceita cadastro <strong>CPF</strong>, além de MEI e PJ, direto
+    pelo aplicativo — ideal para <strong>autônomos e profissionais por conta
+    própria</strong>. Sem mensalidade e sem aluguel, com adesão única. Condições
+    consultadas em {updatedAt}.
+  </div>
+
+  <figure class="figure">
+    <img src="/ilustra-autonoma.webp" alt="Ilustração de pessoa autônoma usando a maquininha Ton" width="608" height="480" loading="lazy" />
+    <figcaption>Venda por conta própria com a maquininha Ton.</figcaption>
+  </figure>
+
+  <h2>Venda no cartão sem precisar de CNPJ</h2>
+  <p>Se você trabalha por conta própria, a maquininha Ton permite cadastrar com
+  CPF e começar a aceitar cartão e Pix. O cadastro é feito no aplicativo e a
+  análise fica por conta da Ton.</p>
+
+  <div class="benefit-grid">
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Cadastro com CPF</h3>
+      <p>Sem CNPJ — aceita CPF, MEI e PJ.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Feito para autônomo</h3>
+      <p>Para quem vende por conta própria, freelancer ou MEI.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Sem aluguel</h3>
+      <p>Taxa única de adesão e sem cobrança fixa depois.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Receba em 1 dia útil</h3>
+      <p>Ou na hora, conforme sua escolha no aplicativo.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Pix sem taxa</h3>
+      <p>Com chave cadastrada na Conta Ton.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">✓</span>
+      <h3>Garantia vitalícia</h3>
+      <p>Troca e manutenção enquanto durar a parceria.</p>
+    </div>
+  </div>
+
+  <h2>Como pedir</h2>
+  <ol>
+    <li>Escolha o modelo que combina com o seu jeito de vender.</li>
+    <li>Use o botão de pedido: você é direcionado ao site oficial da Ton.</li>
+    <li>Conclua o cadastro no aplicativo da Ton.</li>
+  </ol>
+  <p>A entrega e o suporte ficam sob responsabilidade da Ton. Confira as
+  condições vigentes antes de fechar o pedido.</p>
+</Guide>
+
+<style>
+  .tldr {
+    border-left: 4px solid var(--color-ton);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.0625rem;
+  }
+  .tldr strong { font-weight: 700; }
+</style>

@@ -2,16 +2,16 @@
 import Guide from '../../layouts/Guide.astro';
 import { affiliateUrl, updatedAt } from '../../data/site';
 
-const title = 'Taxas da Ton em 2026: promoção e condições por plano';
-const description = 'Entenda as taxas da maquininha Ton: débito e crédito à vista a 0,57% na promoção, crédito 12x a 7,97%, como mudam por faixa de vendas, Pix e parcelamento até 21x.';
+const title = 'Taxas da Ton em 2026: planos Mega+ e Black';
+const description = 'Entenda as taxas da maquininha Ton nos planos Mega+ e Black: a partir de 0,74% no débito e crédito à vista, Pix com 30 dias grátis e como consultar sua taxa no app.';
 const faqs = [
   {
-    q: 'A taxa de 0,57% da Ton vale para sempre?',
-    a: 'Não. A taxa de 0,57% vale no Período Promocional para novos clientes: 30 dias ou até R$ 5 mil em vendas, o que ocorrer primeiro. Depois, as taxas seguem a sua faixa de vendas mensais.',
+    q: 'Quais são os planos de taxas da Ton?',
+    a: 'Os planos vigentes são o Mega+ e o Black (o Promoton foi descontinuado). As taxas partem de 0,74% no débito e no crédito à vista para novos clientes. Confira a tabela exata do seu perfil no app da Ton antes de vender.',
   },
   {
     q: 'Quanto custa parcelar na maquininha Ton?',
-    a: 'No Período Promocional, o crédito em 12x custa 7,97% e em 21x custa 14,87%, para Mastercard e Visa com recebimento em 1 dia útil. O parcelamento até 21x vale para novos clientes nos modelos T3 e T3 Smart; T1 e T2 parcelam até 12x.',
+    a: 'O parcelamento chega a 12x nos modelos T1 e T2 e a 21x nos modelos T3 e T3 Smart, para Mastercard e Visa com recebimento em 1 dia útil. O percentual por parcela varia por plano: consulte no app da Ton.',
   },
   {
     q: 'O Pix na maquininha Ton é grátis?',
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'As taxas da Ton mudam conforme o meu cadastro?',
-    a: 'As taxas variam conforme a faixa de vendas mensais, as bandeiras, o prazo de recebimento e a modalidade. Use o simulador oficial da Ton para ver a taxa do seu cenário antes de vender.',
+    a: 'As taxas variam conforme plano (Mega+ ou Black), faixa de vendas mensais, bandeiras, prazo de recebimento e modalidade. Use o app da Ton para ver a taxa do seu cenário antes de vender.',
   },
 ];
 ---
@@ -35,15 +35,13 @@ const faqs = [
   ctaHref="/reviews/maquininha-ton#simulador"
 >
   <div class="tldr">
-    <strong>Em resumo:</strong> no Período Promocional para novos clientes
-    (30 dias ou até R$ 5 mil em vendas), as maquininhas Ton cobram
-    <strong>0,57% no débito</strong>, <strong>0,57% no crédito à vista</strong>
-    e <strong>7,97% no crédito em 12x</strong>, para Mastercard e Visa com
-    recebimento em 1 dia útil. Depois da promoção, a taxa acompanha a sua
-    faixa de vendas mensais. Pix na maquininha: 30 dias grátis e, depois,
-    taxa zero com chave cadastrada na Conta Ton. Dados do
-    <a href={affiliateUrl} rel="nofollow sponsored">simulador oficial</a>, consultados
-    em {updatedAt}.
+    <strong>Em resumo:</strong> nos planos vigentes <strong>Mega+ e Black</strong>,
+    as maquininhas Ton cobram <strong>a partir de 0,74% no débito</strong> e
+    <strong>0,74% no crédito à vista</strong>, para novos clientes com
+    recebimento em 1 dia útil. O parcelamento e as demais condições variam por
+    plano: confirme a sua taxa no app da Ton. Pix na maquininha: 30 dias grátis
+    e, depois, taxa zero com chave cadastrada na Conta Ton. Dados do site
+    oficial, consultados em {updatedAt}.
   </div>
 
   <h2>Como funcionam as taxas da maquininha Ton</h2>
@@ -58,24 +56,26 @@ const faqs = [
     <li><strong>Faixa de vendas mensais</strong> — depois da promoção, o volume do mês anterior define a sua tabela.</li>
   </ol>
 
-  <h2>Taxas do Período Promocional</h2>
-  <p>Para novos clientes, durante 30 dias ou até R$ 5 mil em vendas:</p>
+  <h2>Taxas dos planos Mega+ e Black</h2>
+  <p>Para novos clientes, com recebimento em 1 dia útil (Mastercard e Visa).
+  O Promoton foi descontinuado: os planos vigentes são <strong>Mega+</strong> e
+  <strong>Black</strong>. A tabela exata por parcela está no app da Ton:</p>
   <table class="rates-table">
     <thead>
       <tr><th scope="col">Modalidade</th><th scope="col">Taxa</th></tr>
     </thead>
     <tbody>
-      <tr><th scope="row">Débito</th><td class="rate-promo">0,57%</td></tr>
-      <tr><th scope="row">Crédito à vista</th><td class="rate-promo">0,57%</td></tr>
-      <tr><th scope="row">Crédito em 12x</th><td class="rate-promo">7,97%</td></tr>
-      <tr><th scope="row">Crédito em 21x</th><td class="rate-promo">14,87%</td></tr>
+      <tr><th scope="row">Débito</th><td class="rate-promo">0,74%*</td></tr>
+      <tr><th scope="row">Crédito à vista</th><td class="rate-promo">0,74%*</td></tr>
+      <tr><th scope="row">Crédito em 12x</th><td class="rate-promo">no app*</td></tr>
+      <tr><th scope="row">Crédito em 21x</th><td class="rate-promo">no app*</td></tr>
     </tbody>
   </table>
-  <p class="rates-note">Maquininhas · Mastercard e Visa · recebimento em 1 dia útil · Período Promocional · simulador oficial em {updatedAt}.</p>
+  <p class="rates-note">*A partir de · Planos Mega+ e Black · site oficial em {updatedAt}. Confirme a sua taxa no app antes de vender.</p>
 
-  <h2>Depois da promoção: taxas por faixa de vendas</h2>
-  <p>Encerrado o período promocional, a tabela segue o volume de vendas do
-  mês anterior. Dois exemplos do simulador, nas mesmas condições de
+  <h2>Depois da adesão: taxas por faixa de vendas</h2>
+  <p>Encerrado o período inicial, a tabela segue o plano contratado e o volume
+  de vendas do mês anterior. Dois exemplos de referência, nas mesmas condições de
   bandeira e prazo:</p>
   <div class="table-scroll">
   <table class="rates-table card-table">
@@ -88,15 +88,15 @@ const faqs = [
     </tbody>
   </table>
   </div>
-  <p class="rates-note">Cenários do simulador oficial da Ton em {updatedAt}, para novos clientes. O valor muda para bandeiras Elo/Amex e recebimento na hora.</p>
+  <p class="rates-note">Referências do site oficial da Ton em {updatedAt}, para novos clientes. O valor muda para bandeiras Elo/Amex e recebimento na hora.</p>
 
   <h2>Quanto você recebe em cada venda</h2>
-  <p>Na promoção, com recebimento em 1 dia útil:</p>
+  <p>Exemplos com a taxa de referência de 0,74% e recebimento em 1 dia útil:</p>
   <div class="example-grid">
     <div class="example-card">
       <p class="example-title">Venda de R$ 150 no débito</p>
-      <p class="example-fee">Taxa de 0,57% · custo de R$ 0,86</p>
-      <p class="example-net">Você recebe R$ 149,14</p>
+      <p class="example-fee">Taxa de 0,74% · custo de R$ 1,11</p>
+      <p class="example-net">Você recebe R$ 148,89</p>
     </div>
     <div class="example-card">
       <p class="example-title">Pix de R$ 500</p>
@@ -104,12 +104,12 @@ const faqs = [
       <p class="example-net">Você recebe R$ 500,00</p>
     </div>
     <div class="example-card">
-      <p class="example-title">Venda de R$ 200 em 12x</p>
-      <p class="example-fee">Taxa de 7,97% · custo de R$ 15,94</p>
-      <p class="example-net">Você recebe R$ 184,06</p>
+      <p class="example-title">Venda parcelada</p>
+      <p class="example-fee">Percentual por parcela no app da Ton</p>
+      <p class="example-net">Confira antes de vender</p>
     </div>
   </div>
-  <p class="rates-note">Exemplos com taxas promocionais do Mega+ (Mastercard e Visa, 1 dia útil), simulador oficial em {updatedAt}. Para calcular o seu cenário, use o <a href="/reviews/maquininha-ton#simulador">simulador da página da maquininha</a>.</p>
+  <p class="rates-note">Exemplos com taxa de referência dos planos Mega+ e Black (Mastercard e Visa, 1 dia útil), site oficial em {updatedAt}. Para calcular o seu cenário, use o <a href="/reviews/maquininha-ton#simulador">simulador da página da maquininha</a>.</p>
 
   <h2>Pix na maquininha</h2>
   <p>O Pix na maquininha tem regra própria: <strong>30 dias com taxa zero</strong>
@@ -125,8 +125,8 @@ const faqs = [
 
   <h2>Como consultar a taxa do seu cenário</h2>
   <ol>
-    <li>Use o <a href="/reviews/maquininha-ton#simulador">nosso simulador de taxas</a>, com as taxas promocionais do Mega+.</li>
-    <li>Para o valor exato do seu cadastro, confira no <a href={affiliateUrl} rel="nofollow sponsored">simulador oficial da Ton</a>.</li>
+    <li>Use o <a href="/reviews/maquininha-ton#simulador">nosso simulador de taxas</a>, com a taxa de referência dos planos Mega+ e Black.</li>
+    <li>Para o valor exato do seu cadastro, confira no <a href={affiliateUrl} rel="nofollow sponsored">site oficial da Ton</a>.</li>
     <li>O simulador mostra o percentual e o valor líquido da venda.</li>
   </ol>
   <p>Guia relacionado: <a href="/guias/modelos-ton/">modelos de maquininha Ton</a> e <a href="/reviews/maquininha-ton/">página completa com condições</a>.</p>

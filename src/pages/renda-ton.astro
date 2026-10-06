@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { siteBase, updatedAt } from '../data/site';
+
+const canonicalUrl = `${siteBase}/renda-ton/`;
+const rendaTonUrl = 'https://www.ton.com.br/renda-ton/';
+
+const faqs = [
+  {
+    q: 'Quem pode participar do Renda Ton?',
+    a: 'O programa é voltado a participantes do Renda Extra. Conforme o regulamento vigente, a participação pode exigir um mínimo de 3 indicações válidas no período de um mês, a critério do Pagar.me.',
+  },
+  {
+    q: 'Como o nível é definido?',
+    a: 'O nível é definido com base na performance do mês anterior e atualizado no dia 1º de cada mês. Mediante a apuração mensal, o participante pode se manter, avançar ou voltar de nível.',
+  },
+  {
+    q: 'As recompensas são garantidas?',
+    a: 'Não. As recompensas dependem de nível, elegibilidade, validação (incluindo KYC), equipamento contratado, volume transacionado e demais condições do regulamento.',
+  },
+  {
+    q: 'Onde vejo os valores e condições atualizados?',
+    a: 'Os valores, faixas, prazos e níveis são divulgados e atualizados na Plataforma Ton e nos materiais oficiais, incluindo a página oficial do Renda Ton.',
+  },
+];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Programa Renda Ton',
+    url: canonicalUrl,
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteBase },
+      { '@type': 'ListItem', position: 2, name: 'Renda Ton', item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Base title="Programa Renda Ton: como funciona" description="Entenda o programa Renda Ton: elegibilidade, níveis e benefícios, conforme o regulamento vigente. Sem promessas de ganho — confira as condições na Plataforma Ton." canonicalUrl={canonicalUrl}>
+  <JsonLd data={structuredData} />
+  <section class="section">
+    <div class="wrap">
+      <article class="page">
+        <span class="eyebrow">Programa · Renda Ton</span>
+        <h1>Programa Renda Ton</h1>
+        <p class="dek">O Renda Ton é um programa de benefícios para participantes do Renda Extra. Esta página explica as condições — sem promessas de ganho. Última revisão: {updatedAt}.</p>
+
+        <h2>O que é o Renda Ton</h2>
+        <p>O Renda Ton é um programa desenvolvido pelo Pagar.me — desenvolvedor da Plataforma Ton — para uma parcela de clientes credenciados e participantes do Renda Extra. Por meio dele, o participante percorre uma trilha de benefícios com base no nível ocupado.</p>
+
+        <h2>Elegibilidade</h2>
+        <p>Conforme o regulamento vigente, o participante do Renda Extra que realizar, no mínimo, 3 indicações válidas no período de um mês poderá, a critério do Pagar.me, participar do Renda Ton. Os critérios podem ser revistos a qualquer tempo.</p>
+
+        <h2>Como o nível é definido</h2>
+        <p>O nível é definido com base na performance do mês anterior e atualizado no dia 1º de cada mês, conforme as indicações válidas do período. O participante pode se manter no nível, avançar ou voltar ao anterior.</p>
+
+        <h2>Benefícios previstos no regulamento</h2>
+        <ul>
+          <li><strong>Recompensa pela indicação</strong> — conforme o nível e o equipamento contratado pelo novo cliente.</li>
+          <li><strong>AtivaTon</strong> — recompensa por ativação, condicionada à ativação do equipamento e a volume transacionado.</li>
+          <li><strong>FaturaTon</strong> — recompensa adicional por novo cliente, conforme nível e faixa de faturamento.</li>
+          <li><strong>Cupom de desconto</strong> — aplicável à taxa de adesão, conforme o nível.</li>
+          <li><strong>Upgrade do plano de taxas</strong> — para determinados níveis.</li>
+          <li><strong>Indique 3 e UpTON</strong> — iniciativas sujeitas aos critérios do regulamento.</li>
+        </ul>
+        <p>Os valores, faixas, prazos e condições de cada benefício são atualizados na Plataforma Ton e nos materiais oficiais.</p>
+
+        <h2>Importante</h2>
+        <p>As recompensas passam por validação, incluindo a verificação de identidade (KYC), e dependem de nível, elegibilidade, equipamento e volume transacionado. <strong>Nenhuma recompensa deve ser entendida como ganho garantido.</strong></p>
+
+        <div class="cta-panel" data-offer="renda-ton">
+          <span class="eyebrow">Quer conhecer o programa?</span>
+          <h2>Consulte a Plataforma Ton</h2>
+          <p>Veja os valores, faixas e condições vigentes na página oficial do Renda Ton.</p>
+          <a class="btn btn-primary" href={rendaTonUrl} rel="nofollow sponsored" target="_blank">Conhecer o Renda Ton</a>
+          <p class="disclosure">Somos Parceiro Renda Ton. Este canal é de titularidade de um Parceiro Renda Ton/Renda Extra e não se confunde com os canais oficiais do Ton.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Dúvidas comuns</span>
+        <h2 class="section-title">Perguntas frequentes</h2>
+      </div>
+      <div class="faq">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { max-width: var(--measure); margin-inline: auto; }
+  .page h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: var(--space-2) 0 var(--space-3); text-transform: uppercase; }
+  .dek { font-size: 1.0625rem; color: var(--color-muted); max-width: 62ch; margin-inline: auto; }
+  .page h2 { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-2); }
+  .page p + p { margin-top: var(--space-3); }
+  .page ul { padding-left: 1.5rem; }
+  .page li { margin-bottom: var(--space-2); }
+  .page li::marker { color: var(--color-ton-dark); font-weight: 700; }
+  .page .cta-panel { margin-top: var(--space-6); }
+  .section-alt { background: var(--color-surface); }
+</style>
