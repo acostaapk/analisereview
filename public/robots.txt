@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://analisereview.com.br/sitemap-index.xml
+Sitemap: https://analisereview.com.br/sitemap-blog.xml
 
 # AI crawlers (GEO)
 User-agent: GPTBot

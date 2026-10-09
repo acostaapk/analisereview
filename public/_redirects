@@ -1,5 +1,6 @@
-# Links curtos p/ o agente Toní (mascaram o checkout + UTMs). 302 = temporário (permite trocar o destino).
-/ton/t1  https://www.ton.com.br/checkout/cart?userTag=tonmega_tier&userAnticipation=1&productId=TONMEGA_TIER_D150&referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&utm_medium=invite_share&utm_source=revendedor  302
-/ton/t2  https://www.ton.com.br/checkout/cart?userTag=tonmega_tier&userAnticipation=1&productId=TONMEGA_TIER_D195&referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&utm_medium=invite_share&utm_source=revendedor  302
-/ton/t3  https://www.ton.com.br/checkout/cart?userTag=tonmega_tier&userAnticipation=1&productId=TONMEGA_TIER_S920&referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&utm_medium=invite_share&utm_source=revendedor  302
-/ton/t3-smart  https://www.ton.com.br/checkout/cart?userTag=tonmega_tier&userAnticipation=1&productId=TONMEGA_TIER_SMART_POS&referrer=B7C09243-0F6C-4FA5-BA01-4562B9C88FD6&utm_medium=invite_share&utm_source=revendedor  302
+# Links curtos p/ cada modelo. Apontam para a landing com og:image (foto do modelo),
+# que por sua vez tem o botão de compra pro checkout oficial da Ton.
+/ton/t1  /ton/t1/  302
+/ton/t2  /ton/t2/  302
+/ton/t3  /ton/t3/  302
+/ton/t3-smart  /ton/t3-smart/  302
