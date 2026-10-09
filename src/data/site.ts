@@ -21,6 +21,8 @@ export const contactWhatsApp =
 export const businessName = 'André Costa Purificação';
 export const businessCnpj = '66.211.649/0001-60';
 export const businessCity = 'São Mateus – ES';
+export const businessHours = 'Seg–Sex 9h–18h';
+export const businessServiceNote = 'Atendimento 100% online — sem loja física';
 
 export const publisher = {
   '@type': 'Organization',

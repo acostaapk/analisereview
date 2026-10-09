@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
-import { affiliateUrl, maquininhasUrl, contactEmail, contactPhone, contactWhatsApp, businessName, businessCnpj, businessCity } from '../data/site';
+import { affiliateUrl, maquininhasUrl, contactEmail, contactPhone, contactWhatsApp, businessName, businessCnpj, businessCity, businessHours, businessServiceNote } from '../data/site';
 
 interface Props {
   title: string;
@@ -56,17 +56,43 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         s.parentNode.insertBefore(t, s);
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '1624973265642736');
-      fbq('track', 'PageView');
+      // CAPI relay: mesmo event_id no browser e no servidor (dedup Meta).
+      var CAPI_URL = 'https://capi-relay.analisereview.workers.dev/capi';
+      function newEventId() {
+        return Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+      }
+      function getCookie(name) {
+        var m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+      function trackBoth(name, params) {
+        var eid = newEventId();
+        if (typeof fbq === 'function') fbq('track', name, params, { eventID: eid });
+        try {
+          fetch(CAPI_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            keepalive: true,
+            body: JSON.stringify({
+              event_name: name,
+              event_id: eid,
+              custom_data: params,
+              user_data: { fbp: getCookie('_fbp'), fbc: getCookie('_fbc') },
+            }),
+          }).catch(function () {});
+        } catch (e) {}
+      }
+      trackBoth('PageView', {});
       document.addEventListener(
         'click',
         function (event) {
           var anchor = event.target && event.target.closest ? event.target.closest('a[href]') : null;
-          if (!anchor || typeof fbq !== 'function') return;
+          if (!anchor) return;
           var href = anchor.getAttribute('href') || '';
           if (href.indexOf('ton.com.br') !== -1) {
-            fbq('track', 'InitiateCheckout', { content_name: 'Clique checkout Ton' });
+            trackBoth('InitiateCheckout', { content_name: 'Clique checkout Ton' });
           } else if (href.indexOf('wa.me/') !== -1) {
-            fbq('track', 'Lead', { content_name: 'Clique WhatsApp' });
+            trackBoth('Lead', { content_name: 'Clique WhatsApp' });
           }
         },
         true
@@ -138,8 +164,8 @@ const pageUrl = canonicalUrl ?? `${site}${path}`;
         <a href={contactWhatsApp} rel="noopener" aria-label="Falar com a Toni no WhatsApp">
           <img src="/selo-whatsapp-toni.webp" alt="WhatsApp Business Toni" width="120" height="120" loading="lazy" style="border-radius:16px;margin:12px 0;" />
         </a>
-        <p class="contact">Contato: <a href={`mailto:${contactEmail}`}>{contactEmail}</a> · <a href={contactWhatsApp} rel="noopener">WhatsApp {contactPhone}</a></p>
-        <p class="identificacao"><strong>{businessName}</strong> · CNPJ {businessCnpj} · {businessCity}</p>
+        <p class="contact">Contato: <!--email_off--><a href={`mailto:${contactEmail}`}>{contactEmail}</a><!--/email_off--> · <a href="tel:+5527997000451">+55 27 99700-0451</a> · <a href={contactWhatsApp} rel="noopener">WhatsApp {contactPhone}</a> · {businessHours}</p>
+        <p class="identificacao"><strong>{businessName}</strong> · CNPJ {businessCnpj} · {businessCity} · {businessServiceNote}</p>
         <p class="legal">Este site <strong>não é o site oficial da Ton</strong>. Declaramos, para todos os fins, que este canal é de titularidade de um Parceiro Renda Ton/Renda Extra, que oferece descontos para aquisição dos produtos e serviços do Ton, e não se confunde com os canais oficiais do Ton.</p>
         <p><a href={affiliateUrl} rel="nofollow sponsored">Site oficial do Ton</a> · <a href="/reviews/maquininha-ton#simulador">Simulador de taxas</a></p>
         <p class="footer-links"><a href="/sobre">Sobre</a> · <a href="/blog">Blog</a> · <a href="/reviews/maquininha-ton/">Maquininha Ton</a> · <a href="/maquininha-sem-aluguel/">Sem aluguel</a> · <a href="/maquininha-cpf/">Para CPF</a> · <a href="/maquininha-mei/">Para MEI</a> · <a href="/maquininha-barata/">Custo da maquininha</a> · <a href="/renda-ton/">Renda Ton</a> · <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos de Uso</a> · <a href="/contato">Contato</a></p>
